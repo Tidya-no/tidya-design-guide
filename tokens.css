@@ -37,7 +37,7 @@
 	--color-accent-fill-hover:    #ffc933;
 	--color-on-accent:            #1a1816;
 	--color-label:                #e0956d;
-	--color-link:                 #d4a88f;
+	--color-link:                 var(--color-accent);
 	--color-error:                #ff5252;
 	--color-success:              #4cc38a;
 	--color-warning:              #ff9f43;
@@ -53,9 +53,32 @@
 	--color-accent-border:        rgba(255, 190, 11, 0.46);
 	--color-accent-border-dashed: rgba(255, 190, 11, 0.46);
 	--color-accent-bg-subtle:     rgba(255, 190, 11, 0.05);
+	--shadow-sm:                  0 1px 2px rgba(0, 0, 0, 0.40);
+	--shadow-md:                  0 4px 12px rgba(0, 0, 0, 0.45);
+	--shadow-lg:                  0 12px 32px rgba(0, 0, 0, 0.55);
+	--color-overlay:              rgba(0, 0, 0, 0.60);
 
 	--font-body:    'Inter', system-ui, sans-serif;
 	--font-display: 'Fraunces', Georgia, serif;
+
+	--text-xs:   0.75rem;
+	--text-sm:   0.8125rem;
+	--text-base: 0.875rem;
+	--text-lg:   1.0625rem;
+	--text-xl:   1.35rem;
+	--text-2xl:  1.5rem;
+	--text-3xl:  clamp(2rem, 5vw, 3rem);
+
+	--leading-tight:  1.2;
+	--leading-normal: 1.6;
+
+	--font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+	--z-sticky:   10;
+	--z-dropdown: 20;
+	--z-overlay:  30;
+	--z-modal:    40;
+	--z-toast:    50;
 
 	--r-sm: 4px;
 	--r-md: 6px;
@@ -88,7 +111,6 @@
 		--color-accent-fill-hover:    #f0a800;
 		--color-on-accent:            #1a1816;
 		--color-label:                #9c3d1a;
-		--color-link:                 #7a4a2e;
 		--color-error:                #c82020;
 		--color-success:              #17703f;
 		--color-warning:              #9a4d00;
@@ -104,6 +126,10 @@
 		--color-accent-border:        rgba(138, 93, 0, 0.76);
 		--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 		--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
+		--shadow-sm:                  0 1px 2px rgba(26, 24, 22, 0.08);
+		--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.12);
+		--shadow-lg:                  0 12px 32px rgba(26, 24, 22, 0.16);
+		--color-overlay:              rgba(26, 24, 22, 0.45);
 	}
 }
 
@@ -120,7 +146,6 @@
 	--color-accent-fill-hover:    #f0a800;
 	--color-on-accent:            #1a1816;
 	--color-label:                #9c3d1a;
-	--color-link:                 #7a4a2e;
 	--color-error:                #c82020;
 	--color-success:              #17703f;
 	--color-warning:              #9a4d00;
@@ -136,4 +161,8 @@
 	--color-accent-border:        rgba(138, 93, 0, 0.76);
 	--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 	--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
+	--shadow-sm:                  0 1px 2px rgba(26, 24, 22, 0.08);
+	--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.12);
+	--shadow-lg:                  0 12px 32px rgba(26, 24, 22, 0.16);
+	--color-overlay:              rgba(26, 24, 22, 0.45);
 }

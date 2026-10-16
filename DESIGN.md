@@ -17,6 +17,8 @@ Kort referanse for deg som bygger UI (menneske eller AI). Kilden til sannhet for
 | Sidebakgrunn / kort, modaler | `--color-bg` / `--color-surface` |
 | Primærtekst / støttetekst / metadata | `--color-text` / `--color-text-secondary` / `--color-text-muted` |
 | Etiketter og seksjonsoverskrifter i kort | `--color-label` (uppercase, 0.75rem, 600) |
+| Lenke | `--color-link` (alias for `--color-accent`), alltid understreket, hover `--color-accent-hover` |
+| Flytende elementer / bakgrunn bak dialog | `--shadow-sm/-md/-lg` / `--color-overlay` |
 | Aksent som **tekst**, lenke, fokusring | `--color-accent` (hover: `--color-accent-hover`) |
 | Aksent som **flate** (primærknapp) | `--color-accent-fill` + `--color-on-accent` som tekst |
 | Input- og kontrollkanter (min. 3:1) | `--color-border-control` |
@@ -28,12 +30,44 @@ Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), m
 
 ## Typografi
 
-- Fraunces (`--font-display`) til display og overskrifter, Inter (`--font-body`) til alt annet. Selvhostet i `fonts/`. Ingen Google Fonts.
-- Brødtekst 0.875rem / 1.6. Etikett 0.75rem, 600, uppercase, +0.07em.
+- Fraunces (`--font-display`) til display og overskrifter, Inter (`--font-body`) til alt annet. Selvhostet i `fonts/`. Ingen Google Fonts. Kode: `--font-mono`.
+- Størrelser: kun `--text-xs/sm/base/lg/xl/2xl/3xl` (0.75, 0.8125, 0.875, 1.0625, 1.35, 1.5, clamp 2–3 rem). Linjehøyde `--leading-tight` 1.2 (overskrifter) og `--leading-normal` 1.6 (tekst).
+- Hierarki: h1 Fraunces 3xl/700, h2 Fraunces xl/600, h3 Inter lg/600, h4 Inter base/600. Brødtekst `base`, støttetekst `sm`, etikett og bildetekst `xs`. Display (`2xl`, Fraunces 600) kun til nøkkeltall.
+- Tall i tabeller og nøkkeltall: `font-variant-numeric: tabular-nums` (klassen `.tnum` i guiden).
+- Etikett: 0.75rem, 600, uppercase, +0.07em.
+
+## Lenker
+
+`color: var(--color-link)` (= accent), alltid understreket (1px, offset 2px), hover `--color-accent-hover`. Fokus som andre elementer. Aldri lenke bare med farge.
+
+## Dybde
+
+- Flater skilles med `--color-surface` og kant, ikke skygge. Skygge kun på flytende elementer: `--shadow-sm` (sticky, hevet kort), `--shadow-md` (dropdown, popover, tooltip), `--shadow-lg` (dialog, toast).
+- Dialog: `--color-surface`, kant `--color-border-subtle`, `--shadow-lg`, over `--color-overlay`.
+- z-index: kun `--z-sticky` 10, `--z-dropdown` 20, `--z-overlay` 30, `--z-modal` 40, `--z-toast` 50.
+
+## Norsk UI-tekst og formater
+
+- Bokmål, kort og konkret, tiltal brukeren med «du». `<html lang="nb">`. Aldri æ/ø/å som ae/oe/aa i UI-tekst.
+- Store bokstaver kun i første ord og egennavn (ikke Title Case). Knapper: verb i imperativ med objekt («Lagre», «Legg til kunde», «Slett utkast»), ikke «OK» eller «Submit».
+- Feilmelding: si hva som skjedde og hva brukeren kan gjøre («Kunne ikke lagre. Prøv igjen.»). Aldri «Feil!» alene. Tom tilstand: forklar og tilby én handling.
+- Formater bruker alltid `Intl` med `nb-NO`, aldri håndformatering:
+
+| Hva | Kode | Resultat |
+|---|---|---|
+| Dato | `new Intl.DateTimeFormat('nb-NO').format(d)` | `16.10.2026` |
+| Lang dato | `{ dateStyle: 'long' }` | `16. oktober 2026` |
+| Dato og tid | `{ dateStyle: 'short', timeStyle: 'short' }` | `16.10.2026, 14:30` |
+| Tall | `new Intl.NumberFormat('nb-NO').format(n)` | `1 234 567,891` |
+| Beløp | `{ style: 'currency', currency: 'NOK' }` | `1 234,50 kr` (negativt: `−1 234,50 kr`) |
+| Prosent | `{ style: 'percent', maximumFractionDigits: 1 }` | `12,5 %` |
+| Sortering | `a.localeCompare(b, 'nb')` | `A, Z, Æ, Ø, Å` |
+
+Mellomrommene i tall og før `kr`/`%` er hardt mellomrom (U+00A0). Ikke bytt dem med vanlig mellomrom.
 
 ## Avstand, radius og bevegelse
 
-- Avstand: kun `--space-1…7` = 4, 8, 12, 16, 24, 32, 48 px.
+- Avstand: kun `--space-1…7` = `--space-1` 4, `-2` 8, `-3` 12, `-4` 16, `-5` 24, `-6` 32, `-7` 48 px.
 - Radius: `--r-sm` 4 (små detaljer), `--r-md` 6 (knapper), `--r-lg` 8 (inputs), `--r-xl` 10 (kort/seksjoner).
 - Overganger: `--t-fast` 0.15s (farge, kant), `--t-lift` 0.1s (1px løft på primærknapp). Ingen andre animasjoner uten behov.
 
