@@ -81,11 +81,12 @@ Last `tokens.css` og `components.css`. Ingen byggesteg. Eksempler med HTML står
 
 | Komponent | Klasser |
 |---|---|
-| Knapp | `btn-primary`, `btn-ghost`, `btn-danger-link` |
+| Knapp | `btn-primary`, `btn-ghost`, `btn-danger` (fylt, til bekreftelse), `btn-danger-link` |
 | Felt | `field` > `label` + `input` / `select` / `textarea` + `hint` / `field-error` |
 | Valg | `check` (checkbox, radio), `switch` på `input[type=checkbox][role=switch]` |
 | Tabell | `table-wrap` > `table`, `num` (tall), `table-empty`, `aria-sort` på `th` |
 | Kort / sitat | `card` (`card-title`, `card-body`), `quote` |
+| Dialog | native `<dialog class="dialog">` med `dialog-title`, `dialog-body`, `dialog-actions`. Åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `alert-title`, `alert-body` |
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
 | Hjelp | `tnum` (tabular-nums), `sr-only`, `h1`–`h4` |
@@ -94,7 +95,7 @@ Regler:
 - Feil på felt settes med `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse.
 - Hvert felt har synlig `label`. Placeholder erstatter ikke label.
 - `color-scheme` er satt i `tokens.css`, så native kontroller (select, checkbox, scrollbar) følger modus.
-- Mangler det en komponent (dialog, toast med utløp, tabs, paginering): legg den til i `components.css` og guiden først, ikke lokalt i appen.
+- Mangler det en komponent (tabs, paginering, meny): legg den til i `components.css` og guiden først, ikke lokalt i appen.
 
 ### htmx-mønstre (testet mot htmx 2.0, Chromium, mørk og lys, axe 0 brudd)
 
@@ -102,8 +103,8 @@ Regler:
 - **Lasting:** `.spinner` i `.htmx-indicator`. Knappen blokkeres under `htmx-request` (ingen dobbeltinnsending).
 - **Beskjeder:** `<div id="status" role="status" aria-live="polite">` i layouten, oppdatert med `hx-swap-oob="innerHTML:#status"`. Ikke `hx-swap-oob="true"` (fjerner `role`).
 - **Sortering:** bytt hele tabellen (så `aria-sort` oppdateres). Sorteringslenken har `id` og beholder fokus.
-- **Sletting:** fokus havner på `body` når raden fjernes. Flytt fokus til en overskrift med `tabindex="-1"` før (`hx-on:click`). Krever at CSP tillater inline JS. Bekreftelse: bruk `<dialog>`, ikke `hx-confirm`.
-- Ikke testet ennå: `<dialog>`, toast som lukker seg selv, paginering, `hx-boost` og View Transitions.
+- **Sletting med bekreftelse:** knappen henter en server-rendret `<dialog>` (`hx-get`) inn i en tom plass-div, åpnet med `hx-on::load="this.showModal()"` og fjernet ved `close`. `autofocus` på Avbryt. Bekreft-knappen lukker dialogen og flytter fokus til en overskrift med `tabindex="-1"` (raden og knappen som åpnet dialogen er borte). Escape lukker og returnerer fokus til knappen. Krever at CSP tillater inline JS (`hx-on`).
+- Ikke testet ennå: paginering, `hx-boost`, View Transitions og dialog med skjema som valideres på serveren. Toast som lukker seg selv er bevisst utelatt (tidsbegrensning, WCAG 2.2.1): bruk `role="status"`-meldingen.
 
 ## Ikke gjør
 

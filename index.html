@@ -133,6 +133,7 @@
 				<button class="btn-ghost" type="button">Avbryt</button>
 			</div>
 			<div class="comp-row"><span class="comp-label">Danger</span>
+				<button class="btn-danger" type="button">Slett kunde</button>
 				<button class="btn-danger-link" type="button">Slett</button>
 			</div>
 			<div class="comp-row"><span class="comp-label">Input</span>
@@ -207,6 +208,30 @@
 &lt;/div&gt;</code></pre>
 	</section>
 
+	<section class="section" id="dialog">
+		<div class="section-head"><h2 class="section-title">Dialog</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Bruk native <code>&lt;dialog&gt;</code> med <code>showModal()</code>: fokusfelle, Escape og bakgrunn følger med uten JS-bibliotek. <code>autofocus</code> på den trygge knappen (Avbryt). Escape lukker, og fokus går tilbake til knappen som åpnet dialogen. Bakgrunnen er <code>--color-overlay</code> og skyggen <code>--shadow-lg</code>.</p>
+		<div><button class="btn-ghost" type="button" onclick="document.getElementById('demo-dialog').showModal()">Åpne dialog</button></div>
+		<dialog class="dialog" id="demo-dialog" aria-labelledby="demo-dialog-tittel" aria-describedby="demo-dialog-tekst">
+			<h2 class="dialog-title" id="demo-dialog-tittel">Slett Prosjekt A?</h2>
+			<p class="dialog-body" id="demo-dialog-tekst">Dette kan ikke angres.</p>
+			<form class="dialog-actions" method="dialog">
+				<button class="btn-ghost" value="avbryt" autofocus>Avbryt</button>
+				<button class="btn-danger" value="slett">Slett</button>
+			</form>
+		</dialog>
+		<pre class="code" tabindex="0"><code>&lt;button class="btn-ghost" type="button" onclick="document.getElementById('slett').showModal()"&gt;Slett kunde…&lt;/button&gt;
+
+&lt;dialog class="dialog" id="slett" aria-labelledby="slett-tittel" aria-describedby="slett-tekst"&gt;
+	&lt;h2 class="dialog-title" id="slett-tittel"&gt;Slett Prosjekt A?&lt;/h2&gt;
+	&lt;p class="dialog-body" id="slett-tekst"&gt;Dette kan ikke angres.&lt;/p&gt;
+	&lt;form class="dialog-actions" method="dialog"&gt;
+		&lt;button class="btn-ghost" value="avbryt" autofocus&gt;Avbryt&lt;/button&gt;
+		&lt;button class="btn-danger" value="slett"&gt;Slett&lt;/button&gt;
+	&lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+	</section>
+
 	<section class="section" id="htmx">
 		<div class="section-head"><h2 class="section-title">htmx-mønstre</h2><div class="section-rule"></div></div>
 		<p class="motion-note">Komponentene er ren CSS og fungerer rett i server-rendret HTML. Mønstrene under er testet mot htmx 2.0 i Chromium (mørk og lys modus, axe: 0 brudd). De gjør innhold tilgjengelig når det byttes ut.</p>
@@ -215,7 +240,7 @@
 			<li><strong>Lasting:</strong> <code>.spinner</code> i <code>.htmx-indicator</code>. Skjemaet får <code>htmx-request</code>, og submit-knappen blokkeres automatisk (hindrer dobbeltinnsending).</li>
 			<li><strong>Beskjeder:</strong> fast <code>role="status"</code>-region, oppdatert med <code>hx-swap-oob="innerHTML:#status"</code>. Med <code>hx-swap-oob="true"</code> byttes selve elementet og <code>role</code> forsvinner, så skjermlesere leser ikke opp beskjeden.</li>
 			<li><strong>Sortering:</strong> bytt hele tabellen, ikke bare radene, ellers står <code>aria-sort</code> igjen med gammel verdi.</li>
-			<li><strong>Sletting:</strong> fokus havner på <code>body</code> når raden fjernes. Flytt fokus til en overskrift med <code>tabindex="-1"</code> først. <code>hx-on</code> er inline JS, så den krever at CSP tillater det. Bruk en <code>&lt;dialog&gt;</code> til bekreftelse, ikke <code>hx-confirm</code>.</li>
+			<li><strong>Sletting med bekreftelse:</strong> knappen henter en server-rendret <code>&lt;dialog&gt;</code> inn i en tom plass-div, som åpner seg selv med <code>hx-on::load="this.showModal()"</code>. Bekreft-knappen lukker dialogen og flytter fokus til en overskrift med <code>tabindex="-1"</code>, siden raden (og knappen som åpnet dialogen) er borte. <code>hx-on</code> er inline JS og krever at CSP tillater det.</li>
 		</ul>
 		<pre class="code" tabindex="0"><code>&lt;form hx-post="/kunder" hx-target="this" hx-swap="outerHTML"&gt;
 	&lt;!-- Ved feil returnerer serveren hele skjemaet på nytt: aria-invalid, feilmelding
@@ -238,11 +263,22 @@
 		...
 	&lt;/table&gt;
 &lt;/div&gt;</code></pre>
-		<pre class="code" tabindex="0"><code>&lt;!-- Flytt fokus FØR raden fjernes, ellers havner det på body --&gt;
+		<pre class="code" tabindex="0"><code>&lt;!-- I layouten: overskrift som kan få fokus, og plass til dialogen --&gt;
 &lt;h1 class="h2" id="tittel" tabindex="-1"&gt;Kunder&lt;/h1&gt;
-...
-&lt;button class="btn-danger-link" hx-delete="/kunder/7" hx-target="closest tr" hx-swap="outerHTML"
-        hx-on:click="document.getElementById('tittel').focus()" aria-label="Slett Prosjekt A"&gt;Slett&lt;/button&gt;</code></pre>
+&lt;div id="dialog-plass"&gt;&lt;/div&gt;
+
+&lt;!-- I raden --&gt;
+&lt;button class="btn-danger-link" hx-get="/kunder/7/bekreft" hx-target="#dialog-plass" aria-label="Slett Prosjekt A"&gt;Slett&lt;/button&gt;
+
+&lt;!-- Svaret fra /kunder/7/bekreft --&gt;
+&lt;dialog class="dialog" aria-labelledby="t" hx-on::load="this.showModal()" hx-on:close="this.remove()"&gt;
+	&lt;h2 class="dialog-title" id="t"&gt;Slett Prosjekt A?&lt;/h2&gt;
+	&lt;form class="dialog-actions" method="dialog"&gt;
+		&lt;button class="btn-ghost" value="avbryt" autofocus&gt;Avbryt&lt;/button&gt;
+		&lt;button class="btn-danger" type="button" hx-delete="/kunder/7" hx-target="#rad-7" hx-swap="outerHTML"
+		        hx-on::after-request="this.closest('dialog').close(); document.getElementById('tittel').focus()"&gt;Slett&lt;/button&gt;
+	&lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
 	</section>
 
 	<section class="section">
