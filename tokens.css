@@ -39,6 +39,13 @@
 	--color-label:                #e0956d;
 	--color-link:                 #d4a88f;
 	--color-error:                #ff5252;
+	--color-success:              #4cc38a;
+	--color-warning:              #ff9f43;
+	--color-info:                 #6cb6ff;
+	--color-error-bg:             rgba(255, 82, 82, 0.12);
+	--color-success-bg:           rgba(76, 195, 138, 0.12);
+	--color-warning-bg:           rgba(255, 159, 67, 0.12);
+	--color-info-bg:              rgba(108, 182, 255, 0.12);
 	--color-border:               rgba(255, 255, 255, 0.06);
 	--color-border-subtle:        rgba(255, 255, 255, 0.10);
 	--color-border-medium:        rgba(255, 255, 255, 0.15);
@@ -54,6 +61,14 @@
 	--r-md: 6px;
 	--r-lg: 8px;
 	--r-xl: 10px;
+
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 24px;
+	--space-6: 32px;
+	--space-7: 48px;
 
 	--t-fast: 0.15s ease;
 	--t-lift: 0.1s ease;
@@ -75,6 +90,13 @@
 		--color-label:                #9c3d1a;
 		--color-link:                 #7a4a2e;
 		--color-error:                #c82020;
+		--color-success:              #17703f;
+		--color-warning:              #9a4d00;
+		--color-info:                 #1a5a9e;
+		--color-error-bg:             rgba(200, 32, 32, 0.08);
+		--color-success-bg:           rgba(23, 112, 63, 0.10);
+		--color-warning-bg:           rgba(154, 77, 0, 0.10);
+		--color-info-bg:              rgba(26, 90, 158, 0.10);
 		--color-border:               rgba(26, 24, 22, 0.07);
 		--color-border-subtle:        rgba(26, 24, 22, 0.12);
 		--color-border-medium:        rgba(26, 24, 22, 0.20);
@@ -100,6 +122,13 @@
 	--color-label:                #9c3d1a;
 	--color-link:                 #7a4a2e;
 	--color-error:                #c82020;
+	--color-success:              #17703f;
+	--color-warning:              #9a4d00;
+	--color-info:                 #1a5a9e;
+	--color-error-bg:             rgba(200, 32, 32, 0.08);
+	--color-success-bg:           rgba(23, 112, 63, 0.10);
+	--color-warning-bg:           rgba(154, 77, 0, 0.10);
+	--color-info-bg:              rgba(26, 90, 158, 0.10);
 	--color-border:               rgba(26, 24, 22, 0.07);
 	--color-border-subtle:        rgba(26, 24, 22, 0.12);
 	--color-border-medium:        rgba(26, 24, 22, 0.20);
