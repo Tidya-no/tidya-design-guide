@@ -9,6 +9,7 @@ Guiden er en statisk side uten byggesteg. Åpne `index.html` i nettleseren, elle
 | Fil | Formål |
 |---|---|
 | `index.html` | Visuell guide: farger, typografi, komponenter, kanter, radius, bevegelse og token-tabell |
+| `DESIGN.md` | Korte regler for utviklere og AI: hvilken token til hva, shadcn-mapping, «ikke gjør» |
 | `tokens.css` | Kilden til sannhet: CSS-variabler for begge moduser, `@font-face` og radius/overgangstokens |
 | `styles.css` | Stiler for selve guiden og komponent-eksemplene |
 | `theme.js` | Bryter for mørk/lys modus (følger OS, kan overstyres og huskes) |
