@@ -15,7 +15,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  kvalitet:
+    uses: ./.github/workflows/kvalitet.yml
+
   bygg:
+    needs: kvalitet
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

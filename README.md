@@ -34,6 +34,8 @@ Mørk modus er standard. Lys modus følger OS (`prefers-color-scheme: light`) el
 
 `.github/workflows/pages.yml` publiserer til GitHub Pages ved push til `main`. Krever Settings → Pages → Source: **GitHub Actions**.
 
+`.github/workflows/kvalitet.yml` kjører html-validate og axe (mørk/lys, 320/1100 px, med dialog) på alle PR-er, og før hver publisering. Config og script ligger i `.github/qa/`.
+
 ## Lisens
 
 Fontene er lisensiert under SIL Open Font License 1.1, se `fonts/LICENSE-*.txt`.
