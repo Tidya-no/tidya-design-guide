@@ -110,6 +110,14 @@
 				<span class="type-meta">Inter 0.75rem / 400</span>
 			</div>
 		</div>
+		<div class="info-bar"><strong>Skala:</strong> <code>--text-xs</code> 0.75 · <code>sm</code> 0.8125 · <code>base</code> 0.875 · <code>lg</code> 1.0625 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem. Linjehøyde <code>--leading-tight</code> 1.2 / <code>--leading-normal</code> 1.6.</div>
+		<div class="heading-stack">
+			<div class="h1">h1 Sidetittel</div>
+			<div class="h2">h2 Seksjonsoverskrift</div>
+			<div class="h3">h3 Underseksjon</div>
+			<div class="h4">h4 Gruppenavn</div>
+			<div class="num-sample tnum">1 234 567,89 kr <span style="font-size:var(--text-sm);font-family:var(--font-body);font-weight:400;color:var(--color-text-muted)">tall: <code>font-variant-numeric: tabular-nums</code> i tabeller og nøkkeltall</span></div>
+		</div>
 	</section>
 
 	<section class="section">
@@ -128,6 +136,9 @@
 			</div>
 			<div class="comp-row"><span class="comp-label">Input</span>
 				<input class="demo-input" placeholder="Skriv her…" type="text" aria-label="Eksempel på tekstfelt">
+			</div>
+			<div class="comp-row"><span class="comp-label">Lenke</span>
+				<a href="#komponenter" onclick="return false">Les mer i dokumentasjonen</a>
 			</div>
 		</div>
 		<div class="demo-card">
@@ -215,6 +226,18 @@
 	</section>
 
 	<section class="section">
+		<div class="section-head"><h2 class="section-title">Dybde</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Flater skilles primært med <code>--color-surface</code> og kant. Skygge brukes kun på flytende elementer (dropdown, dialog, toast). Dialoger ligger over <code>--color-overlay</code>.</p>
+		<div class="depth-grid">
+			<div class="depth-card sm"><span class="name">shadow-sm</span><span class="val">Hevet kort, sticky header</span></div>
+			<div class="depth-card md"><span class="name">shadow-md</span><span class="val">Dropdown, popover, tooltip</span></div>
+			<div class="depth-card lg"><span class="name">shadow-lg</span><span class="val">Dialog, toast</span></div>
+		</div>
+		<div class="overlay-demo"><div class="overlay"></div><div class="dialog"><strong>Slett kunde?</strong>Dette kan ikke angres.</div></div>
+		<div class="info-bar">z-index: <code>--z-sticky</code> 10 · <code>--z-dropdown</code> 20 · <code>--z-overlay</code> 30 · <code>--z-modal</code> 40 · <code>--z-toast</code> 50. Ikke bruk andre verdier.</div>
+	</section>
+
+	<section class="section">
 		<div class="section-head"><h2 class="section-title">Bevegelse</h2><div class="section-rule"></div></div>
 		<p class="motion-note">Bevegelse er bevisst minimal: to korte overganger som gir tilbakemelding på hover. Hold musepekeren over flatene.</p>
 		<div class="motion-demo">
@@ -227,6 +250,30 @@
 			Fokus: <code>:focus-visible { outline: 1px solid var(--color-accent-border); outline-offset: 1px; }</code>. Felter og ghost-knapp: kanten skifter til <code>--color-accent</code>, uten outline.<br>
 			Med <code>prefers-reduced-motion: reduce</code> slås alle overganger av.
 		</div>
+	</section>
+
+	<section class="section">
+		<div class="section-head"><h2 class="section-title">Språk og formater</h2><div class="section-rule"></div></div>
+		<p class="motion-note">UI-tekst er bokmål, kort og konkret, og tiltaler brukeren med «du». Bruk alltid <code>Intl</code> med <code>nb-NO</code>, aldri håndformatering. Mellomrom i tall og før enheter er hardt mellomrom (U+00A0).</p>
+		<div class="table-wrap">
+			<table class="format-table">
+				<thead><tr><th>Hva</th><th>Riktig</th><th>Unngå</th></tr></thead>
+				<tbody>
+					<tr><td>Dato</td><td class="ok tnum">16.10.2026</td><td class="no">10/16/2026 · 2026-10-16 (i UI)</td></tr>
+					<tr><td>Lang dato</td><td class="ok">16. oktober 2026</td><td class="no">Oct 16, 2026</td></tr>
+					<tr><td>Klokkeslett</td><td class="ok tnum">14:30</td><td class="no">2:30 PM</td></tr>
+					<tr><td>Tall</td><td class="ok tnum">1&nbsp;234&nbsp;567,89</td><td class="no">1,234,567.89</td></tr>
+					<tr><td>Beløp</td><td class="ok tnum">1&nbsp;234,50&nbsp;kr</td><td class="no">kr1234.50 · $1,234.50</td></tr>
+					<tr><td>Negativt beløp</td><td class="ok tnum">−1&nbsp;234,50&nbsp;kr</td><td class="no">-1234,50</td></tr>
+					<tr><td>Prosent</td><td class="ok tnum">12,5&nbsp;%</td><td class="no">12.5%</td></tr>
+					<tr><td>Sortering</td><td class="ok">A, Z, Æ, Ø, Å</td><td class="no">Standard JS-sortering</td></tr>
+					<tr><td>Knapper</td><td class="ok">Lagre · Legg til kunde · Slett utkast</td><td class="no">OK · Submit · Legg Til Kunde</td></tr>
+					<tr><td>Feilmelding</td><td class="ok">Kunne ikke lagre. Prøv igjen.</td><td class="no">Feil! · Ugyldig input</td></tr>
+					<tr><td>Tom tilstand</td><td class="ok">Ingen kunder ennå. Legg til den første.</td><td class="no">Ingen data</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="info-bar">Store bokstaver bare i første ord og egennavn. Verb i imperativ på knapper. Aldri æ/ø/å som ae/oe/aa i UI-tekst. <code>&lt;html lang="nb"&gt;</code>.</div>
 	</section>
 
 	<section class="section">
@@ -253,6 +300,9 @@
 					<tr><td><code>--color-warning</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff9f43"></span>#ff9f43</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#9a4d00"></span>#9a4d00</span></td><td>Advarsel · 8,7:1 / 5,5:1</td></tr>
 					<tr><td><code>--color-info</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#6cb6ff"></span>#6cb6ff</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#1a5a9e"></span>#1a5a9e</span></td><td>Informasjon · 8,2:1 / 6,3:1</td></tr>
 					<tr><td><code>--color-*-bg</code></td><td class="col-dark">rgba(farge, .12)</td><td class="col-light">rgba(farge, .08–.10)</td><td>Bakgrunn i meldinger (error, success, warning, info)</td></tr>
+					<tr><td><code>--color-link</code></td><td class="col-dark" colspan="2">= <code>--color-accent</code> (alias, alltid understreket)</td><td>Lenker · 10,6:1 / 5,2:1</td></tr>
+					<tr><td><code>--shadow-sm / -md / -lg</code></td><td class="col-dark">svart, .40 / .45 / .55</td><td class="col-light">varm sort, .08 / .12 / .16</td><td>Flytende elementer</td></tr>
+					<tr><td><code>--color-overlay</code></td><td class="col-dark">rgba(0,0,0,.60)</td><td class="col-light">rgba(26,24,22,.45)</td><td>Bakgrunn bak dialog</td></tr>
 					<tr><td><code>--color-border</code></td><td class="col-dark">rgba(255,255,255,.06)</td><td class="col-light">rgba(26,24,22,.07)</td><td>Kortkanter</td></tr>
 					<tr><td><code>--color-border-subtle</code></td><td class="col-dark">rgba(255,255,255,.10)</td><td class="col-light">rgba(26,24,22,.12)</td><td>Input-kanter</td></tr>
 					<tr><td><code>--color-border-medium</code></td><td class="col-dark">rgba(255,255,255,.15)</td><td class="col-light">rgba(26,24,22,.20)</td><td>Dekorative skiller</td></tr>
