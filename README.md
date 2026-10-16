@@ -14,6 +14,10 @@ Guiden er en statisk side uten byggesteg. Åpne `index.html` i nettleseren, elle
 | `theme.js` | Bryter for mørk/lys modus (følger OS, kan overstyres og huskes) |
 | `fonts/` | Selvhostede Inter og Fraunces (woff2, SIL OFL 1.1) |
 
+## Publisering
+
+Guiden publiseres til GitHub Pages av `.github/workflows/pages.yml` ved hver push til `main`. Krever at Settings → Pages → Source er satt til **GitHub Actions**.
+
 ## Bruk
 
 ```html
