@@ -66,10 +66,40 @@ Forutsetter Tailwind v4-oppsett der shadcn-variablene tar fulle fargeverdier (ik
 	--input: var(--color-border-control);
 	--ring: var(--color-accent);
 	--radius: var(--r-lg);
+
+	/* Grafer: hue-spredning amber, blå, grønn, rød, tan. Alle min. 4,5:1 mot --color-bg */
+	--chart-1: var(--color-accent);
+	--chart-2: var(--color-info);
+	--chart-3: var(--color-success);
+	--chart-4: var(--color-error);
+	--chart-5: var(--color-text-secondary);
+
+	/* Sidebar */
+	--sidebar: var(--color-surface);
+	--sidebar-foreground: var(--color-text);
+	--sidebar-primary: var(--color-accent-fill);
+	--sidebar-primary-foreground: var(--color-on-accent);
+	--sidebar-accent: var(--color-accent-bg-subtle);
+	--sidebar-accent-foreground: var(--color-text);
+	--sidebar-border: var(--color-border-subtle);
+	--sidebar-ring: var(--color-accent);
 }
 ```
 
+Status-farger finnes ikke i shadcn. Tokenene heter allerede `--color-success` osv., så de kan ikke eksponeres som Tailwind-farger via `@theme` uten å skape en sirkulær referanse. Bruk dem med arbitrary values i `Alert`- og `Badge`-varianter:
+
+```tsx
+success: "border-[var(--color-success)] bg-[var(--color-success-bg)] text-foreground",
+warning: "border-[var(--color-warning)] bg-[var(--color-warning-bg)] text-foreground",
+info: "border-[var(--color-info)] bg-[var(--color-info-bg)] text-foreground",
+```
+
+Det gir samme utseende som meldingskomponenten i guiden: farge på kant og ikon, `--color-text` på teksten. (Vil du ha korte klasser som `bg-success`, må tokenene i `tokens.css` få et annet prefiks enn `--color-`.)
+
+Oppsett: importer `tokens.css` først i `globals.css` (`@import "./tokens.css";` etter `@import "tailwindcss";`), og legg aliasene i `:root` over. Ikke la `shadcn init` skrive egne `oklch`-verdier over dem. Slett de genererte `:root`- og `.dark`-blokkene.
+
 Fallgruver:
+- Fargevalget i `--chart-*` er ikke testet for fargeblindhet (rød/grønn). Grafer må ha direkte merking eller forklaring, ikke farge alene.
 - Tekst på `--destructive` skal være `--color-bg` (5,2:1+), ikke hvit. Hvit gir for lav kontrast mot den lyse røde i mørk modus.
 - shadcn bruker `dark:`-klassen. Sett den i takt med `data-theme`, eller bruk `@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *))`.
 
