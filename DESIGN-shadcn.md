@@ -105,5 +105,5 @@ Testet (Tailwind 4.3, Vite 6, React 19, håndskrevne `Button`/`Input`/`Card` ett
 
 Fallgruver:
 - shadcns standard `@custom-variant dark (&:is(.dark *))` og varianten med bare `[data-theme="dark"]` gjør at `dark:` **ikke** slår til i standardtilstanden (mørk uten attributt), selv om siden er mørk. Bruk varianten over (testet i fire kombinasjoner av OS-modus og `data-theme`). Tokenene bytter selv, så bruk helst ikke `dark:` i egen kode.
-- Tekst på `--destructive` skal være `--color-bg` (mørk 5,5:1, lys 5,2:1), ikke hvit. Endre `text-white` på destructive-variantene til `text-[var(--color-bg)]`.
+- Tekst på `--destructive` skal være `--color-bg` (mørk 5,9:1, lys 5,3:1), ikke hvit. Endre `text-white` på destructive-variantene til `text-[var(--color-bg)]`.
 - Fargevalget i `--chart-*` er ikke testet for fargeblindhet (rød/grønn). Grafer må ha direkte merking eller forklaring, ikke farge alene.
