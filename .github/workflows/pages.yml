@@ -27,6 +27,14 @@ jobs:
           cp -r fonts _site/fonts
           touch _site/.nojekyll
 
+      - name: Cache-busting for CSS og JS
+        run: |
+          v="${GITHUB_SHA::7}"
+          sed -i -e "s|href=\"tokens.css\"|href=\"tokens.css?v=$v\"|" \
+                 -e "s|href=\"styles.css\"|href=\"styles.css?v=$v\"|" \
+                 -e "s|src=\"theme.js\"|src=\"theme.js?v=$v\"|" _site/index.html
+          grep -c "?v=$v" _site/index.html
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
