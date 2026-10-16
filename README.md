@@ -38,6 +38,8 @@ Mørk modus er standard. Lys modus aktiveres av OS-innstillingen (`prefers-color
 - **Tekstkontrast:** all tekst har minst 4,5:1 mot `--color-bg` og `--color-surface` (WCAG AA).
 - **Kontroller:** kanter som markerer UI-elementer (input, ghost-knapp, drop-soner) har minst 3:1. Bruk `--color-border-control` og `--color-accent-border`. De dekorative `--color-border*` er kun for skiller.
 - **Aksent har to roller:** `--color-accent` til tekst, lenker og fokusring (mørk brun i lys modus), `--color-accent-fill` til flater som knapper, alltid `#ffbe0b` med `--color-on-accent` som tekst.
+- **Status:** feil, suksess, advarsel og info har egne tokens (`--color-error`, `-success`, `-warning`, `-info` + `-bg`). Status må alltid bæres av ikon eller tekst, ikke farge alene.
+- **Avstand:** bruk kun `--space-1…7` (4–48px) til padding, margin og gap.
 - **Fonter:** Fraunces til display og overskrifter, Inter til brødtekst og UI. Selvhostet, ingen Google Fonts og ingen tredjepartsforespørsler.
 
 ## Endre tokens

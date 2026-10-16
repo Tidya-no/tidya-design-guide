@@ -39,6 +39,9 @@
 				<div class="swatch"><div class="swatch-color" style="background:#d4a88f"></div><div class="swatch-info on-dark"><span class="swatch-name">Text Secondary</span><span class="swatch-val">#d4a88f</span><span class="swatch-var">--color-text-secondary</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#e0956d"></div><div class="swatch-info on-dark"><span class="swatch-name">Label</span><span class="swatch-val">#e0956d</span><span class="swatch-var">--color-label</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#ff5252"></div><div class="swatch-info on-dark"><span class="swatch-name">Error</span><span class="swatch-val">#ff5252</span><span class="swatch-var">--color-error</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#4cc38a"></div><div class="swatch-info on-dark"><span class="swatch-name">Success</span><span class="swatch-val">#4cc38a</span><span class="swatch-var">--color-success</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#ff9f43"></div><div class="swatch-info on-dark"><span class="swatch-name">Warning</span><span class="swatch-val">#ff9f43</span><span class="swatch-var">--color-warning</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#6cb6ff"></div><div class="swatch-info on-dark"><span class="swatch-name">Info</span><span class="swatch-val">#6cb6ff</span><span class="swatch-var">--color-info</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,255,255,0.5)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Text Muted</span><span class="swatch-val">rgba(255,255,255,.50)</span><span class="swatch-var">--color-text-muted</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,255,255,0.34)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Border Control</span><span class="swatch-val">rgba(255,255,255,.34)</span><span class="swatch-var">--color-border-control</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,190,11,0.46)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Accent Border</span><span class="swatch-val">rgba(255,190,11,.46)</span><span class="swatch-var">--color-accent-border</span></div></div>
@@ -59,6 +62,9 @@
 				<div class="swatch"><div class="swatch-color" style="background:#7a4a2e"></div><div class="swatch-info on-light"><span class="swatch-name">Text Secondary</span><span class="swatch-val">#7a4a2e</span><span class="swatch-var">--color-text-secondary</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#9c3d1a"></div><div class="swatch-info on-light"><span class="swatch-name">Label</span><span class="swatch-val">#9c3d1a</span><span class="swatch-var">--color-label</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#c82020"></div><div class="swatch-info on-light"><span class="swatch-name">Error</span><span class="swatch-val">#c82020</span><span class="swatch-var">--color-error</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#17703f"></div><div class="swatch-info on-light"><span class="swatch-name">Success</span><span class="swatch-val">#17703f</span><span class="swatch-var">--color-success</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#9a4d00"></div><div class="swatch-info on-light"><span class="swatch-name">Warning</span><span class="swatch-val">#9a4d00</span><span class="swatch-var">--color-warning</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#1a5a9e"></div><div class="swatch-info on-light"><span class="swatch-name">Info</span><span class="swatch-val">#1a5a9e</span><span class="swatch-var">--color-info</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(26,24,22,0.65)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Text Muted</span><span class="swatch-val">rgba(26,24,22,.65)</span><span class="swatch-var">--color-text-muted</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(26,24,22,0.49)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Border Control</span><span class="swatch-val">rgba(26,24,22,.49)</span><span class="swatch-var">--color-border-control</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(138,93,0,0.76)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Accent Border</span><span class="swatch-val">rgba(138,93,0,.76)</span><span class="swatch-var">--color-accent-border</span></div></div>
@@ -135,6 +141,43 @@
 	</section>
 
 	<section class="section">
+		<div class="section-head"><h2 class="section-title">Tilstander</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Hver interaktiv komponent skal ha hvile, hover, fokus og deaktivert. Felt har i tillegg feil. Fokus bruker alltid <code>:focus-visible</code>-ringen, og feil må aldri vises med farge alene (alltid tekst).</p>
+		<div class="state-table">
+			<span class="state-head"></span><span class="state-head">Hvile</span><span class="state-head">Hover</span><span class="state-head">Fokus</span><span class="state-head">Deaktivert</span>
+			<span class="state-head">Primary</span>
+			<div><button class="btn-primary" type="button">Lagre</button></div>
+			<div><button class="btn-primary is-hover" type="button">Lagre</button></div>
+			<div><button class="btn-primary is-focus" type="button">Lagre</button></div>
+			<div><button class="btn-primary" type="button" disabled>Lagre</button></div>
+			<span class="state-head">Ghost</span>
+			<div><button class="btn-ghost" type="button">Avbryt</button></div>
+			<div><button class="btn-ghost is-hover" type="button">Avbryt</button></div>
+			<div><button class="btn-ghost is-focus" type="button">Avbryt</button></div>
+			<div><button class="btn-ghost" type="button" disabled>Avbryt</button></div>
+		</div>
+		<div class="state-table">
+			<span class="state-head"></span><span class="state-head">Hvile</span><span class="state-head">Fokus</span><span class="state-head">Feil</span><span class="state-head">Deaktivert</span>
+			<span class="state-head">Input</span>
+			<div class="field"><input class="demo-input" placeholder="Skriv her…" aria-label="Hvile"></div>
+			<div class="field"><input class="demo-input is-focus" placeholder="Skriv her…" aria-label="Fokus"></div>
+			<div class="field"><input class="demo-input" value="abc" aria-invalid="true" aria-describedby="err-demo" aria-label="Feil"><span class="field-error" id="err-demo">Ugyldig verdi</span></div>
+			<div class="field"><input class="demo-input" placeholder="Skriv her…" aria-label="Deaktivert" disabled></div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="section-head"><h2 class="section-title">Meldinger</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Semantiske farger brukes til status. Ikon og tekst bærer meningen, fargen forsterker den. Tittel er <code>--color-text</code> og brødtekst <code>--color-text-secondary</code>. Fargen brukes på kant og ikon, ikke på tekst i selve meldingen.</p>
+		<div class="alerts">
+			<div class="alert info"><span class="alert-icon" aria-hidden="true">i</span><div><p class="alert-title">Informasjon</p><p class="alert-body">Nøytral beskjed som ikke krever handling.</p></div></div>
+			<div class="alert success"><span class="alert-icon" aria-hidden="true">✓</span><div><p class="alert-title">Lagret</p><p class="alert-body">Endringene er lagret.</p></div></div>
+			<div class="alert warning"><span class="alert-icon" aria-hidden="true">!</span><div><p class="alert-title">Vær oppmerksom</p><p class="alert-body">Noe bør sjekkes før du går videre.</p></div></div>
+			<div class="alert error"><span class="alert-icon" aria-hidden="true">✕</span><div><p class="alert-title">Noe gikk galt</p><p class="alert-body">Handlingen kunne ikke fullføres. Prøv igjen.</p></div></div>
+		</div>
+	</section>
+
+	<section class="section">
 		<div class="section-head"><h2 class="section-title">Kanter</h2><div class="section-rule"></div></div>
 		<p class="motion-note">Kanter som markerer et UI-element (input, knapper, drop-soner) skal ha minst 3:1 mot bakgrunnen (WCAG 1.4.11). Dekorative kanter (<code>border</code>, <code>subtle</code>, <code>medium</code>) er unntatt.</p>
 		<div class="border-grid">
@@ -144,6 +187,20 @@
 			<div class="border-card" style="border:1px solid var(--color-border-control)"><span class="name">border-control</span><span class="val">dark: rgba(255,255,255,.34)</span><span class="val">light: rgba(26,24,22,.49)</span></div>
 			<div class="border-card" style="border:1px solid var(--color-accent-border)"><span class="name">accent-border</span><span class="val">dark: rgba(255,190,11,.46)</span><span class="val">light: rgba(138,93,0,.76)</span></div>
 			<div class="border-card" style="border:2px dashed var(--color-accent-border-dashed)"><span class="name">accent-border-dashed</span><span class="val">dark: rgba(255,190,11,.46)</span><span class="val">light: rgba(138,93,0,.76)</span></div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="section-head"><h2 class="section-title">Avstand</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Bruk bare disse verdiene til padding, margin og gap. Skalaen er 4px-basert.</p>
+		<div class="space-list">
+			<div class="space-row"><code>--space-1</code><span class="px">4px</span><div class="space-bar" style="width:var(--space-1)"></div></div>
+			<div class="space-row"><code>--space-2</code><span class="px">8px</span><div class="space-bar" style="width:var(--space-2)"></div></div>
+			<div class="space-row"><code>--space-3</code><span class="px">12px</span><div class="space-bar" style="width:var(--space-3)"></div></div>
+			<div class="space-row"><code>--space-4</code><span class="px">16px</span><div class="space-bar" style="width:var(--space-4)"></div></div>
+			<div class="space-row"><code>--space-5</code><span class="px">24px</span><div class="space-bar" style="width:var(--space-5)"></div></div>
+			<div class="space-row"><code>--space-6</code><span class="px">32px</span><div class="space-bar" style="width:var(--space-6)"></div></div>
+			<div class="space-row"><code>--space-7</code><span class="px">48px</span><div class="space-bar" style="width:var(--space-7)"></div></div>
 		</div>
 	</section>
 
@@ -192,6 +249,10 @@
 					<tr><td><code>--color-on-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td>Tekst på aksentflate · 10,6:1 / 10,6:1</td></tr>
 					<tr><td><code>--color-label</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#e0956d"></span>#e0956d</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#9c3d1a"></span>#9c3d1a</span></td><td>Seksjonsoverskrifter · 7,3:1 / 6,1:1</td></tr>
 					<tr><td><code>--color-error</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff5252"></span>#ff5252</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#c82020"></span>#c82020</span></td><td>Feil, slett-handlinger · 5,5:1 / 5,2:1</td></tr>
+					<tr><td><code>--color-success</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#4cc38a"></span>#4cc38a</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#17703f"></span>#17703f</span></td><td>Suksess · 8,0:1 / 5,6:1</td></tr>
+					<tr><td><code>--color-warning</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff9f43"></span>#ff9f43</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#9a4d00"></span>#9a4d00</span></td><td>Advarsel · 8,7:1 / 5,5:1</td></tr>
+					<tr><td><code>--color-info</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#6cb6ff"></span>#6cb6ff</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#1a5a9e"></span>#1a5a9e</span></td><td>Informasjon · 8,2:1 / 6,3:1</td></tr>
+					<tr><td><code>--color-*-bg</code></td><td class="col-dark">rgba(farge, .12)</td><td class="col-light">rgba(farge, .08–.10)</td><td>Bakgrunn i meldinger (error, success, warning, info)</td></tr>
 					<tr><td><code>--color-border</code></td><td class="col-dark">rgba(255,255,255,.06)</td><td class="col-light">rgba(26,24,22,.07)</td><td>Kortkanter</td></tr>
 					<tr><td><code>--color-border-subtle</code></td><td class="col-dark">rgba(255,255,255,.10)</td><td class="col-light">rgba(26,24,22,.12)</td><td>Input-kanter</td></tr>
 					<tr><td><code>--color-border-medium</code></td><td class="col-dark">rgba(255,255,255,.15)</td><td class="col-light">rgba(26,24,22,.20)</td><td>Dekorative skiller</td></tr>
