@@ -1,6 +1,6 @@
 # Tidya designsystem: regler for utvikling
 
-Kort referanse for deg som bygger UI (menneske eller AI). Kilden til sannhet for verdier er `tokens.css`. Se `index.html` for visuelle eksempler.
+Kort referanse for deg som bygger UI (menneske eller AI). Kilden til sannhet for verdier er `tokens.css`, komponentene ligger i `components.css`. Hovedspor: server-rendret HTML med htmx. React/shadcn er et valgfritt tillegg nederst. Se `index.html` for visuelle eksempler.
 
 ## Grunnregler
 
@@ -75,7 +75,44 @@ Mellomrommene i tall og før `kr`/`%` er hardt mellomrom (U+00A0). Ikke bytt dem
 
 Hver interaktiv komponent skal ha hvile, hover, fokus og deaktivert (opacity 0.4–0.5, `cursor: not-allowed`). Felt har i tillegg feil: `aria-invalid="true"`, `--color-error` på kanten og feilmelding som tekst under feltet (`--color-error`, 12px).
 
-## Bruk i shadcn/ui
+## Komponenter (ren CSS, htmx og server-rendret HTML)
+
+Last `tokens.css` og `components.css`. Ingen byggesteg. Eksempler med HTML står i `index.html` (seksjonene Komponenter, Skjema, Tabell, htmx-mønstre).
+
+| Komponent | Klasser |
+|---|---|
+| Knapp | `btn-primary`, `btn-ghost`, `btn-danger-link` |
+| Felt | `field` > `label` + `input` / `select` / `textarea` + `hint` / `field-error` |
+| Valg | `check` (checkbox, radio), `switch` på `input[type=checkbox][role=switch]` |
+| Tabell | `table-wrap` > `table`, `num` (tall), `table-empty`, `aria-sort` på `th` |
+| Kort / sitat | `card` (`card-title`, `card-body`), `quote` |
+| Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `alert-title`, `alert-body` |
+| Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
+| Hjelp | `tnum` (tabular-nums), `sr-only`, `h1`–`h4` |
+
+Regler:
+- Feil på felt settes med `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse.
+- Hvert felt har synlig `label`. Placeholder erstatter ikke label.
+- `color-scheme` er satt i `tokens.css`, så native kontroller (select, checkbox, scrollbar) følger modus.
+- Mangler det en komponent (dialog, toast med utløp, tabs, paginering): legg den til i `components.css` og guiden først, ikke lokalt i appen.
+
+### htmx-mønstre (testet mot htmx 2.0, Chromium, mørk og lys, axe 0 brudd)
+
+- **Validering:** server returnerer hele skjemaet på nytt med `aria-invalid`, feilmelding og `autofocus` på første ugyldige felt.
+- **Lasting:** `.spinner` i `.htmx-indicator`. Knappen blokkeres under `htmx-request` (ingen dobbeltinnsending).
+- **Beskjeder:** `<div id="status" role="status" aria-live="polite">` i layouten, oppdatert med `hx-swap-oob="innerHTML:#status"`. Ikke `hx-swap-oob="true"` (fjerner `role`).
+- **Sortering:** bytt hele tabellen (så `aria-sort` oppdateres). Sorteringslenken har `id` og beholder fokus.
+- **Sletting:** fokus havner på `body` når raden fjernes. Flytt fokus til en overskrift med `tabindex="-1"` før (`hx-on:click`). Krever at CSP tillater inline JS. Bekreftelse: bruk `<dialog>`, ikke `hx-confirm`.
+- Ikke testet ennå: `<dialog>`, toast som lukker seg selv, paginering, `hx-boost` og View Transitions.
+
+## Ikke gjør
+
+- Ikke bruk `--color-text-muted` eller `--color-text-placeholder` til viktig informasjon. De er laget for metadata og hjelpetekst.
+- Ikke bruk `--color-border-subtle` på inputs (1,3:1). Bruk `--color-border-control`.
+- Ikke bruk semantiske farger som tekst på tonet bakgrunn (`-bg`) i lys modus, bruk `--color-text` og la fargen ligge på kant og ikon.
+- Ikke finn på nye farger eller avstander. Foreslå dem i guiden først (`tokens.css` og `index.html`).
+
+## Valgfritt: React med shadcn/ui
 
 Forutsetter Tailwind v4-oppsett der shadcn-variablene tar fulle fargeverdier (ikke `hsl(var(--x))`). Importer `tokens.css` og alias:
 
@@ -184,10 +221,3 @@ Fallgruver:
 - shadcns standard `@custom-variant dark (&:is(.dark *))` og varianten med bare `[data-theme="dark"]` gjør at `dark:` **ikke** slår til i standardtilstanden (mørk uten attributt), selv om siden er mørk. Bruk varianten over (testet i fire kombinasjoner av OS-modus og `data-theme`). Tokenene bytter selv, så bruk helst ikke `dark:` i egen kode.
 - Tekst på `--destructive` skal være `--color-bg` (mørk 5,5:1, lys 5,2:1), ikke hvit. Endre `text-white` på destructive-variantene til `text-[var(--color-bg)]`.
 - Fargevalget i `--chart-*` er ikke testet for fargeblindhet (rød/grønn). Grafer må ha direkte merking eller forklaring, ikke farge alene.
-
-## Ikke gjør
-
-- Ikke bruk `--color-text-muted` eller `--color-text-placeholder` til viktig informasjon. De er laget for metadata og hjelpetekst.
-- Ikke bruk `--color-border-subtle` på inputs (1,3:1). Bruk `--color-border-control`.
-- Ikke bruk semantiske farger som tekst på tonet bakgrunn (`-bg`) i lys modus, bruk `--color-text` og la fargen ligge på kant og ikon.
-- Ikke finn på nye farger eller avstander. Foreslå dem i guiden først (`tokens.css` og `index.html`).

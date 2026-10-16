@@ -23,7 +23,7 @@ jobs:
       - name: Samle sidefiler
         run: |
           mkdir _site
-          cp index.html tokens.css styles.css theme.js _site/
+          cp index.html tokens.css components.css styles.css theme.js _site/
           cp -r fonts _site/fonts
           touch _site/.nojekyll
 
@@ -31,6 +31,7 @@ jobs:
         run: |
           v="${GITHUB_SHA::7}"
           sed -i -e "s|href=\"tokens.css\"|href=\"tokens.css?v=$v\"|" \
+                 -e "s|href=\"components.css\"|href=\"components.css?v=$v\"|" \
                  -e "s|href=\"styles.css\"|href=\"styles.css?v=$v\"|" \
                  -e "s|src=\"theme.js\"|src=\"theme.js?v=$v\"|" _site/index.html
           grep -c "?v=$v" _site/index.html

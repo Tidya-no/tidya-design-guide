@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<title>Tidya Design Language</title>
 	<link rel="stylesheet" href="tokens.css">
+	<link rel="stylesheet" href="components.css">
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -135,20 +136,113 @@
 				<button class="btn-danger-link" type="button">Slett</button>
 			</div>
 			<div class="comp-row"><span class="comp-label">Input</span>
-				<input class="demo-input" placeholder="Skriv her…" type="text" aria-label="Eksempel på tekstfelt">
+				<input class="input" placeholder="Skriv her…" type="text" aria-label="Eksempel på tekstfelt">
 			</div>
 			<div class="comp-row"><span class="comp-label">Lenke</span>
 				<a href="#komponenter" onclick="return false">Les mer i dokumentasjonen</a>
 			</div>
 		</div>
-		<div class="demo-card">
-			<p class="demo-card-head">Korttittel</p>
-			<p class="demo-card-body">Kort grupperer relatert innhold på en flate (<code>--color-surface</code>) med svak kant og 10px radius.</p>
+		<div class="card">
+			<p class="card-title">Korttittel</p>
+			<p class="card-body">Kort grupperer relatert innhold på en flate (<code>--color-surface</code>) med svak kant og 10px radius.</p>
 		</div>
-		<blockquote class="demo-quote">
+		<blockquote class="quote">
 			<p>Sitatblokk for å løfte frem en viktig setning.</p>
 			<cite>— Kilde</cite>
 		</blockquote>
+	</section>
+
+	<section class="section" id="skjema">
+		<div class="section-head"><h2 class="section-title">Skjema</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Hvert felt har synlig <code>label</code>, valgfri <code>hint</code> og feilmelding knyttet med <code>aria-describedby</code>. Feil settes med <code>aria-invalid="true"</code>, ikke en egen klasse.</p>
+		<div class="demo-stack">
+			<div class="field"><label class="label" for="f-navn">Navn</label><input class="input" id="f-navn" type="text" placeholder="Skriv her…"><p class="hint">Vises i oversikten.</p></div>
+			<div class="field"><label class="label" for="f-epost">E-post</label><input class="input" id="f-epost" type="email" value="ola@" aria-invalid="true" aria-describedby="f-epost-feil"><p class="field-error" id="f-epost-feil">Ugyldig e-postadresse.</p></div>
+			<div class="field"><label class="label" for="f-status">Status</label><select class="select" id="f-status"><option>Aktiv</option><option>Pauset</option><option>Avsluttet</option></select></div>
+			<div class="field"><label class="label" for="f-notat">Notat</label><textarea class="textarea" id="f-notat" placeholder="Valgfritt"></textarea></div>
+			<fieldset class="field" style="border:none"><legend class="label">Varsler</legend>
+				<label class="check"><input type="checkbox" checked> E-post</label>
+				<label class="check"><input type="checkbox"> SMS</label>
+				<label class="check"><input type="radio" name="f-rad" checked> Daglig</label>
+				<label class="check"><input type="radio" name="f-rad"> Ukentlig</label>
+				<label class="check"><input class="switch" type="checkbox" role="switch" checked> Aktivert</label>
+				<label class="check"><input type="checkbox" disabled> Deaktivert</label>
+			</fieldset>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;div class="field"&gt;
+	&lt;label class="label" for="navn"&gt;Navn&lt;/label&gt;
+	&lt;input class="input" id="navn" name="navn" aria-invalid="true" aria-describedby="navn-feil"&gt;
+	&lt;p class="field-error" id="navn-feil"&gt;Navn må fylles ut.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+	</section>
+
+	<section class="section" id="tabell">
+		<div class="section-head"><h2 class="section-title">Tabell</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Tall høyrejustert med <code>tabular-nums</code> (klassen <code>num</code>). Sorterbare kolonner er vanlige lenker i <code>th</code> med <code>aria-sort</code>. Tom tilstand bruker <code>table-empty</code>.</p>
+		<div class="table-wrap">
+			<table class="table">
+				<caption class="sr-only">Prosjekter</caption>
+				<thead><tr><th scope="col" aria-sort="ascending"><a href="#tabell">Navn</a></th><th scope="col"><a href="#tabell">Status</a></th><th scope="col" class="num"><a href="#tabell">Beløp</a></th></tr></thead>
+				<tbody>
+					<tr><td>Prosjekt A</td><td>Aktiv</td><td class="num">1 234,50 kr</td></tr>
+					<tr><td>Prosjekt B</td><td>Pauset</td><td class="num">98 000,00 kr</td></tr>
+					<tr><td>Prosjekt C</td><td>Avsluttet</td><td class="num">−12 500,00 kr</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="table-wrap">
+			<table class="table"><caption class="sr-only">Tom tabell</caption><tbody><tr><td class="table-empty">Ingen prosjekter ennå. Legg til det første.</td></tr></tbody></table>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;div class="table-wrap"&gt;
+	&lt;table class="table"&gt;
+		&lt;caption class="sr-only"&gt;Prosjekter&lt;/caption&gt;
+		&lt;thead&gt;&lt;tr&gt;
+			&lt;th scope="col" aria-sort="ascending"&gt;&lt;a href="?sort=navn&amp;dir=desc"&gt;Navn&lt;/a&gt;&lt;/th&gt;
+			&lt;th scope="col" class="num"&gt;Beløp&lt;/th&gt;
+		&lt;/tr&gt;&lt;/thead&gt;
+		&lt;tbody&gt;
+			&lt;tr&gt;&lt;td&gt;Prosjekt A&lt;/td&gt;&lt;td class="num"&gt;1 234,50 kr&lt;/td&gt;&lt;/tr&gt;
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+	</section>
+
+	<section class="section" id="htmx">
+		<div class="section-head"><h2 class="section-title">htmx-mønstre</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Komponentene er ren CSS og fungerer rett i server-rendret HTML. Mønstrene under er testet mot htmx 2.0 i Chromium (mørk og lys modus, axe: 0 brudd). De gjør innhold tilgjengelig når det byttes ut.</p>
+		<ul class="motion-note" style="padding-left:1.2em;display:flex;flex-direction:column;gap:6px">
+			<li><strong>Serverside validering:</strong> serveren returnerer hele skjemaet på nytt med <code>aria-invalid</code>, feilmelding og <code>autofocus</code> på første ugyldige felt. Da flyttes fokus dit.</li>
+			<li><strong>Lasting:</strong> <code>.spinner</code> i <code>.htmx-indicator</code>. Skjemaet får <code>htmx-request</code>, og submit-knappen blokkeres automatisk (hindrer dobbeltinnsending).</li>
+			<li><strong>Beskjeder:</strong> fast <code>role="status"</code>-region, oppdatert med <code>hx-swap-oob="innerHTML:#status"</code>. Med <code>hx-swap-oob="true"</code> byttes selve elementet og <code>role</code> forsvinner, så skjermlesere leser ikke opp beskjeden.</li>
+			<li><strong>Sortering:</strong> bytt hele tabellen, ikke bare radene, ellers står <code>aria-sort</code> igjen med gammel verdi.</li>
+			<li><strong>Sletting:</strong> fokus havner på <code>body</code> når raden fjernes. Flytt fokus til en overskrift med <code>tabindex="-1"</code> først. <code>hx-on</code> er inline JS, så den krever at CSP tillater det. Bruk en <code>&lt;dialog&gt;</code> til bekreftelse, ikke <code>hx-confirm</code>.</li>
+		</ul>
+		<pre class="code" tabindex="0"><code>&lt;form hx-post="/kunder" hx-target="this" hx-swap="outerHTML"&gt;
+	&lt;!-- Ved feil returnerer serveren hele skjemaet på nytt: aria-invalid, feilmelding
+	     (aria-describedby) og autofocus på første ugyldige felt. --&gt;
+	&lt;button class="btn-primary" type="submit"&gt;Lagre &lt;span class="spinner htmx-indicator" aria-hidden="true"&gt;&lt;/span&gt;&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+		<pre class="code" tabindex="0"><code>&lt;!-- Layout: regionen finnes alltid, med role og aria-live --&gt;
+&lt;div id="status" role="status" aria-live="polite"&gt;&lt;/div&gt;
+
+&lt;!-- Serversvar: bytt INNHOLDET, ikke elementet (ellers mistes role/aria-live) --&gt;
+&lt;div hx-swap-oob="innerHTML:#status"&gt;
+	&lt;div class="alert success"&gt;&lt;span class="alert-icon" aria-hidden="true"&gt;✓&lt;/span&gt;&lt;div&gt;&lt;p class="alert-title"&gt;Lagret&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+		<pre class="code" tabindex="0"><code>&lt;!-- Bytt hele tabellen, slik at aria-sort oppdateres. Lenken har id og beholder fokus. --&gt;
+&lt;div class="table-wrap" id="tabell"&gt;
+	&lt;table class="table"&gt;
+		&lt;thead&gt;&lt;tr&gt;&lt;th scope="col" aria-sort="ascending"&gt;
+			&lt;a id="sort-navn" href="/?dir=desc" hx-get="/sort?dir=desc" hx-target="#tabell" hx-swap="outerHTML"&gt;Navn&lt;/a&gt;
+		&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+		...
+	&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+		<pre class="code" tabindex="0"><code>&lt;!-- Flytt fokus FØR raden fjernes, ellers havner det på body --&gt;
+&lt;h1 class="h2" id="tittel" tabindex="-1"&gt;Kunder&lt;/h1&gt;
+...
+&lt;button class="btn-danger-link" hx-delete="/kunder/7" hx-target="closest tr" hx-swap="outerHTML"
+        hx-on:click="document.getElementById('tittel').focus()" aria-label="Slett Prosjekt A"&gt;Slett&lt;/button&gt;</code></pre>
 	</section>
 
 	<section class="section">
@@ -170,10 +264,10 @@
 		<div class="state-table">
 			<span class="state-head"></span><span class="state-head">Hvile</span><span class="state-head">Fokus</span><span class="state-head">Feil</span><span class="state-head">Deaktivert</span>
 			<span class="state-head">Input</span>
-			<div class="field"><input type="text" class="demo-input" placeholder="Skriv her…" aria-label="Hvile"></div>
-			<div class="field"><input type="text" class="demo-input is-focus" placeholder="Skriv her…" aria-label="Fokus"></div>
-			<div class="field"><input type="text" class="demo-input" value="abc" aria-invalid="true" aria-describedby="err-demo" aria-label="Feil"><span class="field-error" id="err-demo">Ugyldig verdi</span></div>
-			<div class="field"><input type="text" class="demo-input" placeholder="Skriv her…" aria-label="Deaktivert" disabled></div>
+			<div class="field"><input type="text" class="input" placeholder="Skriv her…" aria-label="Hvile"></div>
+			<div class="field"><input type="text" class="input is-focus" placeholder="Skriv her…" aria-label="Fokus"></div>
+			<div class="field"><input type="text" class="input" value="abc" aria-invalid="true" aria-describedby="err-demo" aria-label="Feil"><span class="field-error" id="err-demo">Ugyldig verdi</span></div>
+			<div class="field"><input type="text" class="input" placeholder="Skriv her…" aria-label="Deaktivert" disabled></div>
 		</div>
 	</section>
 

@@ -9,9 +9,10 @@ Guiden er en statisk side uten byggesteg. Åpne `index.html` i nettleseren, elle
 | Fil | Formål |
 |---|---|
 | `index.html` | Visuell guide: farger, typografi, komponenter, kanter, radius, bevegelse og token-tabell |
-| `DESIGN.md` | Korte regler for utviklere og AI: hvilken token til hva, shadcn-mapping, «ikke gjør» |
+| `DESIGN.md` | Korte regler for utviklere og AI: token til bruk, komponenter, htmx-mønstre, norsk UI-tekst, valgfri shadcn-mapping |
+| `components.css` | Komponenter som ren CSS (knapper, skjema, tabell, melding, kort, htmx-tilstander) |
 | `tokens.css` | Kilden til sannhet: CSS-variabler for begge moduser, `@font-face` og radius/overgangstokens |
-| `styles.css` | Stiler for selve guiden og komponent-eksemplene |
+| `styles.css` | Stiler for selve guidesiden (layout, swatches, demo-oppsett) |
 | `theme.js` | Bryter for mørk/lys modus (følger OS, kan overstyres og huskes) |
 | `fonts/` | Selvhostede Inter og Fraunces (woff2, SIL OFL 1.1) |
 
@@ -23,6 +24,7 @@ Guiden publiseres til GitHub Pages av `.github/workflows/pages.yml` ved hver pus
 
 ```html
 <link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
 ```
 
 ```css
