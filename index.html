@@ -142,7 +142,7 @@
 
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Tilstander</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Hver interaktiv komponent skal ha hvile, hover, fokus og deaktivert. Felt har i tillegg feil. Fokus bruker alltid <code>:focus-visible</code>-ringen, og feil må aldri vises med farge alene (alltid tekst).</p>
+		<p class="motion-note">Hver interaktiv komponent skal ha hvile, hover, fokus og deaktivert. Felt har i tillegg feil. Fokus bruker alltid <code>:focus-visible</code>, og feil må aldri vises med farge alene (alltid tekst).</p>
 		<div class="state-table">
 			<span class="state-head"></span><span class="state-head">Hvile</span><span class="state-head">Hover</span><span class="state-head">Fokus</span><span class="state-head">Deaktivert</span>
 			<span class="state-head">Primary</span>
@@ -224,7 +224,7 @@
 		<div class="info-bar">
 			Primærknapp: <code>background 0.15s ease</code> + <code>transform 0.1s ease</code><br>
 			Ghost-knapp: <code>background, border-color 0.15s ease</code><br>
-			Fokus: <code>:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }</code><br>
+			Fokus: <code>:focus-visible { outline: 2px solid var(--color-accent-border); outline-offset: 2px; }</code>. Felter: aksentkant + <code>box-shadow: 0 0 0 3px var(--color-focus-halo)</code> uten outline.<br>
 			Med <code>prefers-reduced-motion: reduce</code> slås alle overganger av.
 		</div>
 	</section>
