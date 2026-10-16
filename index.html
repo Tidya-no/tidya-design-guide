@@ -4,9 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 	<title>Tidya Design Language</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
 	<link rel="stylesheet" href="tokens.css">
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -23,7 +20,7 @@
 	<header class="header">
 		<p class="header-eyebrow">Design Guide</p>
 		<h1 class="header-title">Tidya Design Language</h1>
-		<p class="header-sub">Et varmt grensesnitt bygget på amber og brune toner. Støtter mørk og lys modus, og tekstfargene er kontrastsjekket mot WCAG AA (4,5:1).</p>
+		<p class="header-sub">Et varmt grensesnitt bygget på amber og brune toner. Støtter mørk og lys modus, tekstfargene er kontrastsjekket mot WCAG AA (4,5:1) og kontroller mot 3:1.</p>
 	</header>
 
 	<section class="section">
@@ -36,12 +33,15 @@
 				<div class="swatch"><div class="swatch-color" style="background:#272422"></div><div class="swatch-info on-dark"><span class="swatch-name">Surface</span><span class="swatch-val">#272422</span><span class="swatch-var">--color-surface</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#ffbe0b"></div><div class="swatch-info on-dark"><span class="swatch-name">Accent</span><span class="swatch-val">#ffbe0b</span><span class="swatch-var">--color-accent</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#ffc933"></div><div class="swatch-info on-dark"><span class="swatch-name">Accent Hover</span><span class="swatch-val">#ffc933</span><span class="swatch-var">--color-accent-hover</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#ffbe0b"></div><div class="swatch-info on-dark"><span class="swatch-name">Accent Fill</span><span class="swatch-val">#ffbe0b</span><span class="swatch-var">--color-accent-fill</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#1a1816"></div><div class="swatch-info on-dark"><span class="swatch-name">On Accent</span><span class="swatch-val">#1a1816</span><span class="swatch-var">--color-on-accent</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#ffffff"></div><div class="swatch-info on-dark"><span class="swatch-name">Text</span><span class="swatch-val">#ffffff</span><span class="swatch-var">--color-text</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#d4a88f"></div><div class="swatch-info on-dark"><span class="swatch-name">Text Secondary</span><span class="swatch-val">#d4a88f</span><span class="swatch-var">--color-text-secondary</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#e0956d"></div><div class="swatch-info on-dark"><span class="swatch-name">Label</span><span class="swatch-val">#e0956d</span><span class="swatch-var">--color-label</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#ff5252"></div><div class="swatch-info on-dark"><span class="swatch-name">Error</span><span class="swatch-val">#ff5252</span><span class="swatch-var">--color-error</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,255,255,0.5)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Text Muted</span><span class="swatch-val">rgba(255,255,255,.50)</span><span class="swatch-var">--color-text-muted</span></div></div>
-				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,190,11,0.35)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Accent Border</span><span class="swatch-val">rgba(255,190,11,.35)</span><span class="swatch-var">--color-accent-border</span></div></div>
+				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,255,255,0.34)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Border Control</span><span class="swatch-val">rgba(255,255,255,.34)</span><span class="swatch-var">--color-border-control</span></div></div>
+				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,190,11,0.46)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Accent Border</span><span class="swatch-val">rgba(255,190,11,.46)</span><span class="swatch-var">--color-accent-border</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(255,190,11,0.05)"></div></div><div class="swatch-info on-dark"><span class="swatch-name">Accent Bg Subtle</span><span class="swatch-val">rgba(255,190,11,.05)</span><span class="swatch-var">--color-accent-bg-subtle</span></div></div>
 			</div>
 		</div>
@@ -53,12 +53,15 @@
 				<div class="swatch"><div class="swatch-color" style="background:#ede8e1"></div><div class="swatch-info on-light"><span class="swatch-name">Surface</span><span class="swatch-val">#ede8e1</span><span class="swatch-var">--color-surface</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#8a5d00"></div><div class="swatch-info on-light"><span class="swatch-name">Accent</span><span class="swatch-val">#8a5d00</span><span class="swatch-var">--color-accent</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#6b4900"></div><div class="swatch-info on-light"><span class="swatch-name">Accent Hover</span><span class="swatch-val">#6b4900</span><span class="swatch-var">--color-accent-hover</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#ffbe0b"></div><div class="swatch-info on-light"><span class="swatch-name">Accent Fill</span><span class="swatch-val">#ffbe0b</span><span class="swatch-var">--color-accent-fill</span></div></div>
+				<div class="swatch"><div class="swatch-color" style="background:#1a1816"></div><div class="swatch-info on-light"><span class="swatch-name">On Accent</span><span class="swatch-val">#1a1816</span><span class="swatch-var">--color-on-accent</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#1a1816"></div><div class="swatch-info on-light"><span class="swatch-name">Text</span><span class="swatch-val">#1a1816</span><span class="swatch-var">--color-text</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#7a4a2e"></div><div class="swatch-info on-light"><span class="swatch-name">Text Secondary</span><span class="swatch-val">#7a4a2e</span><span class="swatch-var">--color-text-secondary</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#9c3d1a"></div><div class="swatch-info on-light"><span class="swatch-name">Label</span><span class="swatch-val">#9c3d1a</span><span class="swatch-var">--color-label</span></div></div>
 				<div class="swatch"><div class="swatch-color" style="background:#c82020"></div><div class="swatch-info on-light"><span class="swatch-name">Error</span><span class="swatch-val">#c82020</span><span class="swatch-var">--color-error</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(26,24,22,0.65)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Text Muted</span><span class="swatch-val">rgba(26,24,22,.65)</span><span class="swatch-var">--color-text-muted</span></div></div>
-				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(138,93,0,0.45)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Accent Border</span><span class="swatch-val">rgba(138,93,0,.45)</span><span class="swatch-var">--color-accent-border</span></div></div>
+				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(26,24,22,0.49)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Border Control</span><span class="swatch-val">rgba(26,24,22,.49)</span><span class="swatch-var">--color-border-control</span></div></div>
+				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(138,93,0,0.76)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Accent Border</span><span class="swatch-val">rgba(138,93,0,.76)</span><span class="swatch-var">--color-accent-border</span></div></div>
 				<div class="swatch"><div class="swatch-color checkerboard"><div class="swatch-color-inner" style="background:rgba(196,138,0,0.10)"></div></div><div class="swatch-info on-light"><span class="swatch-name">Accent Bg Subtle</span><span class="swatch-val">rgba(196,138,0,.10)</span><span class="swatch-var">--color-accent-bg-subtle</span></div></div>
 			</div>
 		</div>
@@ -67,7 +70,7 @@
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Typografi</h2><div class="section-rule"></div></div>
 		<div class="info-bar">
-			<strong>Fonter:</strong>&nbsp;<code>Fraunces</code> (display og overskrifter)&nbsp;·&nbsp;<code>Inter</code> (brødtekst og UI), fallback <code>Georgia</code> / <code>system-ui</code>&nbsp;·&nbsp;<code>-webkit-font-smoothing: antialiased</code>
+			<strong>Fonter:</strong>&nbsp;<code>Fraunces</code> (display og overskrifter)&nbsp;·&nbsp;<code>Inter</code> (brødtekst og UI), selvhostet woff2 (ingen Google Fonts), fallback <code>Georgia</code> / <code>system-ui</code>&nbsp;·&nbsp;<code>-webkit-font-smoothing: antialiased</code>
 		</div>
 		<div class="type-scale">
 			<div class="type-row">
@@ -133,12 +136,14 @@
 
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Kanter</h2><div class="section-rule"></div></div>
+		<p class="motion-note">Kanter som markerer et UI-element (input, knapper, drop-soner) skal ha minst 3:1 mot bakgrunnen (WCAG 1.4.11). Dekorative kanter (<code>border</code>, <code>subtle</code>, <code>medium</code>) er unntatt.</p>
 		<div class="border-grid">
 			<div class="border-card" style="border:1px solid var(--color-border)"><span class="name">border</span><span class="val">dark: rgba(255,255,255,.06)</span><span class="val">light: rgba(26,24,22,.07)</span></div>
 			<div class="border-card" style="border:1px solid var(--color-border-subtle)"><span class="name">border-subtle</span><span class="val">dark: rgba(255,255,255,.10)</span><span class="val">light: rgba(26,24,22,.12)</span></div>
 			<div class="border-card" style="border:1px solid var(--color-border-medium)"><span class="name">border-medium</span><span class="val">dark: rgba(255,255,255,.15)</span><span class="val">light: rgba(26,24,22,.20)</span></div>
-			<div class="border-card" style="border:1px solid var(--color-accent-border)"><span class="name">accent-border</span><span class="val">dark: rgba(255,190,11,.35)</span><span class="val">light: rgba(138,93,0,.45)</span></div>
-			<div class="border-card" style="border:2px dashed var(--color-accent-border-dashed)"><span class="name">accent-border-dashed</span><span class="val">dark: rgba(255,190,11,.40)</span><span class="val">light: rgba(138,93,0,.50)</span></div>
+			<div class="border-card" style="border:1px solid var(--color-border-control)"><span class="name">border-control</span><span class="val">dark: rgba(255,255,255,.34)</span><span class="val">light: rgba(26,24,22,.49)</span></div>
+			<div class="border-card" style="border:1px solid var(--color-accent-border)"><span class="name">accent-border</span><span class="val">dark: rgba(255,190,11,.46)</span><span class="val">light: rgba(138,93,0,.76)</span></div>
+			<div class="border-card" style="border:2px dashed var(--color-accent-border-dashed)"><span class="name">accent-border-dashed</span><span class="val">dark: rgba(255,190,11,.46)</span><span class="val">light: rgba(138,93,0,.76)</span></div>
 		</div>
 	</section>
 
@@ -180,15 +185,19 @@
 					<tr><td><code>--color-text-secondary</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#d4a88f"></span>#d4a88f</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#7a4a2e"></span>#7a4a2e</span></td><td>Støttetekst · 8,3:1 / 6,7:1</td></tr>
 					<tr><td><code>--color-text-muted</code></td><td class="col-dark">rgba(255,255,255,.50)</td><td class="col-light">rgba(26,24,22,.65)</td><td>Deaktivert, metadata · 5,2:1 / 5,3:1</td></tr>
 					<tr><td><code>--color-text-placeholder</code></td><td class="col-dark">rgba(255,255,255,.50)</td><td class="col-light">rgba(26,24,22,.62)</td><td>Input placeholder · 5,2:1 / 4,8:1</td></tr>
-					<tr><td><code>--color-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#8a5d00"></span>#8a5d00</span></td><td>Knapp, fokus, highlight · 10,6:1 / 5,2:1</td></tr>
-					<tr><td><code>--color-accent-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#6b4900"></span>#6b4900</span></td><td>Knapp hover</td></tr>
+					<tr><td><code>--color-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#8a5d00"></span>#8a5d00</span></td><td>Aksenttekst, lenker, fokusring · 10,6:1 / 5,2:1</td></tr>
+					<tr><td><code>--color-accent-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#6b4900"></span>#6b4900</span></td><td>Hover på aksenttekst · 11,5:1 / 7,4:1</td></tr>
+					<tr><td><code>--color-accent-fill</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td>Flater: primærknapp, markeringer</td></tr>
+					<tr><td><code>--color-accent-fill-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#f0a800"></span>#f0a800</span></td><td>Hover på flater</td></tr>
+					<tr><td><code>--color-on-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td>Tekst på aksentflate · 10,6:1 / 10,6:1</td></tr>
 					<tr><td><code>--color-label</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#e0956d"></span>#e0956d</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#9c3d1a"></span>#9c3d1a</span></td><td>Seksjonsoverskrifter · 7,3:1 / 6,1:1</td></tr>
 					<tr><td><code>--color-error</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff5252"></span>#ff5252</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#c82020"></span>#c82020</span></td><td>Feil, slett-handlinger · 5,5:1 / 5,2:1</td></tr>
 					<tr><td><code>--color-border</code></td><td class="col-dark">rgba(255,255,255,.06)</td><td class="col-light">rgba(26,24,22,.07)</td><td>Kortkanter</td></tr>
 					<tr><td><code>--color-border-subtle</code></td><td class="col-dark">rgba(255,255,255,.10)</td><td class="col-light">rgba(26,24,22,.12)</td><td>Input-kanter</td></tr>
-					<tr><td><code>--color-border-medium</code></td><td class="col-dark">rgba(255,255,255,.15)</td><td class="col-light">rgba(26,24,22,.20)</td><td>Drag-soner</td></tr>
-					<tr><td><code>--color-accent-border</code></td><td class="col-dark">rgba(255,190,11,.35)</td><td class="col-light">rgba(138,93,0,.45)</td><td>Ghost-knapp kant</td></tr>
-					<tr><td><code>--color-accent-border-dashed</code></td><td class="col-dark">rgba(255,190,11,.40)</td><td class="col-light">rgba(138,93,0,.50)</td><td>Fil-opplasting (valgt)</td></tr>
+					<tr><td><code>--color-border-medium</code></td><td class="col-dark">rgba(255,255,255,.15)</td><td class="col-light">rgba(26,24,22,.20)</td><td>Dekorative skiller, drag-soner</td></tr>
+					<tr><td><code>--color-border-control</code></td><td class="col-dark">rgba(255,255,255,.34)</td><td class="col-light">rgba(26,24,22,.49)</td><td>Kontrollkanter (input) · min. 3:1</td></tr>
+					<tr><td><code>--color-accent-border</code></td><td class="col-dark">rgba(255,190,11,.46)</td><td class="col-light">rgba(138,93,0,.76)</td><td>Ghost-knapp kant · min. 3:1</td></tr>
+					<tr><td><code>--color-accent-border-dashed</code></td><td class="col-dark">rgba(255,190,11,.46)</td><td class="col-light">rgba(138,93,0,.76)</td><td>Fil-opplasting · min. 3:1</td></tr>
 					<tr><td><code>--color-accent-bg-subtle</code></td><td class="col-dark">rgba(255,190,11,.05)</td><td class="col-light">rgba(196,138,0,.10)</td><td>Drag-hover bakgrunn</td></tr>
 				</tbody>
 			</table>

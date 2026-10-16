@@ -1,4 +1,28 @@
 /* Tidya design tokens — mørk modus er standard, lys følger OS eller data-theme="light" */
+
+/* Selvhostede fonter (SIL OFL 1.1, se fonts/LICENSE-*.txt). Latin-subset dekker æ, ø og å. */
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('fonts/inter-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Inter';
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('fonts/inter-latin-wght-italic.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Fraunces';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('fonts/fraunces-latin-wght-normal.woff2') format('woff2');
+}
+
 :root {
 	/* Mørk modus */
 	--color-bg:                   #1a1816;
@@ -9,14 +33,18 @@
 	--color-text-placeholder:     rgba(255, 255, 255, 0.50);
 	--color-accent:               #ffbe0b;
 	--color-accent-hover:         #ffc933;
+	--color-accent-fill:          #ffbe0b;
+	--color-accent-fill-hover:    #ffc933;
+	--color-on-accent:            #1a1816;
 	--color-label:                #e0956d;
 	--color-link:                 #d4a88f;
 	--color-error:                #ff5252;
 	--color-border:               rgba(255, 255, 255, 0.06);
 	--color-border-subtle:        rgba(255, 255, 255, 0.10);
 	--color-border-medium:        rgba(255, 255, 255, 0.15);
-	--color-accent-border:        rgba(255, 190, 11, 0.35);
-	--color-accent-border-dashed: rgba(255, 190, 11, 0.40);
+	--color-border-control:       rgba(255, 255, 255, 0.34);
+	--color-accent-border:        rgba(255, 190, 11, 0.46);
+	--color-accent-border-dashed: rgba(255, 190, 11, 0.46);
 	--color-accent-bg-subtle:     rgba(255, 190, 11, 0.05);
 
 	--font-body:    'Inter', system-ui, sans-serif;
@@ -41,14 +69,18 @@
 		--color-text-placeholder:     rgba(26, 24, 22, 0.62);
 		--color-accent:               #8a5d00;
 		--color-accent-hover:         #6b4900;
+		--color-accent-fill:          #ffbe0b;
+		--color-accent-fill-hover:    #f0a800;
+		--color-on-accent:            #1a1816;
 		--color-label:                #9c3d1a;
 		--color-link:                 #7a4a2e;
 		--color-error:                #c82020;
 		--color-border:               rgba(26, 24, 22, 0.07);
 		--color-border-subtle:        rgba(26, 24, 22, 0.12);
 		--color-border-medium:        rgba(26, 24, 22, 0.20);
-		--color-accent-border:        rgba(138, 93, 0, 0.45);
-		--color-accent-border-dashed: rgba(138, 93, 0, 0.50);
+		--color-border-control:       rgba(26, 24, 22, 0.49);
+		--color-accent-border:        rgba(138, 93, 0, 0.76);
+		--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 		--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
 	}
 }
@@ -62,13 +94,17 @@
 	--color-text-placeholder:     rgba(26, 24, 22, 0.62);
 	--color-accent:               #8a5d00;
 	--color-accent-hover:         #6b4900;
+	--color-accent-fill:          #ffbe0b;
+	--color-accent-fill-hover:    #f0a800;
+	--color-on-accent:            #1a1816;
 	--color-label:                #9c3d1a;
 	--color-link:                 #7a4a2e;
 	--color-error:                #c82020;
 	--color-border:               rgba(26, 24, 22, 0.07);
 	--color-border-subtle:        rgba(26, 24, 22, 0.12);
 	--color-border-medium:        rgba(26, 24, 22, 0.20);
-	--color-accent-border:        rgba(138, 93, 0, 0.45);
-	--color-accent-border-dashed: rgba(138, 93, 0, 0.50);
+	--color-border-control:       rgba(26, 24, 22, 0.49);
+	--color-accent-border:        rgba(138, 93, 0, 0.76);
+	--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 	--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
 }
