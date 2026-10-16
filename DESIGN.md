@@ -19,12 +19,12 @@ Kort referanse for deg som bygger UI (menneske eller AI). Kilden til sannhet for
 | Etiketter og seksjonsoverskrifter i kort | `--color-label` (uppercase, 0.75rem, 600) |
 | Lenke | `--color-link` (alias for `--color-accent`), alltid understreket, hover `--color-accent-hover` |
 | Flytende elementer / bakgrunn bak dialog | `--shadow-sm/-md/-lg` / `--color-overlay` |
-| Aksent som **tekst**, lenke, fokusring | `--color-accent` (hover: `--color-accent-hover`) |
-| Aksent som **flate** (primærknapp) | `--color-accent-fill` + `--color-on-accent` som tekst |
+| Aksent som **tekst**, lenke, kant på fokusert felt | `--color-accent` (hover: `--color-accent-hover`) |
+| Aksent som **flate** (primærknapp) | `--color-accent-fill` (hover `--color-accent-fill-hover`) + `--color-on-accent` som tekst |
 | Input- og kontrollkanter (min. 3:1) | `--color-border-control` |
 | Dekorative skiller, kortkanter | `--color-border`, `--color-border-subtle`, `--color-border-medium` |
 | Ghost-knapp og drop-sone kant | `--color-accent-border` / `--color-accent-border-dashed` |
-| Feil / suksess / advarsel / info | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `-bg` |
+| Feil / suksess / advarsel / info | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `--color-error-bg` / `-success-bg` / `-warning-bg` / `-info-bg` |
 
 Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), men beholder amber (`#ffbe0b`) på flater. Ikke bruk `--color-accent` som bakgrunn.
 
