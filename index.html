@@ -247,7 +247,7 @@
 		<div class="info-bar">
 			Primærknapp: <code>background 0.15s ease</code> + <code>transform 0.1s ease</code><br>
 			Ghost-knapp: <code>background, border-color 0.15s ease</code><br>
-			Fokus: <code>:focus-visible { outline: 1px solid var(--color-accent-border); outline-offset: 1px; }</code>. Felter og ghost-knapp: kanten skifter til <code>--color-accent</code>, uten outline.<br>
+			Fokus: <code>:focus-visible { outline: 2px solid var(--color-accent-border); outline-offset: 2px; }</code>. Felter og ghost-knapp: kanten skifter til <code>--color-accent</code> pluss en 2px glød (<code>--color-focus-halo</code>), uten outline. Feilfelt: samme glød i <code>--color-error</code>.<br>
 			Med <code>prefers-reduced-motion: reduce</code> slås alle overganger av.
 		</div>
 	</section>
