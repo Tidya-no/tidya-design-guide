@@ -53,7 +53,6 @@
 	--color-accent-border:        rgba(255, 190, 11, 0.46);
 	--color-accent-border-dashed: rgba(255, 190, 11, 0.46);
 	--color-accent-bg-subtle:     rgba(255, 190, 11, 0.05);
-	--color-focus-halo:            rgba(255, 190, 11, 0.18);
 
 	--font-body:    'Inter', system-ui, sans-serif;
 	--font-display: 'Fraunces', Georgia, serif;
@@ -105,7 +104,6 @@
 		--color-accent-border:        rgba(138, 93, 0, 0.76);
 		--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 		--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
-		--color-focus-halo:            rgba(138, 93, 0, 0.15);
 	}
 }
 
@@ -138,5 +136,4 @@
 	--color-accent-border:        rgba(138, 93, 0, 0.76);
 	--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 	--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
-	--color-focus-halo:            rgba(138, 93, 0, 0.15);
 }
