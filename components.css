@@ -58,7 +58,7 @@ a:hover { color: var(--color-accent-hover); }
 	transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
 	font-family: inherit;
 }
-.btn-ghost:hover { background: var(--color-accent-bg-subtle); border-color: var(--color-accent-border-dashed); }
+.btn-ghost:hover { background: var(--color-accent-bg-subtle); border-color: var(--color-accent-border); }
 .btn-ghost:focus-visible { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-focus-halo); }
 .btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
 
@@ -82,7 +82,7 @@ a:hover { color: var(--color-accent-hover); }
 	transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
 .textarea { min-height: 5rem; resize: vertical; }
-.input::placeholder, .textarea::placeholder { color: var(--color-text-placeholder); }
+.input::placeholder, .textarea::placeholder { color: var(--color-text-muted); }
 .input:focus-visible, .select:focus-visible, .textarea:focus-visible {
 	outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-focus-halo);
 }
