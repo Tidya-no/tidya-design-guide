@@ -24,6 +24,7 @@
 }
 
 :root {
+	color-scheme: dark;
 	/* Mørk modus */
 	--color-bg:                   #1a1816;
 	--color-surface:              #272422;
@@ -100,6 +101,7 @@
 
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme="dark"]) {
+		color-scheme: light;
 		--color-bg:                   #f7f3ee;
 		--color-surface:              #ede8e1;
 		--color-text:                 #1a1816;
@@ -136,6 +138,7 @@
 }
 
 :root[data-theme="light"] {
+	color-scheme: light;
 	--color-bg:                   #f7f3ee;
 	--color-surface:              #ede8e1;
 	--color-text:                 #1a1816;
