@@ -38,7 +38,7 @@
 	--color-on-accent:            #1a1816;
 	--color-label:                #e0956d;
 	--color-link:                 var(--color-accent);
-	--color-error:                #ff5252;
+	--color-error:                #ff5c5c;
 	--color-success:              #4cc38a;
 	--color-warning:              #ff9f43;
 	--color-info:                 #6cb6ff;
@@ -92,8 +92,8 @@
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme="dark"]) {
 		color-scheme: light;
-		--color-bg:                   #f7f3ee;
-		--color-surface:              #ede8e1;
+		--color-bg:                   #fbf6ea;
+		--color-surface:              #f3e9d3;
 		--color-text:                 #1a1816;
 		--color-text-secondary:       #7a4a2e;
 		--color-text-muted:           rgba(26, 24, 22, 0.65);
@@ -111,13 +111,13 @@
 		--color-success-bg:           rgba(23, 112, 63, 0.10);
 		--color-warning-bg:           rgba(154, 77, 0, 0.10);
 		--color-info-bg:              rgba(26, 90, 158, 0.10);
-		--color-border:               rgba(26, 24, 22, 0.07);
-		--color-border-subtle:        rgba(26, 24, 22, 0.12);
+		--color-border:               rgba(26, 24, 22, 0.10);
+		--color-border-subtle:        rgba(26, 24, 22, 0.16);
 		--color-border-control:       rgba(26, 24, 22, 0.49);
 		--color-accent-border:        rgba(138, 93, 0, 0.76);
-		--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
+		--color-accent-bg-subtle:     rgba(255, 190, 11, 0.12);
 		--color-focus-halo:            rgba(255, 190, 11, 0.45);
-		--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.12);
+		--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.16);
 		--shadow-lg:                  0 12px 32px rgba(26, 24, 22, 0.16);
 		--color-overlay:              rgba(26, 24, 22, 0.45);
 	}
@@ -125,8 +125,8 @@
 
 :root[data-theme="light"] {
 	color-scheme: light;
-	--color-bg:                   #f7f3ee;
-	--color-surface:              #ede8e1;
+	--color-bg:                   #fbf6ea;
+	--color-surface:              #f3e9d3;
 	--color-text:                 #1a1816;
 	--color-text-secondary:       #7a4a2e;
 	--color-text-muted:           rgba(26, 24, 22, 0.65);
@@ -144,13 +144,13 @@
 	--color-success-bg:           rgba(23, 112, 63, 0.10);
 	--color-warning-bg:           rgba(154, 77, 0, 0.10);
 	--color-info-bg:              rgba(26, 90, 158, 0.10);
-	--color-border:               rgba(26, 24, 22, 0.07);
-	--color-border-subtle:        rgba(26, 24, 22, 0.12);
+	--color-border:               rgba(26, 24, 22, 0.10);
+	--color-border-subtle:        rgba(26, 24, 22, 0.16);
 	--color-border-control:       rgba(26, 24, 22, 0.49);
 	--color-accent-border:        rgba(138, 93, 0, 0.76);
-	--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
+	--color-accent-bg-subtle:     rgba(255, 190, 11, 0.12);
 	--color-focus-halo:            rgba(255, 190, 11, 0.45);
-	--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.12);
+	--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.16);
 	--shadow-lg:                  0 12px 32px rgba(26, 24, 22, 0.16);
 	--color-overlay:              rgba(26, 24, 22, 0.45);
 }
