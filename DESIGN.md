@@ -8,7 +8,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Kilden til sannhet for
 2. Mørk modus er standard. Lys modus følger OS (`prefers-color-scheme`) eller `data-theme="light"` på `<html>`. Alt må fungere i begge.
 3. Tekst skal ha minst 4,5:1 kontrast, UI-kanter og ikoner minst 3:1 (WCAG AA).
 4. Status (feil, suksess, advarsel) skal alltid bæres av tekst eller ikon, ikke farge alene.
-5. Respekter `prefers-reduced-motion`. Fokus bruker alltid `:focus-visible`. Primærknapp og lenker: `outline: 1px solid var(--color-accent-border)`, offset 1px (3:1). Felt og ghost-knapp: kanten skifter til `--color-accent`, ingen outline. Tynt og diskret, men fargeskiftet må alltid være synlig.
+5. Respekter `prefers-reduced-motion`. Fokus bruker alltid `:focus-visible`. Knapper og lenker: `outline: 2px solid var(--color-accent-border)`, offset 2px (3:1). Felt og ghost-knapp: kanten skifter til `--color-accent` pluss `box-shadow: 0 0 0 2px var(--color-focus-halo)`, ingen outline. Feilfelt: samme, men i `--color-error`. Tydelig nok til å se hvor fokus er, uten tykke ringer.
 
 ## Hvilken token til hva
 
@@ -19,12 +19,12 @@ Kort referanse for deg som bygger UI (menneske eller AI). Kilden til sannhet for
 | Etiketter og seksjonsoverskrifter i kort | `--color-label` (uppercase, 0.75rem, 600) |
 | Lenke | `--color-link` (alias for `--color-accent`), alltid understreket, hover `--color-accent-hover` |
 | Flytende elementer / bakgrunn bak dialog | `--shadow-sm/-md/-lg` / `--color-overlay` |
-| Aksent som **tekst**, lenke, fokusring | `--color-accent` (hover: `--color-accent-hover`) |
-| Aksent som **flate** (primærknapp) | `--color-accent-fill` + `--color-on-accent` som tekst |
+| Aksent som **tekst**, lenke, kant på fokusert felt | `--color-accent` (hover: `--color-accent-hover`) |
+| Aksent som **flate** (primærknapp) | `--color-accent-fill` (hover `--color-accent-fill-hover`) + `--color-on-accent` som tekst |
 | Input- og kontrollkanter (min. 3:1) | `--color-border-control` |
 | Dekorative skiller, kortkanter | `--color-border`, `--color-border-subtle`, `--color-border-medium` |
 | Ghost-knapp og drop-sone kant | `--color-accent-border` / `--color-accent-border-dashed` |
-| Feil / suksess / advarsel / info | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `-bg` |
+| Feil / suksess / advarsel / info | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `--color-error-bg` / `-success-bg` / `-warning-bg` / `-info-bg` |
 
 Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), men beholder amber (`#ffbe0b`) på flater. Ikke bruk `--color-accent` som bakgrunn.
 
