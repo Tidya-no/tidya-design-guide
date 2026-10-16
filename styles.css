@@ -12,7 +12,7 @@ body {
 	transition: background var(--t-fast), color var(--t-fast);
 }
 
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--color-accent-border); outline-offset: 2px; }
 
 /* Layout */
 .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
@@ -131,7 +131,7 @@ body {
 	font-family: inherit; transition: border-color var(--t-fast);
 }
 .demo-input::placeholder { color: var(--color-text-placeholder); }
-.demo-input:focus { border-color: var(--color-accent); }
+.demo-input:focus-visible { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-focus-halo); }
 
 .demo-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--r-xl); padding: 1.5rem; }
 .demo-card-head { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--color-label); margin-bottom: 12px; }
@@ -178,9 +178,9 @@ body {
 /* Tilstander */
 .btn-primary.is-hover { background: var(--color-accent-fill-hover); transform: translateY(-1px); }
 .btn-ghost.is-hover { background: var(--color-accent-bg-subtle); border-color: var(--color-accent-border-dashed); }
-.is-focus { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.is-focus { outline: 2px solid var(--color-accent-border); outline-offset: 2px; }
 .btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
-.demo-input.is-focus { border-color: var(--color-accent); }
+.demo-input.is-focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-focus-halo); }
 .demo-input[aria-invalid="true"] { border-color: var(--color-error); }
 .demo-input:disabled { opacity: 0.5; cursor: not-allowed; background: var(--color-surface); }
 .field { display: flex; flex-direction: column; gap: var(--space-1); }
