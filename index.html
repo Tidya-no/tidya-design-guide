@@ -75,32 +75,32 @@
 		<div class="type-scale">
 			<div class="type-row">
 				<span class="type-label">Display</span>
-				<span class="type-sample" style="font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.2">Fakturabilag Q3 2025</span>
+				<span class="type-sample" style="font-family:var(--font-display);font-size:1.5rem;font-weight:600;line-height:1.2">Overskrift i Fraunces</span>
 				<span class="type-meta">Fraunces 1.5rem / 600</span>
 			</div>
 			<div class="type-row">
 				<span class="type-label">Heading</span>
-				<span class="type-sample" style="font-size:1.0625rem;font-style:italic;line-height:1.55">Takk for at du bruker Tidya</span>
+				<span class="type-sample" style="font-size:1.0625rem;font-style:italic;line-height:1.55">Underoverskrift i kursiv</span>
 				<span class="type-meta">Inter 1.0625rem / 400 italic</span>
 			</div>
 			<div class="type-row">
 				<span class="type-label">Label</span>
-				<span class="type-sample" style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-label)">Reiseutlegg</span>
+				<span class="type-sample" style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-label)">Seksjonsetikett</span>
 				<span class="type-meta">Inter 0.75rem / 600 uppercase +0.07em</span>
 			</div>
 			<div class="type-row">
 				<span class="type-label">Body</span>
-				<span class="type-sample" style="font-size:0.875rem">Dra og slipp CSV-fil hit, eller klikk for å velge</span>
+				<span class="type-sample" style="font-size:0.875rem">Brødtekst skal være lett å lese, med god linjehøyde og kontrast.</span>
 				<span class="type-meta">Inter 0.875rem / 400</span>
 			</div>
 			<div class="type-row">
 				<span class="type-label">Body SM</span>
-				<span class="type-sample" style="font-size:0.8125rem;color:var(--color-text-secondary)">Reise 1 — 12.–15. august 2025</span>
+				<span class="type-sample" style="font-size:0.8125rem;color:var(--color-text-secondary)">Støttetekst og metadata, 12. august 2025</span>
 				<span class="type-meta">Inter 0.8125rem / 400</span>
 			</div>
 			<div class="type-row">
 				<span class="type-label">Caption</span>
-				<span class="type-sample" style="font-size:0.75rem;color:var(--color-text-muted)">— Wittgenstein</span>
+				<span class="type-sample" style="font-size:0.75rem;color:var(--color-text-muted)">Bildetekst eller kilde</span>
 				<span class="type-meta">Inter 0.75rem / 400</span>
 			</div>
 		</div>
@@ -110,27 +110,27 @@
 		<div class="section-head"><h2 class="section-title">Komponenter</h2><div class="section-rule"></div></div>
 		<div class="comp-group">
 			<div class="comp-row"><span class="comp-label">Primary</span>
-				<button class="btn-primary" type="button">Generer PDF</button>
-				<button class="btn-primary" type="button" disabled>Genererer…</button>
+				<button class="btn-primary" type="button">Lagre</button>
+				<button class="btn-primary" type="button" disabled>Lagrer…</button>
 			</div>
 			<div class="comp-row"><span class="comp-label">Ghost</span>
-				<button class="btn-ghost" type="button">+ Legg til reise</button>
-				<button class="btn-ghost" type="button">Lukk</button>
+				<button class="btn-ghost" type="button">+ Legg til</button>
+				<button class="btn-ghost" type="button">Avbryt</button>
 			</div>
 			<div class="comp-row"><span class="comp-label">Danger</span>
-				<button class="btn-danger-link" type="button">Fjern</button>
+				<button class="btn-danger-link" type="button">Slett</button>
 			</div>
 			<div class="comp-row"><span class="comp-label">Input</span>
-				<input class="demo-input" placeholder="Utlegg fly (NOK)" type="number" aria-label="Utlegg fly (NOK)">
+				<input class="demo-input" placeholder="Skriv her…" type="text" aria-label="Eksempel på tekstfelt">
 			</div>
 		</div>
 		<div class="demo-card">
-			<p class="demo-card-head">Last opp timeliste (CSV-format)</p>
-			<p class="demo-card-body">Dra og slipp CSV-fil hit, eller klikk for å velge. Filen må være under 5 MB og i .csv- eller .txt-format.</p>
+			<p class="demo-card-head">Korttittel</p>
+			<p class="demo-card-body">Kort grupperer relatert innhold på en flate (<code>--color-surface</code>) med svak kant og 10px radius.</p>
 		</div>
 		<blockquote class="demo-quote">
-			<p>Grensene for mitt språk er grensene for min verden.</p>
-			<cite>— Wittgenstein</cite>
+			<p>Sitatblokk for å løfte frem en viktig setning.</p>
+			<cite>— Kilde</cite>
 		</blockquote>
 	</section>
 
@@ -194,11 +194,11 @@
 					<tr><td><code>--color-error</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff5252"></span>#ff5252</span></td><td class="col-light"><span class="chip"><span class="chip-dot" style="background:#c82020"></span>#c82020</span></td><td>Feil, slett-handlinger · 5,5:1 / 5,2:1</td></tr>
 					<tr><td><code>--color-border</code></td><td class="col-dark">rgba(255,255,255,.06)</td><td class="col-light">rgba(26,24,22,.07)</td><td>Kortkanter</td></tr>
 					<tr><td><code>--color-border-subtle</code></td><td class="col-dark">rgba(255,255,255,.10)</td><td class="col-light">rgba(26,24,22,.12)</td><td>Input-kanter</td></tr>
-					<tr><td><code>--color-border-medium</code></td><td class="col-dark">rgba(255,255,255,.15)</td><td class="col-light">rgba(26,24,22,.20)</td><td>Dekorative skiller, drag-soner</td></tr>
+					<tr><td><code>--color-border-medium</code></td><td class="col-dark">rgba(255,255,255,.15)</td><td class="col-light">rgba(26,24,22,.20)</td><td>Dekorative skiller</td></tr>
 					<tr><td><code>--color-border-control</code></td><td class="col-dark">rgba(255,255,255,.34)</td><td class="col-light">rgba(26,24,22,.49)</td><td>Kontrollkanter (input) · min. 3:1</td></tr>
 					<tr><td><code>--color-accent-border</code></td><td class="col-dark">rgba(255,190,11,.46)</td><td class="col-light">rgba(138,93,0,.76)</td><td>Ghost-knapp kant · min. 3:1</td></tr>
-					<tr><td><code>--color-accent-border-dashed</code></td><td class="col-dark">rgba(255,190,11,.46)</td><td class="col-light">rgba(138,93,0,.76)</td><td>Fil-opplasting · min. 3:1</td></tr>
-					<tr><td><code>--color-accent-bg-subtle</code></td><td class="col-dark">rgba(255,190,11,.05)</td><td class="col-light">rgba(196,138,0,.10)</td><td>Drag-hover bakgrunn</td></tr>
+					<tr><td><code>--color-accent-border-dashed</code></td><td class="col-dark">rgba(255,190,11,.46)</td><td class="col-light">rgba(138,93,0,.76)</td><td>Drop-sone, stiplet · min. 3:1</td></tr>
+					<tr><td><code>--color-accent-bg-subtle</code></td><td class="col-dark">rgba(255,190,11,.05)</td><td class="col-light">rgba(196,138,0,.10)</td><td>Hover- og valgt-bakgrunn</td></tr>
 				</tbody>
 			</table>
 		</div>
