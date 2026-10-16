@@ -17,7 +17,7 @@ body { padding-inline: 16px; padding-block: 48px; }
 .theme-toggle-icon { font-size: 14px; }
 
 /* Header */
-.header { border-left: 3px solid var(--color-accent-fill); padding-left: 18px; }
+.header { border-left: 5px solid var(--color-accent-fill); padding-left: 18px; }
 .header-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
 .header-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; line-height: 1.1; text-wrap: balance; }
 .header-sub { margin-top: 12px; font-size: 15px; color: var(--color-text-muted); max-width: 52ch; line-height: 1.65; }
@@ -29,7 +29,9 @@ body { padding-inline: 16px; padding-block: 48px; }
 .section { display: flex; flex-direction: column; gap: 20px; }
 .section-head { display: flex; align-items: baseline; gap: 12px; }
 .section-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; }
-.section-rule { flex: 1; height: 1px; background: var(--color-border-subtle); }
+.section-rule { flex: 1; height: 2px; background: linear-gradient(to right, var(--color-accent-fill) 0, var(--color-accent-fill) 48px, var(--color-border-subtle) 48px); }
+.palette { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+.palette-tile { min-height: 72px; padding: 10px 12px; border: 1px solid var(--color-border-subtle); border-radius: var(--r-lg); font-size: var(--text-xs); font-weight: 600; display: flex; align-items: flex-end; }
 
 /* Type scale */
 .type-scale { display: flex; flex-direction: column; }
@@ -128,8 +130,7 @@ body { padding-inline: 16px; padding-block: 48px; }
 .tokens-table td { padding: 8px 12px; border-bottom: 1px solid var(--color-border); vertical-align: middle; }
 .tokens-table tr:last-child td { border-bottom: none; }
 .tokens-table code { font-family: var(--font-mono); font-size: 10.5px; background: var(--color-surface); padding: 2px 6px; border-radius: 3px; }
-.col-dark { background: rgba(0, 0, 0, 0.15); }
-.col-light { background: rgba(255, 255, 255, 0.04); }
+.col-dark { background: var(--color-surface); }
 .chip { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10.5px; }
 .chip-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(128, 128, 128, 0.5); }
 
