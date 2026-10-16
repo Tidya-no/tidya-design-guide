@@ -1,26 +1,19 @@
 # Tidya Design Guide
 
-Designspråket for Tidya: farger, typografi, komponenter og tokens, med mørk og lys modus. Et varmt grensesnitt bygget på amber og brune toner.
+Designspråket for Tidya: tokens, komponenter og regler, med mørk og lys modus. Et varmt grensesnitt bygget på amber og brune toner. Statisk, uten byggesteg.
 
 **Live:** https://tidya-no.github.io/tidya-design-guide/
 
-Guiden er en statisk side uten byggesteg. Åpne `index.html` i nettleseren, eller bruk `tokens.css` direkte i egne prosjekter.
-
-## Innhold
+## Filer
 
 | Fil | Formål |
 |---|---|
-| `index.html` | Visuell guide: farger, typografi, komponenter, kanter, radius, bevegelse og token-tabell |
-| `DESIGN.md` | Korte regler for utviklere og AI: token til bruk, komponenter, htmx-mønstre, norsk UI-tekst, valgfri shadcn-mapping |
-| `components.css` | Komponenter som ren CSS (knapper, skjema, tabell, melding, kort, htmx-tilstander) |
-| `tokens.css` | Kilden til sannhet: CSS-variabler for begge moduser, `@font-face` og radius/overgangstokens |
-| `styles.css` | Stiler for selve guidesiden (layout, swatches, demo-oppsett) |
-| `theme.js` | Bryter for mørk/lys modus (følger OS, kan overstyres og huskes) |
+| `tokens.css` | Kilden til sannhet: farger (mørk og lys), typografi, avstand, radius, overganger, `@font-face` |
+| `components.css` | Komponenter som ren CSS: knapper, skjema, tabell, kort, melding, dialog, htmx-tilstander |
+| `DESIGN.md` | Regler for utviklere og AI: token til bruk, komponenter, htmx-mønstre, norsk UI-tekst |
+| `DESIGN-shadcn.md` | Valgfritt: mapping til shadcn/ui for React-apper |
+| `index.html`, `styles.css`, `theme.js` | Den visuelle guiden |
 | `fonts/` | Selvhostede Inter og Fraunces (woff2, SIL OFL 1.1) |
-
-## Publisering
-
-Guiden publiseres til [GitHub Pages](https://tidya-no.github.io/tidya-design-guide/) av `.github/workflows/pages.yml` ved hver push til `main`. Krever at Settings → Pages → Source er satt til **GitHub Actions**.
 
 ## Bruk
 
@@ -29,29 +22,19 @@ Guiden publiseres til [GitHub Pages](https://tidya-no.github.io/tidya-design-gui
 <link rel="stylesheet" href="components.css">
 ```
 
-```css
-.button {
-	background: var(--color-accent-fill);
-	color: var(--color-on-accent);
-}
-```
-
-Mørk modus er standard. Lys modus aktiveres av OS-innstillingen (`prefers-color-scheme: light`), eller eksplisitt med `data-theme="light"` / `data-theme="dark"` på `<html>`.
-
-## Prinsipper
-
-- **Tekstkontrast:** all tekst har minst 4,5:1 mot `--color-bg` og `--color-surface` (WCAG AA).
-- **Kontroller:** kanter som markerer UI-elementer (input, ghost-knapp, drop-soner) har minst 3:1. Bruk `--color-border-control` og `--color-accent-border`. De dekorative `--color-border*` er kun for skiller.
-- **Aksent har to roller:** `--color-accent` til tekst, lenker og fokusring (mørk brun i lys modus), `--color-accent-fill` til flater som knapper, alltid `#ffbe0b` med `--color-on-accent` som tekst.
-- **Status:** feil, suksess, advarsel og info har egne tokens (`--color-error`, `-success`, `-warning`, `-info` + `-bg`). Status må alltid bæres av ikon eller tekst, ikke farge alene.
-- **Avstand:** bruk kun `--space-1…7` (4–48px) til padding, margin og gap.
-- **Fonter:** Fraunces til display og overskrifter, Inter til brødtekst og UI. Selvhostet, ingen Google Fonts og ingen tredjepartsforespørsler.
+Mørk modus er standard. Lys modus følger OS (`prefers-color-scheme: light`) eller settes med `data-theme="light"` / `"dark"` på `<html>`. Reglene står i `DESIGN.md`.
 
 ## Endre tokens
 
-1. Endre verdiene i `tokens.css` (mørk, `prefers-color-scheme: light` og `data-theme="light"` må holdes i takt).
+1. Endre verdiene i `tokens.css`. Lys modus er definert to steder (`prefers-color-scheme` og `data-theme="light"`) som må holdes i takt.
 2. Sjekk kontrasten på nytt: tekst 4,5:1, kontroller 3:1.
-3. Oppdater `index.html` slik at swatches og token-tabellen stemmer.
+3. Oppdater fargetabellen i `index.html`.
+
+## Publisering
+
+`.github/workflows/pages.yml` publiserer til GitHub Pages ved push til `main`. Krever Settings → Pages → Source: **GitHub Actions**.
+
+`.github/workflows/kvalitet.yml` kjører html-validate og axe (mørk/lys, 320/1100 px, med dialog) på alle PR-er, og før hver publisering. Config og script ligger i `.github/qa/`.
 
 ## Lisens
 

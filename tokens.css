@@ -31,7 +31,6 @@
 	--color-text:                 #ffffff;
 	--color-text-secondary:       #d4a88f;
 	--color-text-muted:           rgba(255, 255, 255, 0.50);
-	--color-text-placeholder:     rgba(255, 255, 255, 0.50);
 	--color-accent:               #ffbe0b;
 	--color-accent-hover:         #ffc933;
 	--color-accent-fill:          #ffbe0b;
@@ -49,13 +48,10 @@
 	--color-info-bg:              rgba(108, 182, 255, 0.12);
 	--color-border:               rgba(255, 255, 255, 0.06);
 	--color-border-subtle:        rgba(255, 255, 255, 0.10);
-	--color-border-medium:        rgba(255, 255, 255, 0.15);
 	--color-border-control:       rgba(255, 255, 255, 0.34);
 	--color-accent-border:        rgba(255, 190, 11, 0.46);
-	--color-accent-border-dashed: rgba(255, 190, 11, 0.46);
 	--color-accent-bg-subtle:     rgba(255, 190, 11, 0.05);
 	--color-focus-halo:            rgba(255, 190, 11, 0.18);
-	--shadow-sm:                  0 1px 2px rgba(0, 0, 0, 0.40);
 	--shadow-md:                  0 4px 12px rgba(0, 0, 0, 0.45);
 	--shadow-lg:                  0 12px 32px rgba(0, 0, 0, 0.55);
 	--color-overlay:              rgba(0, 0, 0, 0.60);
@@ -75,12 +71,6 @@
 	--leading-normal: 1.6;
 
 	--font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
-
-	--z-sticky:   10;
-	--z-dropdown: 20;
-	--z-overlay:  30;
-	--z-modal:    40;
-	--z-toast:    50;
 
 	--r-sm: 4px;
 	--r-md: 6px;
@@ -107,7 +97,6 @@
 		--color-text:                 #1a1816;
 		--color-text-secondary:       #7a4a2e;
 		--color-text-muted:           rgba(26, 24, 22, 0.65);
-		--color-text-placeholder:     rgba(26, 24, 22, 0.62);
 		--color-accent:               #8a5d00;
 		--color-accent-hover:         #6b4900;
 		--color-accent-fill:          #ffbe0b;
@@ -124,13 +113,10 @@
 		--color-info-bg:              rgba(26, 90, 158, 0.10);
 		--color-border:               rgba(26, 24, 22, 0.07);
 		--color-border-subtle:        rgba(26, 24, 22, 0.12);
-		--color-border-medium:        rgba(26, 24, 22, 0.20);
 		--color-border-control:       rgba(26, 24, 22, 0.49);
 		--color-accent-border:        rgba(138, 93, 0, 0.76);
-		--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 		--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
 		--color-focus-halo:            rgba(255, 190, 11, 0.45);
-		--shadow-sm:                  0 1px 2px rgba(26, 24, 22, 0.08);
 		--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.12);
 		--shadow-lg:                  0 12px 32px rgba(26, 24, 22, 0.16);
 		--color-overlay:              rgba(26, 24, 22, 0.45);
@@ -144,7 +130,6 @@
 	--color-text:                 #1a1816;
 	--color-text-secondary:       #7a4a2e;
 	--color-text-muted:           rgba(26, 24, 22, 0.65);
-	--color-text-placeholder:     rgba(26, 24, 22, 0.62);
 	--color-accent:               #8a5d00;
 	--color-accent-hover:         #6b4900;
 	--color-accent-fill:          #ffbe0b;
@@ -161,13 +146,10 @@
 	--color-info-bg:              rgba(26, 90, 158, 0.10);
 	--color-border:               rgba(26, 24, 22, 0.07);
 	--color-border-subtle:        rgba(26, 24, 22, 0.12);
-	--color-border-medium:        rgba(26, 24, 22, 0.20);
 	--color-border-control:       rgba(26, 24, 22, 0.49);
 	--color-accent-border:        rgba(138, 93, 0, 0.76);
-	--color-accent-border-dashed: rgba(138, 93, 0, 0.76);
 	--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
 	--color-focus-halo:            rgba(255, 190, 11, 0.45);
-	--shadow-sm:                  0 1px 2px rgba(26, 24, 22, 0.08);
 	--shadow-md:                  0 4px 12px rgba(26, 24, 22, 0.12);
 	--shadow-lg:                  0 12px 32px rgba(26, 24, 22, 0.16);
 	--color-overlay:              rgba(26, 24, 22, 0.45);
