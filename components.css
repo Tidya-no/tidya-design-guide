@@ -39,6 +39,17 @@ a:hover { color: var(--color-accent-hover); }
 .btn-primary:active { transform: translateY(0); }
 .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
+.btn-danger {
+	display: inline-flex; align-items: center; gap: 6px;
+	padding: 0.65rem 1.25rem; font-size: 0.9375rem; font-weight: 600;
+	cursor: pointer; background: var(--color-error); color: var(--color-bg);
+	border: none; border-radius: var(--r-md); letter-spacing: 0.01em;
+	transition: background var(--t-fast);
+	font-family: inherit;
+}
+.btn-danger:hover { background: color-mix(in srgb, var(--color-error) 85%, var(--color-text)); }
+.btn-danger:disabled { opacity: 0.4; cursor: not-allowed; }
+
 .btn-ghost {
 	display: inline-flex; align-items: center; gap: 6px;
 	padding: 0.5rem 0.9rem; font-size: 0.875rem; font-weight: 500;
@@ -126,6 +137,17 @@ a:hover { color: var(--color-accent-hover); }
 .alert-title { font-weight: 600; }
 .alert-body { color: var(--color-text-secondary); font-size: var(--text-sm); }
 
+/* Dialog: native <dialog>, åpnes med showModal() */
+.dialog {
+	margin: auto; padding: var(--space-5); width: min(420px, calc(100% - 2 * var(--space-4)));
+	background: var(--color-surface); color: var(--color-text);
+	border: 1px solid var(--color-border-subtle); border-radius: var(--r-xl); box-shadow: var(--shadow-lg);
+}
+.dialog::backdrop { background: var(--color-overlay); }
+.dialog-title { font-size: var(--text-lg); font-weight: 600; line-height: 1.4; margin-bottom: var(--space-2); }
+.dialog-body { color: var(--color-text-secondary); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-5); }
+
 /* Tabell */
 .table-wrap { overflow-x: auto; border: 1px solid var(--color-border-subtle); border-radius: var(--r-xl); }
 .table { width: 100%; border-collapse: collapse; font-size: var(--text-base); }
@@ -150,8 +172,8 @@ a:hover { color: var(--color-accent-hover); }
 	border: 2px solid currentColor; border-top-color: transparent; animation: spin 0.7s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.htmx-request.btn-primary, .htmx-request.btn-ghost,
-.htmx-request .btn-primary[type="submit"], .htmx-request .btn-ghost[type="submit"] { pointer-events: none; opacity: 0.7; }
+.htmx-request.btn-primary, .htmx-request.btn-ghost, .htmx-request.btn-danger,
+.htmx-request .btn-primary[type="submit"], .htmx-request .btn-ghost[type="submit"], .htmx-request .btn-danger[type="submit"] { pointer-events: none; opacity: 0.7; }
 .htmx-swapping { opacity: 0.4; transition: opacity var(--t-fast); }
 [aria-busy="true"] { opacity: 0.6; }
 
