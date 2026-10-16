@@ -1,0 +1,74 @@
+/* Tidya design tokens — mørk modus er standard, lys følger OS eller data-theme="light" */
+:root {
+	/* Mørk modus */
+	--color-bg:                   #1a1816;
+	--color-surface:              #272422;
+	--color-text:                 #ffffff;
+	--color-text-secondary:       #d4a88f;
+	--color-text-muted:           rgba(255, 255, 255, 0.50);
+	--color-text-placeholder:     rgba(255, 255, 255, 0.50);
+	--color-accent:               #ffbe0b;
+	--color-accent-hover:         #ffc933;
+	--color-label:                #e0956d;
+	--color-link:                 #d4a88f;
+	--color-error:                #ff5252;
+	--color-border:               rgba(255, 255, 255, 0.06);
+	--color-border-subtle:        rgba(255, 255, 255, 0.10);
+	--color-border-medium:        rgba(255, 255, 255, 0.15);
+	--color-accent-border:        rgba(255, 190, 11, 0.35);
+	--color-accent-border-dashed: rgba(255, 190, 11, 0.40);
+	--color-accent-bg-subtle:     rgba(255, 190, 11, 0.05);
+
+	--font-body:    'Inter', system-ui, sans-serif;
+	--font-display: 'Fraunces', Georgia, serif;
+
+	--r-sm: 4px;
+	--r-md: 6px;
+	--r-lg: 8px;
+	--r-xl: 10px;
+
+	--t-fast: 0.15s ease;
+	--t-lift: 0.1s ease;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme="dark"]) {
+		--color-bg:                   #f7f3ee;
+		--color-surface:              #ede8e1;
+		--color-text:                 #1a1816;
+		--color-text-secondary:       #7a4a2e;
+		--color-text-muted:           rgba(26, 24, 22, 0.65);
+		--color-text-placeholder:     rgba(26, 24, 22, 0.62);
+		--color-accent:               #8a5d00;
+		--color-accent-hover:         #6b4900;
+		--color-label:                #9c3d1a;
+		--color-link:                 #7a4a2e;
+		--color-error:                #c82020;
+		--color-border:               rgba(26, 24, 22, 0.07);
+		--color-border-subtle:        rgba(26, 24, 22, 0.12);
+		--color-border-medium:        rgba(26, 24, 22, 0.20);
+		--color-accent-border:        rgba(138, 93, 0, 0.45);
+		--color-accent-border-dashed: rgba(138, 93, 0, 0.50);
+		--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
+	}
+}
+
+:root[data-theme="light"] {
+	--color-bg:                   #f7f3ee;
+	--color-surface:              #ede8e1;
+	--color-text:                 #1a1816;
+	--color-text-secondary:       #7a4a2e;
+	--color-text-muted:           rgba(26, 24, 22, 0.65);
+	--color-text-placeholder:     rgba(26, 24, 22, 0.62);
+	--color-accent:               #8a5d00;
+	--color-accent-hover:         #6b4900;
+	--color-label:                #9c3d1a;
+	--color-link:                 #7a4a2e;
+	--color-error:                #c82020;
+	--color-border:               rgba(26, 24, 22, 0.07);
+	--color-border-subtle:        rgba(26, 24, 22, 0.12);
+	--color-border-medium:        rgba(26, 24, 22, 0.20);
+	--color-accent-border:        rgba(138, 93, 0, 0.45);
+	--color-accent-border-dashed: rgba(138, 93, 0, 0.50);
+	--color-accent-bg-subtle:     rgba(196, 138, 0, 0.10);
+}
