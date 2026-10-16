@@ -2,6 +2,8 @@
 
 Designspråket for Tidya: farger, typografi, komponenter og tokens, med mørk og lys modus. Et varmt grensesnitt bygget på amber og brune toner.
 
+**Live:** https://tidya-no.github.io/tidya-design-guide/
+
 Guiden er en statisk side uten byggesteg. Åpne `index.html` i nettleseren, eller bruk `tokens.css` direkte i egne prosjekter.
 
 ## Innhold
@@ -18,7 +20,7 @@ Guiden er en statisk side uten byggesteg. Åpne `index.html` i nettleseren, elle
 
 ## Publisering
 
-Guiden publiseres til GitHub Pages av `.github/workflows/pages.yml` ved hver push til `main`. Krever at Settings → Pages → Source er satt til **GitHub Actions**.
+Guiden publiseres til [GitHub Pages](https://tidya-no.github.io/tidya-design-guide/) av `.github/workflows/pages.yml` ved hver push til `main`. Krever at Settings → Pages → Source er satt til **GitHub Actions**.
 
 ## Bruk
 
