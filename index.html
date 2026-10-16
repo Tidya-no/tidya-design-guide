@@ -159,16 +159,16 @@
 
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Bevegelse</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Hold musepekeren over radene for å se overgangstiden.</p>
+		<p class="motion-note">Bevegelse er bevisst minimal: to korte overganger som gir tilbakemelding på hover. Hold musepekeren over flatene.</p>
 		<div class="motion-demo">
-			<div class="motion-row"><span class="motion-label">Farge</span><div class="motion-bar-wrap"><div class="motion-bar"></div></div><span class="motion-val">background 0.15s ease</span></div>
-			<div class="motion-row fast"><span class="motion-label">Løft</span><div class="motion-bar-wrap"><div class="motion-bar"></div></div><span class="motion-val">translateY(-1px) 0.1s</span></div>
+			<div class="motion-tile color"><span class="name">Farge og kant</span><span class="val">--t-fast: 0.15s ease</span></div>
+			<div class="motion-tile lift"><span class="name">Løft</span><span class="val">--t-lift: 0.1s ease · translateY(-1px)</span></div>
 		</div>
 		<div class="info-bar">
 			Primærknapp: <code>background 0.15s ease</code> + <code>transform 0.1s ease</code><br>
 			Ghost-knapp: <code>background, border-color 0.15s ease</code><br>
 			Fokus: <code>:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }</code><br>
-			Respekter <code>prefers-reduced-motion</code>.
+			Med <code>prefers-reduced-motion: reduce</code> slås alle overganger av.
 		</div>
 	</section>
 
