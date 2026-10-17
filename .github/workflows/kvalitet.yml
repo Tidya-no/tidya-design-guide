@@ -29,3 +29,8 @@ jobs:
         run: node .github/qa/axe.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/qa/node_modules
+
+      - name: Eksemplene i DESIGN.md (html-validate og axe)
+        run: node .github/qa/eksempler.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/qa/node_modules

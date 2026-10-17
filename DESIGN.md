@@ -54,7 +54,7 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 | Avstand | `--space-1…7` = 4, 8, 12, 16, 24, 32, 48 px |
 | Radius | `--r-sm` 4 · `--r-md` 6 (knapper) · `--r-lg` 8 (inputs) · `--r-xl` 10 (kort, dialog) |
 
-Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), men beholder amber (`#ffbe0b`) på flater. `card` har 2px linje øverst og `table th` 1px linje under i dempet amber (`--color-accent-border`). Hold slike aksenter subtile.
+Aksent har to roller fordi amber ikke kan være tekst på lys bakgrunn (derfor `#8a5d00` som tekst i lys modus). `card` har 2px linje øverst og `table th` 1px linje under i dempet amber (`--color-accent-border`). Hold slike aksenter subtile.
 
 ## Logo og ikoner (`brand/`)
 
@@ -66,12 +66,7 @@ Merkevaren er ordmerket «Tidya» med en gul prikk. Prikken er `#ffbe0b`, samme 
 | `brand/favicon.ico` | Fallback (16, 32, 48 px) |
 | `brand/apple-touch-icon.png` | iOS-hjemmeskjerm (180×180, prikk på mørk `--color-bg`, må være ugjennomsiktig) |
 
-Logo: velg variant etter bakgrunn, ikke etter modus:
-
-| Fil | Bruk |
-|---|---|
-| `brand/logo-lys-bakgrunn.svg` | Mørk logo (`--color-text` lys modus) på lys bakgrunn |
-| `brand/logo-mork-bakgrunn.svg` | Lys logo (`--color-text` mørk modus) på mørk bakgrunn |
+Logo: velg variant etter bakgrunn, ikke etter modus. `brand/logo-lys-bakgrunn.svg` er mørk logo for lys bakgrunn, `brand/logo-mork-bakgrunn.svg` er lys logo for mørk bakgrunn.
 
 ```html
 <img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
