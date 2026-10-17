@@ -153,6 +153,17 @@ body { padding-inline: 16px; padding-block: 48px; }
 .logo-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-3); }
 .logo-panel { display: flex; align-items: center; justify-content: center; padding: var(--space-6); border: 1px solid var(--color-border-subtle); border-radius: var(--r-xl); }
 .logo-panel img { display: block; height: 56px; width: auto; }
+.icon-tabs { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.icon-tab { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--r-lg) var(--r-lg) 0 0; font-size: var(--text-sm); min-width: 220px; }
+.icon-tab img { display: block; }
+.icon-tab-light { background: #fbf6ea; color: #1a1816; }
+.icon-tab-dark { background: #1c1712; color: #f5efe6; border: 1px solid var(--color-border-subtle); }
+.icon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-3); }
+.icon-card { display: flex; gap: var(--space-4); align-items: center; padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--r-xl); }
+.icon-card img { flex-shrink: 0; }
+.icon-card .icon-apple { border-radius: 22.5%; }
+.icon-card strong, .icon-card span { display: block; }
+.icon-card span { font-size: var(--text-sm); color: var(--color-text-secondary); margin-top: var(--space-1); }
 /* Fast bakgrunn uansett tema (samme verdier som --color-bg i lys og mørk modus) */
 .logo-panel-light { background: #fbf6ea; }
 .logo-panel-dark { background: #1c1712; }

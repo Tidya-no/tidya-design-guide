@@ -67,12 +67,28 @@
 	<section class="section" id="logo">
 		<div class="section-head"><h2 class="section-title">Logo og ikoner</h2><div class="section-rule"></div></div>
 		<p class="motion-note">Ordmerket <code>Tidya</code> med gul prikk (<code>--color-accent-fill</code>). To varianter: mørk logo på lys bakgrunn og lys logo på mørk bakgrunn. Minstehøyde 24 px, frirom minst prikkens diameter på alle sider. Ikke strekk, farge om eller legg på bilder. Filene ligger i <code>brand/</code>.</p>
+		<h3 class="sub-title">Logo</h3>
 		<div class="logo-panels">
 			<div class="logo-panel logo-panel-light"><img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="56"></div>
 			<div class="logo-panel logo-panel-dark"><img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="56"></div>
 		</div>
 		<pre class="code" tabindex="0"><code>&lt;img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;   &lt;!-- på lys bakgrunn --&gt;
 &lt;img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;  &lt;!-- på mørk bakgrunn --&gt;</code></pre>
+
+		<h3 class="sub-title">Fav-ikon</h3>
+		<p class="motion-note">Fav-ikonet er det lille bildet i nettleserfanen, bokmerker og historikk. Her er det bare prikken, fordi hele logoen blir uleselig i 16 px. Tre filer dekker alle enheter. Hver app må lenke til dem i <code>&lt;head&gt;</code>, ellers vises ingen ikon. Denne siden bruker de samme filene, så du ser dem i fanen din nå.</p>
+		<div class="icon-tabs">
+			<div class="icon-tab icon-tab-light"><img src="brand/favicon.svg" alt="" width="16" height="16"><span>Tidya Design Guide</span></div>
+			<div class="icon-tab icon-tab-dark"><img src="brand/favicon.svg" alt="" width="16" height="16"><span>Tidya Design Guide</span></div>
+		</div>
+		<div class="icon-grid">
+			<div class="icon-card"><img src="brand/favicon.svg" alt="" width="48" height="48"><div><strong><code>favicon.svg</code></strong><span>Fanen i moderne nettlesere. Skarp i alle størrelser.</span></div></div>
+			<div class="icon-card"><img src="brand/favicon.ico" alt="" width="48" height="48"><div><strong><code>favicon.ico</code></strong><span>Fallback for eldre nettlesere og verktøy (16, 32 og 48 px).</span></div></div>
+			<div class="icon-card"><img class="icon-apple" src="brand/apple-touch-icon.png" alt="" width="48" height="48"><div><strong><code>apple-touch-icon.png</code></strong><span>Når noen legger siden på hjemmeskjermen på iPhone (180 × 180 px, mørk bakgrunn, iOS runder hjørnene).</span></div></div>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;link rel="icon" href="brand/favicon.ico" sizes="32x32"&gt;
+&lt;link rel="icon" href="brand/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="apple-touch-icon" href="brand/apple-touch-icon.png"&gt;</code></pre>
 	</section>
 
 	<section class="section">
