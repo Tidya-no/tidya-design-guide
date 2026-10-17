@@ -25,7 +25,7 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-6); }
 ```
 
-- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus, som i `index.html`.
+- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus: `#1c1712` (mørk) og `#fbf6ea` (lys).
 
 ## Regler
 
@@ -113,15 +113,73 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Dialog | `<dialog class="dialog">` med `dialog-title`, `-body`, `-actions`, åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `-title`, `-body` |
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
-| Hjelp | `tnum`, `sr-only`, `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
+| Hjelp | `tnum`, `sr-only`, `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
 | Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
 
+- Én `btn-primary` per visning (hovedhandlingen), resten `btn-ghost`. Åpne-knapper og andre sekundære handlinger er `btn-ghost`, men den som åpner den viktigste dialogen på siden kan være `btn-primary`.
 - Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
 - Status i en tabellcelle er ren tekst (status bæres ikke av farge alene). Det finnes ingen badge ennå.
 - Feil på felt vises ved feltet (`field-error`). En `alert` er for resultatet av hele handlingen («Kunne ikke lagre. Prøv igjen.») og erstatter ikke feltfeilen. Suksess og andre beskjeder legges i `role="status"`-regionen (`#status`), også i statisk HTML.
 - Feil på felt: `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse. Synlig `label`, placeholder erstatter den ikke.
 - `color-scheme` er satt i `tokens.css`, så native kontroller følger modus.
 - Mangler en komponent (tabs, paginering, meny)? Legg den til i `components.css` og guiden først, ikke lokalt i appen. Toast som lukker seg selv er bevisst utelatt (WCAG 2.2.1): bruk `role="status"`-meldingen.
+
+### Eksempler (kopier og tilpass)
+
+```html
+<!-- Knapper -->
+<button class="btn-primary" type="button">Lagre</button>
+<button class="btn-ghost" type="button">Avbryt</button>
+
+<!-- Felt med feil -->
+<div class="field">
+	<label class="label" for="epost">E-post</label>
+	<input class="input" id="epost" name="epost" type="email" aria-invalid="true" aria-describedby="epost-feil">
+	<p class="field-error" id="epost-feil">Ugyldig e-postadresse.</p>
+</div>
+
+<!-- Tabell (navnet i aria-label er unikt på siden) -->
+<div class="table-wrap" tabindex="0" role="region" aria-label="Kundeliste">
+	<table class="table">
+		<caption class="sr-only">Kunder</caption>
+		<thead><tr><th scope="col">Navn</th><th scope="col" class="num">Beløp</th></tr></thead>
+		<tbody><tr><td>Fjordbris AS</td><td class="num">48&nbsp;500,00&nbsp;kr</td></tr></tbody>
+	</table>
+</div>
+
+<!-- Kort og forklarende tekst -->
+<div class="card"><p class="card-title">Tittel</p><p class="card-body">Innhold.</p></div>
+<p class="note">Vises i oversikten.</p>
+
+<!-- Melding i status-regionen -->
+<div id="status" role="status" aria-live="polite">
+	<div class="alert success"><span class="alert-icon" aria-hidden="true">✓</span><div><p class="alert-title">Lagret</p><p class="alert-body">Endringene er lagret.</p></div></div>
+</div>
+
+<!-- Bekreft-dialog -->
+<dialog class="dialog" id="slett" aria-labelledby="slett-tittel" aria-describedby="slett-tekst">
+	<h2 class="dialog-title" id="slett-tittel">Slette kunden?</h2>
+	<p class="dialog-body" id="slett-tekst">Dette kan ikke angres.</p>
+	<form class="dialog-actions" method="dialog">
+		<button class="btn-ghost" value="avbryt" autofocus>Avbryt</button>
+		<button class="btn-danger" value="slett">Slett kunde</button>
+	</form>
+</dialog>
+
+<!-- Skjema i dialog -->
+<dialog class="dialog" id="ny-kunde" aria-labelledby="ny-kunde-tittel">
+	<h2 class="dialog-title" id="ny-kunde-tittel">Ny kunde</h2>
+	<form class="stack" method="dialog">
+		<div class="field"><label class="label" for="navn">Navn</label><input class="input" id="navn" name="navn" type="text" autofocus></div>
+		<div class="dialog-actions">
+			<button class="btn-ghost" value="avbryt" formnovalidate>Avbryt</button>
+			<button class="btn-primary" value="lagre">Legg til kunde</button>
+		</div>
+	</form>
+</dialog>
+```
+
+Åpne en dialog med `document.getElementById('id').showModal()`. Flere eksempler (valg, logo, htmx) står under og i guiden.
 
 ### htmx-mønstre (testet mot htmx 2.0, Chromium, mørk og lys, axe 0 brudd)
 
@@ -137,7 +195,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 - Bokmål, kort og konkret, «du». `<html lang="nb">`. Aldri æ/ø/å som ae/oe/aa i UI-tekst.
 - Store bokstaver kun i første ord og egennavn. Knapper: verb i imperativ med objekt («Lagre», «Legg til kunde»), ikke «OK» eller «Submit». Unntak: en knapp som bare åpner noe (dialog, side) kan være et substantiv som «Ny kunde».
 - Feilmelding: hva som skjedde og hva brukeren kan gjøre («Kunne ikke lagre. Prøv igjen.»), aldri «Feil!» alene. Tom tilstand: forklar og tilby én handling.
-- Bruk `Intl` med `nb-NO`, aldri håndformatering. Mellomrom i tall og før `kr`/`%` er hardt mellomrom (U+00A0). I statisk HTML skriver du `&nbsp;` mellom tall og enhet og ekte minustegn (`−`, U+2212) for hånd.
+- Bruk `Intl` med `nb-NO`, aldri håndformatering. Mellomrom i tall (også tusenskille) og før `kr`/`%` er hardt mellomrom (U+00A0). Beløp skrives med `kr` i UI, ikke «NOK». I statisk HTML skriver du `&nbsp;` mellom tall og enhet og ekte minustegn (`−`, U+2212) for hånd.
 
 | Hva | Kode | Resultat |
 |---|---|---|

@@ -79,6 +79,7 @@ tc=dict((mm,v.lower()) for v,mm in re.findall(r'<meta name="theme-color" content
 ok(tc=={'dark':D['--color-bg'].lower(),'light':LT['--color-bg'].lower()},f'theme-color i index.html følger --color-bg ({tc})')
 key=re.search(r"localStorage\.getItem\('([^']+)'\)",idx); tkey=re.search(r"storageKey = '([^']+)'",th)
 ok(bool(key and tkey) and key.group(1)==tkey.group(1),'tema-nøkkelen i <head>-scriptet er den samme som i theme.js')
+ok(D['--color-bg'].lower() in des.lower() and LT['--color-bg'].lower() in des.lower(),'DESIGN.md nevner hex for theme-color (mørk og lys --color-bg)')
 print('E. Fargetabellen i guiden mot tokens.css')
 def parse(v):
 	v=v.strip(); m=re.match(r'#([0-9a-f]{6})$',v)

@@ -73,7 +73,6 @@ body { padding-inline: 16px; padding-block: 48px; }
 .radius-box .rval { font-family: var(--font-mono); font-size: 10px; color: var(--color-text-muted); text-align: center; }
 
 /* Motion */
-.note { font-size: 13px; color: var(--color-text-muted); }
 .motion-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
 .motion-tile {
 	display: flex; flex-direction: column; gap: 6px; padding: 18px 16px;
