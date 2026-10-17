@@ -60,6 +60,8 @@ while pos<len(png):
 first=zlib.decompress(chunks)[1:1+ch] if ch else b''  # første piksel er uavhengig av PNG-filter
 ok(ch>0 and '#%02x%02x%02x'%tuple(first[:3])==D['--color-bg'].lower(),f'brand/apple-touch-icon.png har mørk --color-bg ({D["--color-bg"]}) som bakgrunn')
 ok('cp -r brand' in yml,'pages.yml kopierer brand/')
+need=sorted(os.path.basename(f) for f in glob.glob('fonts/*.woff2')+glob.glob('brand/*'))
+ok(all(n in des for n in need),f'DESIGN.md (Kom i gang) nevner alle filer i fonts/ og brand/ {[n for n in need if n not in des]}')
 LT={**D,**L}
 want={'brand/favicon.svg':set(),'brand/logo-lys-bakgrunn.svg':{LT['--color-text']},'brand/logo-mork-bakgrunn.svg':{D['--color-text']}}
 for f in sorted(glob.glob('brand/*.svg')):
