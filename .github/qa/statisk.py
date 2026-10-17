@@ -72,6 +72,10 @@ pl=re.search(r'\.logo-panel-light \{ background: (#[0-9a-fA-F]{6})',sty); pd=re.
 ok(bool(pl and pd) and pl.group(1).lower()==LT['--color-bg'].lower() and pd.group(1).lower()==D['--color-bg'].lower(),'logo-panelene i styles.css har --color-bg for lys og mørk modus')
 tl=re.search(r'\.icon-tab-light \{ background: (#[0-9a-fA-F]{6}); color: (#[0-9a-fA-F]{6})',sty); td=re.search(r'\.icon-tab-dark \{ background: (#[0-9a-fA-F]{6}); color: (#[0-9a-fA-F]{6})',sty)
 ok(bool(tl and td) and [x.lower() for x in tl.groups()]==[LT['--color-bg'].lower(),LT['--color-text'].lower()] and [x.lower() for x in td.groups()]==[D['--color-bg'].lower(),D['--color-text'].lower()],'fane-eksemplene i styles.css har --color-bg og --color-text for lys og mørk modus')
+tc=dict((mm,v.lower()) for v,mm in re.findall(r'<meta name="theme-color" content="(#[0-9a-fA-F]{6})" media="\(prefers-color-scheme: (dark|light)\)">',idx))
+ok(tc=={'dark':D['--color-bg'].lower(),'light':LT['--color-bg'].lower()},f'theme-color i index.html følger --color-bg ({tc})')
+key=re.search(r"localStorage\.getItem\('([^']+)'\)",idx); tkey=re.search(r"storageKey = '([^']+)'",th)
+ok(bool(key and tkey) and key.group(1)==tkey.group(1),'tema-nøkkelen i <head>-scriptet er den samme som i theme.js')
 print('E. Fargetabellen i guiden mot tokens.css')
 def parse(v):
 	v=v.strip(); m=re.match(r'#([0-9a-f]{6})$',v)
@@ -88,7 +92,7 @@ bad=[]
 for t,dc,lc,use in rows:
 	if '*' in t or t=='--color-link': continue
 	for mode,cell,src in (('mørk',dc,D),('lys',lc,Lg)):
-		m=re.search(r'</span>(#[0-9a-f]{6})</span>$',cell) or re.search(r'^(rgba\([^)]*\))$',cell)
+		m=re.search(r'</span>(#[0-9a-f]{6}|rgba\([^)]*\))</span>$',cell) or re.search(r'^(rgba\([^)]*\))$',cell)
 		s=m.group(1) if m else None
 		s2=re.sub(r'(?<=,)\.(\d+)\)',r'0.\1)',s) if s else s
 		a=tuple(round(x,2) for x in parse(s2)) if s2 else None; b=tuple(round(x,2) for x in parse(src[t]))
