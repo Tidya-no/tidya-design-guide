@@ -33,7 +33,7 @@ Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), m
 
 ## Logo og ikoner (`brand/`)
 
-Merkevaren er en gul prikk: `#ffbe0b`, samme verdi som `--color-accent-fill`. Gult er en fast del av designspråket, så bruk aksentflaten og ikke en egen gul.
+Merkevaren er ordmerket «Tidya» med en gul prikk. Prikken er `#ffbe0b`, samme verdi som `--color-accent-fill`. Gult er en fast del av designspråket, så bruk aksentflaten og ikke en egen gul.
 
 | Fil | Bruk |
 |---|---|
@@ -41,7 +41,20 @@ Merkevaren er en gul prikk: `#ffbe0b`, samme verdi som `--color-accent-fill`. Gu
 | `brand/favicon.ico` | Fallback (16, 32, 48 px) |
 | `brand/apple-touch-icon.png` | iOS-hjemmeskjerm (180×180, prikk på mørk `--color-bg`, må være ugjennomsiktig) |
 
-Legg i `<head>` (relative stier, tilpass til appens struktur):
+Logo: velg variant etter bakgrunn, ikke etter modus:
+
+| Fil | Bruk |
+|---|---|
+| `brand/logo-lys-bakgrunn.svg` | Mørk logo (`--color-text` lys modus) på lys bakgrunn |
+| `brand/logo-mork-bakgrunn.svg` | Lys logo (`--color-text` mørk modus) på mørk bakgrunn |
+
+```html
+<img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+```
+
+Minstehøyde 24 px. Frirom minst prikkens diameter på alle sider. Ikke strekk, farge om, legg skygge eller legg logoen på bilder.
+
+Ikoner: legg i `<head>` (relative stier, tilpass til appens struktur):
 
 ```html
 <link rel="icon" href="brand/favicon.ico" sizes="32x32">
@@ -49,7 +62,7 @@ Legg i `<head>` (relative stier, tilpass til appens struktur):
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 ```
 
-Ikonfilene kan ikke lese CSS-variabler, så fargene er hardkodet. Endres `--color-accent-fill` eller mørk `--color-bg`, må ikonene lages på nytt (statisk sjekk feiler ellers). Ikke tegn en egen logo eller endre filene uten at eier sier fra. SVG-er skal være ekte vektor: ingen `<image>`, ingen `shape-rendering`, ingen eksterne `@import`/fonter (tekst som former), og `viewBox` uten faste `width`/`height`.
+Ikonfilene kan ikke lese CSS-variabler, så fargene er hardkodet. Endres `--color-accent-fill`, `--color-text` eller mørk `--color-bg`, må ikoner og logoer lages på nytt (statisk sjekk feiler ellers). Ikke tegn en egen logo eller endre filene uten at eier sier fra. SVG-er skal være ekte vektor: ingen `<image>`, ingen `shape-rendering`, ingen eksterne `@import`/fonter (tekst som former), og `viewBox` uten faste `width`/`height`.
 
 ## Komponenter (ren CSS)
 
