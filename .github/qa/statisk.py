@@ -44,6 +44,22 @@ ok({r for r in refs}<=set(sedl),f'cache-busting dekker {sedl}')
 ok(all(os.path.exists(f) for f in re.findall(r"url\('([^']+)'\)",tok)),'fontfiler finnes')
 ok(all(os.path.exists(x) for x in re.findall(r'`((?:DESIGN|README|AGENTS)\.md|tokens\.css|components\.css|index\.html)`',des+rd)),'filer nevnt i DESIGN.md/README finnes')
 # F-I
+# Ikoner: filene må finnes og fargene må følge tokens (fil-ikoner kan ikke lese CSS-variabler)
+icons=re.findall(r'<link rel="(?:icon|apple-touch-icon)" href="([^"]+)"',idx)
+ok(len(icons)==3 and all(os.path.exists(i) for i in icons),f'ikon-lenker i index.html peker på eksisterende filer {icons}')
+fill=re.search(r'fill="(#[0-9a-fA-F]{6})"',R('brand/favicon.svg'))
+ok(bool(fill) and fill.group(1).lower()==D['--color-accent-fill'].lower(),f'brand/favicon.svg bruker --color-accent-fill ({D["--color-accent-fill"]})')
+png=open('brand/apple-touch-icon.png','rb').read()
+import zlib,struct
+ct=png[25]; ch=3 if ct==2 else 4 if ct==6 else 0
+pos,chunks=8,b''
+while pos<len(png):
+	n=struct.unpack('>I',png[pos:pos+4])[0]
+	if png[pos+4:pos+8]==b'IDAT': chunks+=png[pos+8:pos+8+n]
+	pos+=12+n
+first=zlib.decompress(chunks)[1:1+ch] if ch else b''  # første piksel er uavhengig av PNG-filter
+ok(ch>0 and '#%02x%02x%02x'%tuple(first[:3])==D['--color-bg'].lower(),f'brand/apple-touch-icon.png har mørk --color-bg ({D["--color-bg"]}) som bakgrunn')
+ok('cp -r brand' in yml,'pages.yml kopierer brand/')
 print('E. Fargetabellen i guiden mot tokens.css')
 def parse(v):
 	v=v.strip(); m=re.match(r'#([0-9a-f]{6})$',v)
