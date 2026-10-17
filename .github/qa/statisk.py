@@ -1,6 +1,6 @@
 # Statiske konsistenssjekker: tokens, referanser, klasser, filer, fargetabell og kontrast.
 # Leser bare filene (ingen nettleser). Kjøres fra repo-roten eller hvor som helst: python3 .github/qa/statisk.py
-import re,os,sys
+import re,os,sys,glob
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..'))
 R=lambda f: open(f).read()
 tok,comp,sty,idx,des,rd,th,yml=[R(f) for f in ['tokens.css','components.css','styles.css','index.html','DESIGN.md','README.md','theme.js','.github/workflows/pages.yml']]
@@ -60,6 +60,16 @@ while pos<len(png):
 first=zlib.decompress(chunks)[1:1+ch] if ch else b''  # første piksel er uavhengig av PNG-filter
 ok(ch>0 and '#%02x%02x%02x'%tuple(first[:3])==D['--color-bg'].lower(),f'brand/apple-touch-icon.png har mørk --color-bg ({D["--color-bg"]}) som bakgrunn')
 ok('cp -r brand' in yml,'pages.yml kopierer brand/')
+LT={**D,**L}
+want={'brand/favicon.svg':set(),'brand/logo-lys-bakgrunn.svg':{LT['--color-text']},'brand/logo-mork-bakgrunn.svg':{D['--color-text']}}
+for f in sorted(glob.glob('brand/*.svg')):
+	svg=R(f); root=re.search(r'<svg[^>]*>',svg).group(0)
+	bad=[t for t in ('<image','base64','shape-rendering','clip-path','<mask','<filter','@import','<text','<style') if t in svg]
+	ok(not bad and 'viewBox' in root and not re.search(r'\s(width|height)=',root),f'{f}: ren vektor med viewBox og uten faste mål {bad}')
+	fills={x.lower() for x in re.findall(r'fill="(#[0-9a-fA-F]{6})"',svg)}
+	ok(f in want and fills=={D['--color-accent-fill'].lower()}|{c.lower() for c in want[f]},f'{f}: farger følger tokens {sorted(fills)}')
+pl=re.search(r'\.logo-panel-light \{ background: (#[0-9a-fA-F]{6})',sty); pd=re.search(r'\.logo-panel-dark \{ background: (#[0-9a-fA-F]{6})',sty)
+ok(bool(pl and pd) and pl.group(1).lower()==LT['--color-bg'].lower() and pd.group(1).lower()==D['--color-bg'].lower(),'logo-panelene i styles.css har --color-bg for lys og mørk modus')
 print('E. Fargetabellen i guiden mot tokens.css')
 def parse(v):
 	v=v.strip(); m=re.match(r'#([0-9a-f]{6})$',v)

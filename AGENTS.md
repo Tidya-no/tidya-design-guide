@@ -14,7 +14,7 @@ Instruksjoner for AI-agenter og utviklere som endrer dette repoet. Regler for *b
 | En klasse i `components.css` | Demo i `index.html` og omtale i `DESIGN.md`. Klasser som brukes i `index.html` må finnes i CSS, og motsatt |
 | Guide-spesifikk stil i `styles.css` | Bare for selve guiden. Gjenbrukbare komponenter hører hjemme i `components.css` |
 | En fil som skal publiseres | `pages.yml` (kopieringen til `_site`) og cache-busting-steget for CSS/JS |
-| `--color-accent-fill` eller mørk `--color-bg` | Ikonene i `brand/` (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`) har fargen hardkodet og må lages på nytt. Statisk sjekk feiler ellers |
+| `--color-accent-fill`, `--color-text` (lys eller mørk) eller mørk `--color-bg` | Ikoner og logoer i `brand/` har fargene hardkodet og må lages på nytt. Logo-panelene i `styles.css` har `--color-bg` hardkodet. Statisk sjekk feiler ellers |
 | Et htmx-mønster | `DESIGN.md` (htmx-mønstre) og demo i `index.html` |
 
 ## Kontrastkrav
