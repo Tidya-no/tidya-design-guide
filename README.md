@@ -22,13 +22,15 @@ Designspråket for Tidya: tokens, komponenter og regler, med mørk og lys modus.
 <link rel="stylesheet" href="components.css">
 ```
 
-Mørk modus er standard. Lys modus følger OS (`prefers-color-scheme: light`) eller settes med `data-theme="light"` / `"dark"` på `<html>`. Reglene står i `DESIGN.md`.
+Mørk modus er standard. Lys modus følger OS (`prefers-color-scheme: light`) eller settes med `data-theme="light"` / `"dark"` på `<html>`. Reglene står i `DESIGN.md`. Fontene lastes fra `fonts/` relativt til `tokens.css`, så kopier mappen med.
 
 ## Endre tokens
 
 1. Endre verdiene i `tokens.css`. Lys modus er definert to steder (`prefers-color-scheme` og `data-theme="light"`) som må holdes i takt.
-2. Sjekk kontrasten på nytt: tekst 4,5:1, kontroller 3:1.
-3. Oppdater fargetabellen i `index.html`.
+2. Oppdater fargetabellen og kontrasttallene i `index.html` (og `DESIGN.md` ved behov).
+3. Kjør `python3 .github/qa/statisk.py`. Den sjekker kontrast (tekst 4,5:1, kontroller 3:1) og sier fra hvis tabellen eller dokumentasjonen ikke stemmer med `tokens.css`.
+
+Hele sjekklisten for endringer står i `AGENTS.md`.
 
 ## Publisering
 
