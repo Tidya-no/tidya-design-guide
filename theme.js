@@ -1,7 +1,5 @@
 (() => {
 	const root = document.documentElement
-	const icon = document.getElementById('themeIcon')
-	const label = document.getElementById('themeLabel')
 	const storageKey = 'tidya-guide-theme'
 	const prefersLight = window.matchMedia('(prefers-color-scheme: light)')
 
@@ -13,8 +11,8 @@
 
 	const render = () => {
 		const isDark = currentTheme() === 'dark'
-		icon.textContent = isDark ? '☀️' : '🌙'
-		label.textContent = isDark ? 'Lys modus' : 'Mørk modus'
+		document.querySelectorAll('[data-theme-icon]').forEach((el) => { el.textContent = isDark ? '☀️' : '🌙' })
+		document.querySelectorAll('[data-theme-label]').forEach((el) => { el.textContent = isDark ? 'Lys modus' : 'Mørk modus' })
 	}
 
 	const saved = readSaved()
