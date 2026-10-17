@@ -62,6 +62,12 @@ a:hover { color: var(--color-accent-hover); }
 .btn-ghost:focus-visible { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-focus-halo); }
 .btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
 
+/* Lenke som knapp: <a class="btn-…"> skal ikke arve lenkestilen (understrek, hover-farge) */
+a.btn-primary, a.btn-ghost, a.btn-danger { text-decoration: none; }
+a.btn-primary:hover { color: var(--color-on-accent); }
+a.btn-ghost:hover { color: var(--color-accent); }
+a.btn-danger:hover { color: var(--color-bg); }
+
 .btn-danger-link {
 	background: none; border: none; color: var(--color-error);
 	font-size: var(--text-sm); cursor: pointer; padding: var(--space-1) var(--space-2);
