@@ -110,8 +110,12 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
 | Hjelp | `tnum`, `sr-only`, `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
 | Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
+| Header | `site-header` > `site-header-inner` (logo til venstre, valgfritt innhold til høyre) |
+| Temabryter | `theme-toggle` med `theme-toggle-icon`. Krever `theme.js` |
 
 - Knappeklassene fungerer også på `<a>`: bruk `<a>` for navigasjon og `<button>` for handlinger.
+- Header: `<header class="site-header">` er `position: sticky` og ren CSS (tåkete bakgrunn, bunnlinje). Legg den først i `<body>`, før `.page`, så trenger ikke innholdet egen topp-avstand. `site-header-inner` har samme bredde som `.page`.
+- Temabryter: kopier `theme.js` (endre `storageKey` til appen) og la ikon og tekst ha `data-theme-icon` og `data-theme-label`. Sett valgt tema før første tegning med et lite skript i `<head>` (se `index.html` i guiden). Ikon og tekst viser modusen man bytter til.
 - Én `btn-primary` per visning (hovedhandlingen), resten `btn-ghost`. Åpne-knapper og andre sekundære handlinger er `btn-ghost`, men den som åpner den viktigste dialogen på siden kan være `btn-primary`.
 - Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
 - Status i en tabellcelle er ren tekst (status bæres ikke av farge alene). Det finnes ingen badge ennå.
@@ -123,6 +127,20 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 ### Eksempler (kopier og tilpass)
 
 ```html
+<!-- Header med logo og temabryter -->
+<header class="site-header">
+	<div class="site-header-inner">
+		<div class="logo">
+			<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+			<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+		</div>
+		<button class="theme-toggle" type="button" onclick="toggleTheme()">
+			<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
+			<span data-theme-label>Lys modus</span>
+		</button>
+	</div>
+</header>
+
 <!-- Knapper -->
 <button class="btn-primary" type="button">Lagre</button>
 <button class="btn-ghost" type="button">Avbryt</button>

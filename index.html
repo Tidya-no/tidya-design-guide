@@ -19,9 +19,9 @@
 <main class="page">
 
 	<div class="theme-bar">
-		<button class="theme-toggle" id="themeBtn" type="button" onclick="toggleTheme()">
-			<span class="theme-toggle-icon" id="themeIcon" aria-hidden="true">☀️</span>
-			<span id="themeLabel">Lys modus</span>
+		<button class="theme-toggle" type="button" onclick="toggleTheme()">
+			<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
+			<span data-theme-label>Lys modus</span>
 		</button>
 	</div>
 
@@ -185,6 +185,38 @@
 			<div><button class="btn-ghost" type="button" disabled>Avbryt</button></div>
 		</div>
 		<div class="info-bar">Fokus: <code>:focus-visible</code>. Knapper og lenker: <code>outline: 2px solid var(--color-accent-border)</code>, offset 2px. Felt og ghost-knapp: kanten blir <code>--color-accent</code> pluss en 2px glød (<code>--color-focus-halo</code>), uten outline. Feilfelt: samme i <code>--color-error</code>.</div>
+	</section>
+
+	<section class="section" id="header">
+		<div class="section-head"><h2 class="section-title">Header og temabryter</h2><div class="section-rule"></div></div>
+		<p class="note">Headeren er <code>position: sticky</code> og ren CSS: tåkete bakgrunn (<code>--color-bg</code> 80 %), bunnlinje i <code>--color-border-subtle</code>, logo til venstre og valgfritt innhold til høyre. Innholdet i <code>.site-header-inner</code> følger samme bredde som <code>.page</code>. Temabryteren trenger <code>theme.js</code> (husker valget i <code>localStorage</code>, endre nøkkelen til appen). Ikon og tekst oppdateres via <code>data-theme-icon</code> og <code>data-theme-label</code>.</p>
+		<div class="demo-frame">
+			<header class="site-header">
+				<div class="site-header-inner">
+					<div class="logo">
+						<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+						<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+					</div>
+					<button class="theme-toggle" type="button" onclick="toggleTheme()">
+						<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
+						<span data-theme-label>Lys modus</span>
+					</button>
+				</div>
+			</header>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;header class="site-header"&gt;
+	&lt;div class="site-header-inner"&gt;
+		&lt;div class="logo"&gt;
+			&lt;img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;
+			&lt;img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;
+		&lt;/div&gt;
+		&lt;button class="theme-toggle" type="button" onclick="toggleTheme()"&gt;
+			&lt;span class="theme-toggle-icon" data-theme-icon aria-hidden="true"&gt;☀️&lt;/span&gt;
+			&lt;span data-theme-label&gt;Lys modus&lt;/span&gt;
+		&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/header&gt;
+&lt;script src="theme.js"&gt;&lt;/script&gt;</code></pre>
 	</section>
 
 	<section class="section" id="skjema">
