@@ -17,12 +17,15 @@ Kopier `tokens.css`, `components.css`, `fonts/` og `brand/` inn i appen, og føl
 <link rel="stylesheet" href="components.css">
 ```
 
+- `index.html` i repoet bruker også en `styles.css`. Den er guidens egen, ikke kopier den. Overskrifter bruker klassene `h1`–`h4`; en `<h1>` uten klasse får ingen stil.
 - Layout (container, toppbar) er appens eget ansvar. Minimum med tokens, lagt i appens egen CSS:
 
 ```css
 body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-6); }
 ```
+
+- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus, som i `index.html`.
 
 ## Regler
 
@@ -103,8 +106,9 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 |---|---|
 | Knapp | `btn-primary`, `btn-ghost`, `btn-danger` (fylt, bekreftelser), `btn-danger-link` |
 | Felt | `field` > `<label class="label">` + `<input class="input">` / `<select class="select">` / `<textarea class="textarea">` + `hint` / `field-error` |
+| Skjema | `stack` (vertikal avstand mellom felt, også i dialog) |
 | Valg | `check` (checkbox, radio), `switch` på `input[type=checkbox][role=switch]` |
-| Tabell | `table-wrap` (`tabindex="0" role="region" aria-label="…"`, fordi den scroller sidelengs) > `<table class="table">`, `num` (tall), `table-empty`, `aria-sort` på `th` |
+| Tabell | `table-wrap` (`tabindex="0" role="region" aria-label="…"`, fordi den scroller sidelengs; navnet må være unikt på siden, ikke det samme som seksjonens overskrift) > `<table class="table">`, `num` (tall), `table-empty`, `aria-sort` på `th` bare der sortering finnes |
 | Kort / sitat | `card` (`card-title`, `card-body`), `quote` |
 | Dialog | `<dialog class="dialog">` med `dialog-title`, `-body`, `-actions`, åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `-title`, `-body` |
@@ -112,6 +116,9 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Hjelp | `tnum`, `sr-only`, `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
 | Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
 
+- Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
+- Status i en tabellcelle er ren tekst (status bæres ikke av farge alene). Det finnes ingen badge ennå.
+- Feil på felt vises ved feltet (`field-error`). En `alert` er for resultatet av hele handlingen («Kunne ikke lagre. Prøv igjen.») og erstatter ikke feltfeilen. Suksess og andre beskjeder legges i `role="status"`-regionen (`#status`), også i statisk HTML.
 - Feil på felt: `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse. Synlig `label`, placeholder erstatter den ikke.
 - `color-scheme` er satt i `tokens.css`, så native kontroller følger modus.
 - Mangler en komponent (tabs, paginering, meny)? Legg den til i `components.css` og guiden først, ikke lokalt i appen. Toast som lukker seg selv er bevisst utelatt (WCAG 2.2.1): bruk `role="status"`-meldingen.
@@ -128,7 +135,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 ## Norsk UI-tekst og formater
 
 - Bokmål, kort og konkret, «du». `<html lang="nb">`. Aldri æ/ø/å som ae/oe/aa i UI-tekst.
-- Store bokstaver kun i første ord og egennavn. Knapper: verb i imperativ med objekt («Lagre», «Legg til kunde»), ikke «OK» eller «Submit».
+- Store bokstaver kun i første ord og egennavn. Knapper: verb i imperativ med objekt («Lagre», «Legg til kunde»), ikke «OK» eller «Submit». Unntak: en knapp som bare åpner noe (dialog, side) kan være et substantiv som «Ny kunde».
 - Feilmelding: hva som skjedde og hva brukeren kan gjøre («Kunne ikke lagre. Prøv igjen.»), aldri «Feil!» alene. Tom tilstand: forklar og tilby én handling.
 - Bruk `Intl` med `nb-NO`, aldri håndformatering. Mellomrom i tall og før `kr`/`%` er hardt mellomrom (U+00A0). I statisk HTML skriver du `&nbsp;` mellom tall og enhet og ekte minustegn (`−`, U+2212) for hånd.
 
