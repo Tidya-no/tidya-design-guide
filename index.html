@@ -220,7 +220,7 @@
 
 	<section class="section" id="tabell">
 		<div class="section-head"><h2 class="section-title">Tabell</h2><div class="section-rule"></div></div>
-		<p class="note">Tall høyrejustert med <code>tabular-nums</code> (klassen <code>num</code>). Sorterbare kolonner er vanlige lenker i <code>th</code> med <code>aria-sort</code>. Tom tilstand bruker <code>table-empty</code>. Rammen <code>table-wrap</code> scroller sidelengs på smal skjerm, så den har <code>tabindex="0"</code>, <code>role="region"</code> og <code>aria-label</code> (tastaturtilgang).</p>
+		<p class="note">Tall høyrejustert med <code>tabular-nums</code> (klassen <code>num</code>). Sorterbare kolonner er vanlige lenker i <code>th</code> med <code>aria-sort</code>. Tom tilstand bruker <code>table-empty</code>. Rammen <code>table-wrap</code> scroller sidelengs på smal skjerm, så den har <code>tabindex="0"</code>, <code>role="region"</code> og <code>aria-label</code> (tastaturtilgang). Navnet må være unikt på siden, ikke det samme som seksjonens overskrift.</p>
 		<div class="table-wrap" tabindex="0" role="region" aria-label="Prosjekter">
 			<table class="table">
 				<caption class="sr-only">Prosjekter</caption>
@@ -276,6 +276,30 @@
 	&lt;form class="dialog-actions" method="dialog"&gt;
 		&lt;button class="btn-ghost" value="avbryt" autofocus&gt;Avbryt&lt;/button&gt;
 		&lt;button class="btn-danger" value="slett"&gt;Slett&lt;/button&gt;
+	&lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+		<h3 class="sub-title">Skjema i dialog</h3>
+		<p class="note">Feltene ligger i et <code>form</code> med <code>stack</code> (jevn avstand), <code>dialog-actions</code> nederst og <code>autofocus</code> på første felt. Avbryt har <code>formnovalidate</code>, så den alltid lukker.</p>
+		<div><button class="btn-ghost" type="button" onclick="document.getElementById('demo-skjema-dialog').showModal()">Ny kunde</button></div>
+		<dialog class="dialog" id="demo-skjema-dialog" aria-labelledby="demo-skjema-tittel">
+			<h2 class="dialog-title" id="demo-skjema-tittel">Ny kunde</h2>
+			<form class="stack" method="dialog">
+				<div class="field"><label class="label" for="d-navn">Navn</label><input class="input" id="d-navn" name="navn" type="text" autocomplete="organization" autofocus></div>
+				<div class="field"><label class="label" for="d-epost">E-post</label><input class="input" id="d-epost" name="epost" type="email" autocomplete="email"></div>
+				<div class="dialog-actions"><button class="btn-ghost" value="avbryt" formnovalidate>Avbryt</button><button class="btn-primary" value="lagre">Legg til kunde</button></div>
+			</form>
+		</dialog>
+<pre class="code" tabindex="0"><code>&lt;dialog class="dialog" id="ny-kunde" aria-labelledby="ny-kunde-tittel"&gt;
+	&lt;h2 class="dialog-title" id="ny-kunde-tittel"&gt;Ny kunde&lt;/h2&gt;
+	&lt;form class="stack" method="dialog"&gt;
+		&lt;div class="field"&gt;
+			&lt;label class="label" for="navn"&gt;Navn&lt;/label&gt;
+			&lt;input class="input" id="navn" name="navn" autofocus&gt;
+		&lt;/div&gt;
+		&lt;div class="dialog-actions"&gt;
+			&lt;button class="btn-ghost" value="avbryt" formnovalidate&gt;Avbryt&lt;/button&gt;
+			&lt;button class="btn-primary" value="lagre"&gt;Legg til kunde&lt;/button&gt;
+		&lt;/div&gt;
 	&lt;/form&gt;
 &lt;/dialog&gt;</code></pre>
 	</section>
