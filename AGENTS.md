@@ -8,14 +8,13 @@ Instruksjoner for AI-agenter og utviklere som endrer dette repoet. Regler for *b
 
 | Når du endrer | Må du også oppdatere / sjekke |
 |---|---|
-| Et token i `tokens.css` | Fargetabellen og kontrasttallene i `index.html`. Tokentabellen og tall i `DESIGN.md`. Tall i `DESIGN-shadcn.md` (f.eks. kontrast for tekst på `--destructive`). `README.md` hvis noe nevnes der |
+| Et token i `tokens.css` | Fargetabellen og kontrasttallene i `index.html`. Tokentabellen og tall i `DESIGN.md`. `README.md` hvis noe nevnes der |
 | Lys modus i `tokens.css` | Lys modus er definert **to steder** (`@media (prefers-color-scheme: light)` og `:root[data-theme="light"]`). De må være identiske |
 | Nytt eller fjernet token | Tabellen i `index.html` og `DESIGN.md`. Ingen ubrukte og ingen udokumenterte tokens |
 | En klasse i `components.css` | Demo i `index.html` og omtale i `DESIGN.md`. Klasser som brukes i `index.html` må finnes i CSS, og motsatt |
 | Guide-spesifikk stil i `styles.css` | Bare for selve guiden. Gjenbrukbare komponenter hører hjemme i `components.css` |
 | En fil som skal publiseres | `pages.yml` (kopieringen til `_site`) og cache-busting-steget for CSS/JS |
 | Et htmx-mønster | `DESIGN.md` (htmx-mønstre) og demo i `index.html` |
-| Noe som påvirker shadcn-mappingen | `DESIGN-shadcn.md` |
 
 ## Kontrastkrav
 
@@ -55,4 +54,4 @@ Ved htmx-endringer: test mot en kjørende server, ikke bare statisk HTML (fokus 
 ## Kjente hull
 
 - Krysssjekken i punkt 3 er ikke automatisert i repoet. Et lite script som sjekker token-dekning, klasser, filreferanser og kontrast mot `tokens.css` ville fange det meste av driften som ellers må sjekkes for hånd.
-- Ikke testet: Safari, Firefox, skjermleser, live github.io, shadcn-komponenter utover `Button`/`Input`/`Card`.
+- Ikke testet: Safari, Firefox, skjermleser, live github.io.

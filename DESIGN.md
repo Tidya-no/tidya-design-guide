@@ -1,6 +1,6 @@
 # Tidya designsystem: regler for utvikling
 
-Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`. Komponenter: `components.css`. Eksempler: `index.html` ([live](https://tidya-no.github.io/tidya-design-guide/)). Hovedspor er server-rendret HTML med htmx. React/shadcn: se `DESIGN-shadcn.md`.
+Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`. Komponenter: `components.css`. Eksempler: `index.html` ([live](https://tidya-no.github.io/tidya-design-guide/)). Bygget for server-rendret HTML med htmx (komponentene er ren CSS og fungerer også i React).
 
 ## Regler
 
