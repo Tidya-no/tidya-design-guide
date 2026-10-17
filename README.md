@@ -34,7 +34,7 @@ Mørk modus er standard. Lys modus følger OS (`prefers-color-scheme: light`) el
 
 `.github/workflows/pages.yml` publiserer til GitHub Pages ved push til `main`. Krever Settings → Pages → Source: **GitHub Actions**.
 
-`.github/workflows/kvalitet.yml` kjører html-validate og axe (mørk/lys, 320/1100 px, med dialog) på alle PR-er, og før hver publisering. Config og script ligger i `.github/qa/`.
+`.github/workflows/kvalitet.yml` kjører en statisk konsistenssjekk (`statisk.py`), html-validate og axe (mørk/lys, 320/1100 px, med dialog) på alle PR-er, og før hver publisering. Config og script ligger i `.github/qa/`.
 
 ## Lisens
 
