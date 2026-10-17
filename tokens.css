@@ -28,9 +28,9 @@
 	/* Mørk modus */
 	--color-bg:                   #1a1816;
 	--color-surface:              #272422;
-	--color-text:                 #ffffff;
+	--color-text:                 #f5efe6;
 	--color-text-secondary:       #d4a88f;
-	--color-text-muted:           rgba(255, 255, 255, 0.50);
+	--color-text-muted:           rgba(245, 239, 230, 0.55);
 	--color-accent:               #ffbe0b;
 	--color-accent-hover:         #ffc933;
 	--color-accent-fill:          #ffbe0b;
