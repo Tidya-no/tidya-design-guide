@@ -14,6 +14,7 @@ Instruksjoner for AI-agenter og utviklere som endrer dette repoet. Regler for *b
 | En klasse i `components.css` | Demo i `index.html` og omtale i `DESIGN.md`. Klasser som brukes i `index.html` må finnes i CSS, og motsatt |
 | Guide-spesifikk stil i `styles.css` | Bare for selve guiden. Gjenbrukbare komponenter hører hjemme i `components.css` |
 | En fil som skal publiseres | `pages.yml` (kopieringen til `_site`) og cache-busting-steget for CSS/JS |
+| `--color-accent-fill` eller mørk `--color-bg` | Ikonene i `brand/` (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`) har fargen hardkodet og må lages på nytt. Statisk sjekk feiler ellers |
 | Et htmx-mønster | `DESIGN.md` (htmx-mønstre) og demo i `index.html` |
 
 ## Kontrastkrav
@@ -43,6 +44,7 @@ Ved htmx-endringer: test mot en kjørende server, ikke bare statisk HTML (fokus 
 - Hold det kort. Mer tekst og flere komponenter er ikke bedre. Fjern heller enn å legge til.
 - Ikke commit midlertidige filer (skjermbilder, scratch-filer). `git status` før commit.
 - Tabeller og tall i dokumentene skal være utregnet fra `tokens.css`, ikke skrevet fra hukommelsen.
+- Logo og ikoner i `brand/` endres ikke uten at eier sier fra. SVG-er skal være ekte vektor (ingen `<image>`, `shape-rendering`, eksterne `@import` eller fonter, tekst som former, `viewBox` uten faste mål). Reglene står i `DESIGN.md`.
 - UI-tekst er norsk bokmål med ordentlige æ, ø og å.
 - Små endringer i én PR, med en kort beskrivelse av hva som er verifisert og hva som **ikke** er det (live-siden, Safari/Firefox, skjermleser).
 - Merge først når CI er grønn og eieren ber om det.

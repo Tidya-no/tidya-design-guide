@@ -29,6 +29,7 @@ jobs:
           mkdir _site
           cp index.html tokens.css components.css styles.css theme.js _site/
           cp -r fonts _site/fonts
+          cp -r brand _site/brand
           touch _site/.nojekyll
 
       - name: Cache-busting for CSS og JS

@@ -31,6 +31,26 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 
 Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), men beholder amber (`#ffbe0b`) på flater. `card` har 2px linje øverst og `table th` 1px linje under i dempet amber (`--color-accent-border`). Hold slike aksenter subtile.
 
+## Logo og ikoner (`brand/`)
+
+Merkevaren er en gul prikk: `#ffbe0b`, samme verdi som `--color-accent-fill`. Gult er en fast del av designspråket, så bruk aksentflaten og ikke en egen gul.
+
+| Fil | Bruk |
+|---|---|
+| `brand/favicon.svg` | Fav-ikon i moderne nettlesere |
+| `brand/favicon.ico` | Fallback (16, 32, 48 px) |
+| `brand/apple-touch-icon.png` | iOS-hjemmeskjerm (180×180, prikk på mørk `--color-bg`, må være ugjennomsiktig) |
+
+Legg i `<head>` (relative stier, tilpass til appens struktur):
+
+```html
+<link rel="icon" href="brand/favicon.ico" sizes="32x32">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
+```
+
+Ikonfilene kan ikke lese CSS-variabler, så fargene er hardkodet. Endres `--color-accent-fill` eller mørk `--color-bg`, må ikonene lages på nytt (statisk sjekk feiler ellers). Ikke tegn en egen logo eller endre filene uten at eier sier fra. SVG-er skal være ekte vektor: ingen `<image>`, ingen `shape-rendering`, ingen eksterne `@import`/fonter (tekst som former), og `viewBox` uten faste `width`/`height`.
+
 ## Komponenter (ren CSS)
 
 Last `tokens.css` og `components.css`, ingen byggesteg.
