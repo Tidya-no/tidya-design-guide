@@ -2,6 +2,21 @@
 
 Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`. Komponenter: `components.css`. Eksempler: `index.html` ([live](https://tidya-no.github.io/tidya-design-guide/)). Bygget for server-rendret HTML med htmx (komponentene er ren CSS og fungerer også i React).
 
+## Kom i gang
+
+Kopier `tokens.css`, `components.css`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
+
+- Hent filene fra repoet (https://github.com/Tidya-no/tidya-design-guide) eller fra den publiserte guiden (https://tidya-no.github.io/tidya-design-guide/). Ikke gjett innholdet.
+- Hele mapper skal med: `fonts/` (`inter-latin-wght-normal.woff2`, `inter-latin-wght-italic.woff2`, `fraunces-latin-wght-normal.woff2` og lisensfilene) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
+- Hold `fonts/` ved siden av `tokens.css`, for fontene lastes med relativ sti. Flytter du dem, endre `url(...)` i `@font-face`.
+- I `<head>` (ikon-taggene står under «Logo og ikoner»):
+
+```html
+<html lang="nb">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+```
+
 ## Regler
 
 1. Bruk alltid tokens (`var(--color-*)`, `--space-*`, `--r-*`, `--text-*`). Aldri hardkodede farger, avstander, radius eller font-størrelser.

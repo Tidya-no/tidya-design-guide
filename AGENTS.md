@@ -15,6 +15,7 @@ Instruksjoner for AI-agenter og utviklere som endrer dette repoet. Regler for *b
 | Guide-spesifikk stil i `styles.css` | Bare for selve guiden. Gjenbrukbare komponenter hører hjemme i `components.css` |
 | En fil som skal publiseres | `pages.yml` (kopieringen til `_site`) og cache-busting-steget for CSS/JS |
 | `--color-accent-fill`, `--color-text` (lys eller mørk) eller mørk `--color-bg` | Ikoner og logoer i `brand/` har fargene hardkodet og må lages på nytt. Logo-panelene i `styles.css` har `--color-bg` hardkodet. Statisk sjekk feiler ellers |
+| En fil i `fonts/` eller `brand/` | «Kom i gang» i `DESIGN.md` skal nevne alle filene (statisk sjekk feiler ellers), og `pages.yml` må kopiere mappen |
 | Et htmx-mønster | `DESIGN.md` (htmx-mønstre) og demo i `index.html` |
 
 ## Kontrastkrav
