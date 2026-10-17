@@ -12,6 +12,7 @@ Designspråket for Tidya: tokens, komponenter og regler, med mørk og lys modus.
 | `components.css` | Komponenter som ren CSS: knapper, skjema, tabell, kort, melding, dialog, htmx-tilstander |
 | `DESIGN.md` | Regler for utviklere og AI: token til bruk, komponenter, htmx-mønstre, norsk UI-tekst |
 | `DESIGN-shadcn.md` | Valgfritt: mapping til shadcn/ui for React-apper |
+| `AGENTS.md` | For deg som endrer repoet: hva som må holdes i takt og QA før PR |
 | `index.html`, `styles.css`, `theme.js` | Den visuelle guiden |
 | `fonts/` | Selvhostede Inter og Fraunces (woff2, SIL OFL 1.1) |
 
