@@ -7,7 +7,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 Kopier `tokens.css`, `components.css`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
 
 - Hent filene fra repoet (https://github.com/Tidya-no/tidya-design-guide) eller fra den publiserte guiden (https://tidya-no.github.io/tidya-design-guide/). Ikke gjett innholdet.
-- Hele mapper skal med: `fonts/` (`inter-latin-wght-normal.woff2`, `inter-latin-wght-italic.woff2`, `fraunces-latin-wght-normal.woff2` og lisensfilene) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
+- Hele mapper skal med: `fonts/` (`inter-latin-wght-normal.woff2`, `inter-latin-wght-italic.woff2`, `fraunces-latin-wght-normal.woff2`, `LICENSE-Inter.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
 - Hold `fonts/` ved siden av `tokens.css`, for fontene lastes med relativ sti. Flytter du dem, endre `url(...)` i `@font-face`.
 - I `<head>` (ikon-taggene står under «Logo og ikoner»):
 
@@ -15,6 +15,13 @@ Kopier `tokens.css`, `components.css`, `fonts/` og `brand/` inn i appen, og føl
 <html lang="nb">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="components.css">
+```
+
+- Layout (container, toppbar) er appens eget ansvar. Minimum med tokens, lagt i appens egen CSS:
+
+```css
+body { padding-inline: var(--space-4); padding-block: var(--space-6); }
+.page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-6); }
 ```
 
 ## Regler
@@ -67,6 +74,15 @@ Logo: velg variant etter bakgrunn, ikke etter modus:
 <img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
 ```
 
+Logo som følger modus (bytter ved `prefers-color-scheme` og `data-theme`, uten egen CSS):
+
+```html
+<div class="logo">
+	<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+	<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+</div>
+```
+
 Minstehøyde 24 px. Frirom minst prikkens diameter på alle sider. Ikke strekk, farge om, legg skygge eller legg logoen på bilder.
 
 Ikoner: legg i `<head>` (relative stier, tilpass til appens struktur):
@@ -86,14 +102,15 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Komponent | Klasser |
 |---|---|
 | Knapp | `btn-primary`, `btn-ghost`, `btn-danger` (fylt, bekreftelser), `btn-danger-link` |
-| Felt | `field` > `label` + `input` / `select` / `textarea` + `hint` / `field-error` |
+| Felt | `field` > `<label class="label">` + `<input class="input">` / `<select class="select">` / `<textarea class="textarea">` + `hint` / `field-error` |
 | Valg | `check` (checkbox, radio), `switch` på `input[type=checkbox][role=switch]` |
-| Tabell | `table-wrap` (`tabindex="0" role="region" aria-label="…"`, fordi den scroller sidelengs) > `table`, `num` (tall), `table-empty`, `aria-sort` på `th` |
+| Tabell | `table-wrap` (`tabindex="0" role="region" aria-label="…"`, fordi den scroller sidelengs) > `<table class="table">`, `num` (tall), `table-empty`, `aria-sort` på `th` |
 | Kort / sitat | `card` (`card-title`, `card-body`), `quote` |
 | Dialog | `<dialog class="dialog">` med `dialog-title`, `-body`, `-actions`, åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `-title`, `-body` |
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
-| Hjelp | `tnum`, `sr-only`, `h1`–`h4` |
+| Hjelp | `tnum`, `sr-only`, `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
+| Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
 
 - Feil på felt: `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse. Synlig `label`, placeholder erstatter den ikke.
 - `color-scheme` er satt i `tokens.css`, så native kontroller følger modus.
@@ -103,7 +120,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 
 - **Validering:** serveren returnerer hele skjemaet på nytt med `aria-invalid`, feilmelding og `autofocus` på første ugyldige felt.
 - **Lasting:** `.spinner` i `.htmx-indicator`. Knappen blokkeres under `htmx-request`.
-- **Beskjeder:** `<div id="status" role="status" aria-live="polite">` i layouten, oppdatert med `hx-swap-oob="innerHTML:#status"`. Ikke `"true"` (fjerner `role`).
+- **Beskjeder:** `<div id="status" role="status" aria-live="polite">` i layouten, oppdatert med `hx-swap-oob="innerHTML:#status"`. Ikke `"true"` (fjerner `role`). Selve `alert` ligger inni `#status`.
 - **Sortering:** bytt hele tabellen (så `aria-sort` oppdateres). Lenken har `id` og beholder fokus.
 - **Sletting:** server-rendret `<dialog>` hentet med `hx-get` inn i en tom plass-div, åpnet med `hx-on::load="this.showModal()"`, fjernet ved `close`. `autofocus` på Avbryt. Bekreft-knappen lukker dialogen og flytter fokus til en overskrift med `tabindex="-1"` (raden og knappen er borte). Escape lukker og returnerer fokus til knappen. Krever at CSP tillater inline JS (`hx-on`).
 - Ikke testet: paginering, `hx-boost`, View Transitions, dialog med serverside skjemavalidering.
@@ -113,7 +130,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 - Bokmål, kort og konkret, «du». `<html lang="nb">`. Aldri æ/ø/å som ae/oe/aa i UI-tekst.
 - Store bokstaver kun i første ord og egennavn. Knapper: verb i imperativ med objekt («Lagre», «Legg til kunde»), ikke «OK» eller «Submit».
 - Feilmelding: hva som skjedde og hva brukeren kan gjøre («Kunne ikke lagre. Prøv igjen.»), aldri «Feil!» alene. Tom tilstand: forklar og tilby én handling.
-- Bruk `Intl` med `nb-NO`, aldri håndformatering. Mellomrom i tall og før `kr`/`%` er hardt mellomrom (U+00A0).
+- Bruk `Intl` med `nb-NO`, aldri håndformatering. Mellomrom i tall og før `kr`/`%` er hardt mellomrom (U+00A0). I statisk HTML skriver du `&nbsp;` mellom tall og enhet og ekte minustegn (`−`, U+2212) for hånd.
 
 | Hva | Kode | Resultat |
 |---|---|---|

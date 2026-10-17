@@ -134,7 +134,14 @@
 			<div class="logo-panel logo-panel-light"><img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="56"></div>
 			<div class="logo-panel logo-panel-dark"><img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="56"></div>
 		</div>
-		<pre class="code" tabindex="0"><code>&lt;img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;   &lt;!-- på lys bakgrunn --&gt;
+		<p class="note">Vil du ha en logo som bytter selv når modus skifter, bruk <code>.logo</code> med begge bildene. Prøv tema-knappen øverst.</p>
+		<div class="logo"><img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"><img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"></div>
+		<pre class="code" tabindex="0"><code>&lt;div class="logo"&gt;
+	&lt;img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;
+	&lt;img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;
+&lt;/div&gt;
+
+&lt;img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;   &lt;!-- på lys bakgrunn --&gt;
 &lt;img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;  &lt;!-- på mørk bakgrunn --&gt;</code></pre>
 	</section>
 
