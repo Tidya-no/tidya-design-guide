@@ -26,15 +26,11 @@ Instruksjoner for AI-agenter og utviklere som endrer dette repoet. Regler for *b
 
 ## QA før du åpner PR
 
-CI (`.github/workflows/kvalitet.yml`) kjører html-validate og axe (mørk/lys, 320/1100 px, med og uten åpen dialog). Det er minimum, ikke hele sjekken. Kjør i tillegg lokalt:
+CI (`.github/workflows/kvalitet.yml`) kjører statisk konsistenssjekk (punkt 3), html-validate og axe (mørk/lys, 320/1100 px, med og uten åpen dialog). Det er minimum, ikke hele sjekken: tastatur, utseende og smal skjerm må du sjekke selv. Kjør lokalt:
 
 1. **html-validate:** `html-validate -c .github/qa/htmlvalidate.json index.html` (0 feil).
 2. **axe:** `node .github/qa/axe.cjs` (0 brudd). Test gjerne også 375 og 768 px.
-3. **Krysssjekk** (manuelt, se tabellen over):
-   - alle tokens finnes i `index.html` og `DESIGN.md`, og verdiene stemmer
-   - kontrasttallene i tabellen stemmer med utregnet kontrast
-   - begge lysblokkene i `tokens.css` er identiske
-   - alle filer som nevnes i `README.md` og `DESIGN.md` finnes
+3. **Krysssjekk:** `python3 .github/qa/statisk.py` (kjører også i CI). Sjekker at lysblokkene er identiske, at alle `var(--x)` er definert, at tokens og klasser er i bruk og dokumentert, at fargetabellen og kontrasttallene i `index.html` stemmer med `tokens.css`, at filreferanser og publisering henger sammen, og at kontrast (inkl. hover-tint) er over kravene. Tabellen i `index.html` må fortsatt oppdateres for hånd; scriptet sier fra hvis den driver.
 4. **Tastatur:** tab gjennom guiden i begge moduser. Alle fokuserbare elementer skal ha synlig fokus (`:focus-visible`), også inne i dialogen.
 5. **Visuelt:** ta skjermbilde i mørk, lys og 375 px. Se på det, ikke bare kjør verktøyene. Axe fanger ikke at noe ser blasst eller trangt ut.
 6. **Smal skjerm:** ingen horisontal sidescroll (320 px). Tabeller og kodeblokker som scroller skal ha `tabindex="0"`, `role="region"` og `aria-label`.
@@ -53,5 +49,4 @@ Ved htmx-endringer: test mot en kjørende server, ikke bare statisk HTML (fokus 
 
 ## Kjente hull
 
-- Krysssjekken i punkt 3 er ikke automatisert i repoet. Et lite script som sjekker token-dekning, klasser, filreferanser og kontrast mot `tokens.css` ville fange det meste av driften som ellers må sjekkes for hånd.
 - Ikke testet: Safari, Firefox, skjermleser, live github.io.
