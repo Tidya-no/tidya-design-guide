@@ -42,3 +42,5 @@ Hele sjekklisten for endringer står i `AGENTS.md`.
 ## Lisens
 
 Fontene er lisensiert under SIL Open Font License 1.1, se `fonts/LICENSE-*.txt`.
+
+Logoen og ikonene i `brand/` tilhører Tidya AS. Alle rettigheter forbeholdt: de kan ikke brukes av andre uten tillatelse. Resten av repoet er åpent for innsyn, men har ingen lisens for gjenbruk.
