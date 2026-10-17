@@ -3,7 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-	<title>Tidya Design Language</title>
+	<title>Tidya designspråk</title>
+	<meta name="description" content="Tidya designspråk: tokens, komponenter og regler for utvikling, med mørk og lys modus.">
+	<meta name="theme-color" content="#1c1712" media="(prefers-color-scheme: dark)">
+	<meta name="theme-color" content="#fbf6ea" media="(prefers-color-scheme: light)">
+	<script>try{var t=localStorage.getItem('tidya-guide-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 	<link rel="icon" href="brand/favicon.ico" sizes="32x32">
 	<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
@@ -22,15 +26,15 @@
 	</div>
 
 	<header class="header">
-		<p class="header-eyebrow">Design Guide</p>
-		<h1 class="header-title">Tidya Design Language</h1>
+		<p class="header-eyebrow">Designguide</p>
+		<h1 class="header-title">Tidya designspråk</h1>
 		<p class="header-sub">Et varmt grensesnitt bygget på amber og brune toner. Mørk og lys modus, tekst kontrastsjekket mot WCAG AA (4,5:1) og kontroller mot 3:1.</p>
 	</header>
 
 	<section class="section" id="farger">
 		<div class="section-head"><h2 class="section-title">Farger</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Mørk modus er standard, lys følger OS eller <code>data-theme="light"</code>. Kontrast er mot <code>--color-bg</code> (mørk / lys). Kilde: <code>tokens.css</code>.</p>
-		<ul class="palette" aria-label="Palett i aktivt tema"><li class="palette-tile" style="background:var(--color-bg);color:var(--color-text)"><span>bg</span></li><li class="palette-tile" style="background:var(--color-surface);color:var(--color-text)"><span>surface</span></li><li class="palette-tile" style="background:var(--color-accent-fill);color:var(--color-on-accent)"><span>accent-fill</span></li><li class="palette-tile" style="background:var(--color-accent);color:var(--color-bg)"><span>accent</span></li><li class="palette-tile" style="background:var(--color-text);color:var(--color-bg)"><span>text</span></li><li class="palette-tile" style="background:var(--color-label);color:var(--color-bg)"><span>label</span></li></ul>
+		<p class="note">Mørk modus er standard, lys følger OS eller <code>data-theme="light"</code>. Kontrast er mot <code>--color-bg</code> (mørk / lys). Kilde: <code>tokens.css</code>.</p>
+		<ul class="palette" aria-label="Palett i aktivt tema"><li class="palette-tile palette-tile-bg"><span>bg</span></li><li class="palette-tile palette-tile-surface"><span>surface</span></li><li class="palette-tile palette-tile-accent-fill"><span>accent-fill</span></li><li class="palette-tile palette-tile-accent"><span>accent</span></li><li class="palette-tile palette-tile-text"><span>text</span></li><li class="palette-tile palette-tile-label"><span>label</span></li></ul>
 		<div class="table-wrap" tabindex="0" role="region" aria-label="Fargetokens">
 			<table class="tokens-table">
 				<thead><tr><th scope="col">Token</th><th scope="col" class="col-dark">Mørk</th><th scope="col">Lys</th><th scope="col">Bruk</th></tr></thead>
@@ -39,7 +43,7 @@
 					<tr><td><code>--color-surface</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#2b221d"></span>#2b221d</span></td><td><span class="chip"><span class="chip-dot" style="background:#f3e9d3"></span>#f3e9d3</span></td><td>Kort, dialog</td></tr>
 					<tr><td><code>--color-text</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#f5efe6"></span>#f5efe6</span></td><td><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td>Primærtekst · 15,6:1 / 16,4:1</td></tr>
 					<tr><td><code>--color-text-secondary</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#d4a88f"></span>#d4a88f</span></td><td><span class="chip"><span class="chip-dot" style="background:#7a4a2e"></span>#7a4a2e</span></td><td>Støttetekst · 8,3:1 / 6,8:1</td></tr>
-					<tr><td><code>--color-text-muted</code></td><td class="col-dark">rgba(245, 239, 230, 0.55)</td><td>rgba(26, 24, 22, 0.65)</td><td>Metadata, placeholder · 5,5:1 / 5,3:1</td></tr>
+					<tr><td><code>--color-text-muted</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(245, 239, 230, 0.55)"></span>rgba(245, 239, 230, 0.55)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(26, 24, 22, 0.65)"></span>rgba(26, 24, 22, 0.65)</span></td><td>Metadata, placeholder · 5,5:1 / 5,3:1</td></tr>
 					<tr><td><code>--color-label</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#e0956d"></span>#e0956d</span></td><td><span class="chip"><span class="chip-dot" style="background:#9c3d1a"></span>#9c3d1a</span></td><td>Etiketter · 7,4:1 / 6,3:1</td></tr>
 					<tr><td><code>--color-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td><span class="chip"><span class="chip-dot" style="background:#8a5d00"></span>#8a5d00</span></td><td>Aksenttekst, lenke, kant på fokusert felt · 10,7:1 / 5,3:1</td></tr>
 					<tr><td><code>--color-accent-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td><span class="chip"><span class="chip-dot" style="background:#6b4900"></span>#6b4900</span></td><td>Hover på aksenttekst · 11,6:1 / 7,6:1</td></tr>
@@ -52,43 +56,16 @@
 					<tr><td><code>--color-warning</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff9f43"></span>#ff9f43</span></td><td><span class="chip"><span class="chip-dot" style="background:#9a4d00"></span>#9a4d00</span></td><td>Advarsel · 8,7:1 / 5,7:1</td></tr>
 					<tr><td><code>--color-info</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#6cb6ff"></span>#6cb6ff</span></td><td><span class="chip"><span class="chip-dot" style="background:#1a5a9e"></span>#1a5a9e</span></td><td>Informasjon · 8,3:1 / 6,5:1</td></tr>
 					<tr><td><code>--color-*-bg</code></td><td class="col-dark">rgba(farge,.12)</td><td>rgba(farge,.08–.10)</td><td>Bakgrunn i meldinger (error, success, warning, info)</td></tr>
-					<tr><td><code>--color-border</code></td><td class="col-dark">rgba(255, 255, 255, 0.06)</td><td>rgba(26, 24, 22, 0.10)</td><td>Kortkanter (dekorativ)</td></tr>
-					<tr><td><code>--color-border-subtle</code></td><td class="col-dark">rgba(255, 255, 255, 0.10)</td><td>rgba(26, 24, 22, 0.16)</td><td>Skiller (dekorativ). Ikke på inputs</td></tr>
-					<tr><td><code>--color-border-control</code></td><td class="col-dark">rgba(255, 255, 255, 0.34)</td><td>rgba(26, 24, 22, 0.49)</td><td>Inputs og kontroller · min. 3:1</td></tr>
-					<tr><td><code>--color-accent-border</code></td><td class="col-dark">rgba(255, 190, 11, 0.46)</td><td>rgba(138, 93, 0, 0.76)</td><td>Ghost-knapp, drop-sone · min. 3:1</td></tr>
-					<tr><td><code>--color-accent-bg-subtle</code></td><td class="col-dark">rgba(255, 190, 11, 0.05)</td><td>rgba(255, 190, 11, 0.12)</td><td>Hover-bakgrunn</td></tr>
-					<tr><td><code>--color-focus-halo</code></td><td class="col-dark">rgba(255, 190, 11, 0.18)</td><td>rgba(255, 190, 11, 0.45)</td><td>Glød rundt fokusert felt</td></tr>
-					<tr><td><code>--color-overlay</code></td><td class="col-dark">rgba(0, 0, 0, 0.60)</td><td>rgba(26, 24, 22, 0.45)</td><td>Bakgrunn bak dialog</td></tr>
+					<tr><td><code>--color-border</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 255, 255, 0.06)"></span>rgba(255, 255, 255, 0.06)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(26, 24, 22, 0.10)"></span>rgba(26, 24, 22, 0.10)</span></td><td>Kortkanter (dekorativ)</td></tr>
+					<tr><td><code>--color-border-subtle</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 255, 255, 0.10)"></span>rgba(255, 255, 255, 0.10)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(26, 24, 22, 0.16)"></span>rgba(26, 24, 22, 0.16)</span></td><td>Skiller (dekorativ). Ikke på inputs</td></tr>
+					<tr><td><code>--color-border-control</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 255, 255, 0.34)"></span>rgba(255, 255, 255, 0.34)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(26, 24, 22, 0.49)"></span>rgba(26, 24, 22, 0.49)</span></td><td>Inputs og kontroller · min. 3:1</td></tr>
+					<tr><td><code>--color-accent-border</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 190, 11, 0.46)"></span>rgba(255, 190, 11, 0.46)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(138, 93, 0, 0.76)"></span>rgba(138, 93, 0, 0.76)</span></td><td>Ghost-knapp, drop-sone · min. 3:1</td></tr>
+					<tr><td><code>--color-accent-bg-subtle</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 190, 11, 0.05)"></span>rgba(255, 190, 11, 0.05)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(255, 190, 11, 0.12)"></span>rgba(255, 190, 11, 0.12)</span></td><td>Hover-bakgrunn</td></tr>
+					<tr><td><code>--color-focus-halo</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 190, 11, 0.18)"></span>rgba(255, 190, 11, 0.18)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(255, 190, 11, 0.45)"></span>rgba(255, 190, 11, 0.45)</span></td><td>Glød rundt fokusert felt</td></tr>
+					<tr><td><code>--color-overlay</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(0, 0, 0, 0.60)"></span>rgba(0, 0, 0, 0.60)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(26, 24, 22, 0.45)"></span>rgba(26, 24, 22, 0.45)</span></td><td>Bakgrunn bak dialog</td></tr>
 				</tbody>
 			</table>
 		</div>
-	</section>
-
-	<section class="section" id="logo">
-		<div class="section-head"><h2 class="section-title">Logo og ikoner</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Ordmerket <code>Tidya</code> med gul prikk (<code>--color-accent-fill</code>). To varianter: mørk logo på lys bakgrunn og lys logo på mørk bakgrunn. Minstehøyde 24 px, frirom minst prikkens diameter på alle sider. Ikke strekk, farge om eller legg på bilder. Filene ligger i <code>brand/</code>.</p>
-		<h3 class="sub-title">Logo</h3>
-		<div class="logo-panels">
-			<div class="logo-panel logo-panel-light"><img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="56"></div>
-			<div class="logo-panel logo-panel-dark"><img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="56"></div>
-		</div>
-		<pre class="code" tabindex="0"><code>&lt;img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;   &lt;!-- på lys bakgrunn --&gt;
-&lt;img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;  &lt;!-- på mørk bakgrunn --&gt;</code></pre>
-
-		<h3 class="sub-title">Fav-ikon</h3>
-		<p class="motion-note">Fav-ikonet er det lille bildet i nettleserfanen, bokmerker og historikk. Her er det bare prikken, fordi hele logoen blir uleselig i 16 px. Tre filer dekker alle enheter. Hver app må lenke til dem i <code>&lt;head&gt;</code>, ellers vises ingen ikon. Denne siden bruker de samme filene, så du ser dem i fanen din nå.</p>
-		<div class="icon-tabs">
-			<div class="icon-tab icon-tab-light"><img src="brand/favicon.svg" alt="" width="16" height="16"><span>Tidya Design Guide</span></div>
-			<div class="icon-tab icon-tab-dark"><img src="brand/favicon.svg" alt="" width="16" height="16"><span>Tidya Design Guide</span></div>
-		</div>
-		<div class="icon-grid">
-			<div class="icon-card"><img src="brand/favicon.svg" alt="" width="48" height="48"><div><strong><code>favicon.svg</code></strong><span>Fanen i moderne nettlesere. Skarp i alle størrelser.</span></div></div>
-			<div class="icon-card"><img src="brand/favicon.ico" alt="" width="48" height="48"><div><strong><code>favicon.ico</code></strong><span>Fallback for eldre nettlesere og verktøy (16, 32 og 48 px).</span></div></div>
-			<div class="icon-card"><img class="icon-apple" src="brand/apple-touch-icon.png" alt="" width="48" height="48"><div><strong><code>apple-touch-icon.png</code></strong><span>Når noen legger siden på hjemmeskjermen på iPhone (180 × 180 px, mørk bakgrunn, iOS runder hjørnene).</span></div></div>
-		</div>
-		<pre class="code" tabindex="0"><code>&lt;link rel="icon" href="brand/favicon.ico" sizes="32x32"&gt;
-&lt;link rel="icon" href="brand/favicon.svg" type="image/svg+xml"&gt;
-&lt;link rel="apple-touch-icon" href="brand/apple-touch-icon.png"&gt;</code></pre>
 	</section>
 
 	<section class="section">
@@ -102,10 +79,10 @@
 			<div class="num-sample tnum">1 234 567,89 kr <span class="num-note">nøkkeltall: Fraunces <code>2xl</code> med <code>tabular-nums</code></span></div>
 		</div>
 		<div class="type-scale">
-			<div class="type-row"><span class="type-label">Label</span><span class="type-sample" style="font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:0.07em;color:var(--color-label)">Seksjonsetikett</span><span class="type-meta">xs / 600 uppercase</span></div>
-			<div class="type-row"><span class="type-label">Body</span><span class="type-sample" style="font-size:var(--text-base)">Brødtekst skal være lett å lese, med god linjehøyde og kontrast.</span><span class="type-meta">base / 400</span></div>
-			<div class="type-row"><span class="type-label">Støtte</span><span class="type-sample" style="font-size:var(--text-sm);color:var(--color-text-secondary)">Støttetekst og metadata, 12. august 2025</span><span class="type-meta">sm / 400</span></div>
-			<div class="type-row"><span class="type-label">Caption</span><span class="type-sample" style="font-size:var(--text-xs);color:var(--color-text-muted)">Bildetekst eller kilde</span><span class="type-meta">xs / 400</span></div>
+			<div class="type-row"><span class="type-label">Label</span><span class="type-sample type-sample-label">Seksjonsetikett</span><span class="type-meta">xs / 600 uppercase</span></div>
+			<div class="type-row"><span class="type-label">Body</span><span class="type-sample type-sample-body">Brødtekst skal være lett å lese, med god linjehøyde og kontrast.</span><span class="type-meta">base / 400</span></div>
+			<div class="type-row"><span class="type-label">Støtte</span><span class="type-sample type-sample-support">Støttetekst og metadata, 12. august 2025</span><span class="type-meta">sm / 400</span></div>
+			<div class="type-row"><span class="type-label">Caption</span><span class="type-sample type-sample-caption">Bildetekst eller kilde</span><span class="type-meta">xs / 400</span></div>
 		</div>
 	</section>
 
@@ -129,7 +106,7 @@
 			<div class="radius-box" style="border-radius:var(--r-xl);height:80px"><span class="rname">xl</span><span class="rval">10px kort</span></div>
 		</div>
 		<h3 class="sub-title">Kanter</h3>
-		<p class="motion-note">Kanter som markerer et UI-element (input, ghost-knapp, drop-sone) har minst 3:1 (WCAG 1.4.11). Dekorative kanter er unntatt.</p>
+		<p class="note">Kanter som markerer et UI-element (input, ghost-knapp, drop-sone) har minst 3:1 (WCAG 1.4.11). Dekorative kanter er unntatt.</p>
 		<div class="border-grid">
 			<div class="border-card" style="border:1px solid var(--color-border)"><span class="name">border</span><span class="val">kort</span></div>
 			<div class="border-card" style="border:1px solid var(--color-border-subtle)"><span class="name">border-subtle</span><span class="val">skiller</span></div>
@@ -137,7 +114,7 @@
 			<div class="border-card" style="border:2px dashed var(--color-accent-border)"><span class="name">accent-border</span><span class="val">ghost, drop-sone · 3:1</span></div>
 		</div>
 		<h3 class="sub-title">Dybde</h3>
-		<p class="motion-note">Flater skilles med <code>--color-surface</code> og kant. Skygge kun på flytende elementer. Native <code>&lt;dialog&gt;</code> og popover ligger i nettleserens top layer, så det trengs ingen z-index-skala.</p>
+		<p class="note">Flater skilles med <code>--color-surface</code> og kant. Skygge kun på flytende elementer. Native <code>&lt;dialog&gt;</code> og popover ligger i nettleserens top layer, så det trengs ingen z-index-skala.</p>
 		<div class="depth-grid">
 			<div class="depth-card md"><span class="name">shadow-md</span><span class="val">Dropdown, popover</span></div>
 			<div class="depth-card lg"><span class="name">shadow-lg</span><span class="val">Dialog</span></div>
@@ -147,7 +124,35 @@
 			<div class="motion-tile color"><span class="name">Farge og kant</span><span class="val">--t-fast: 0.15s ease</span></div>
 			<div class="motion-tile lift"><span class="name">Løft</span><span class="val">--t-lift: 0.1s ease · translateY(-1px)</span></div>
 		</div>
-		<p class="motion-note">Med <code>prefers-reduced-motion: reduce</code> slås alle overganger av.</p>
+		<p class="note">Med <code>prefers-reduced-motion: reduce</code> slås alle overganger av.</p>
+	</section>
+
+	<section class="section" id="logo">
+		<div class="section-head"><h2 class="section-title">Logo</h2><div class="section-rule"></div></div>
+		<p class="note">Ordmerket <code>Tidya</code> med gul prikk (<code>--color-accent-fill</code>). To varianter: mørk logo på lys bakgrunn og lys logo på mørk bakgrunn. Minstehøyde 24 px, frirom minst prikkens diameter på alle sider. Ikke strekk, farge om eller legg på bilder. Filene ligger i <code>brand/</code>.</p>
+		<div class="logo-panels">
+			<div class="logo-panel logo-panel-light"><img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="56"></div>
+			<div class="logo-panel logo-panel-dark"><img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="56"></div>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;img src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;   &lt;!-- på lys bakgrunn --&gt;
+&lt;img src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;  &lt;!-- på mørk bakgrunn --&gt;</code></pre>
+	</section>
+
+	<section class="section" id="fav-ikon">
+		<div class="section-head"><h2 class="section-title">Fav-ikon</h2><div class="section-rule"></div></div>
+		<p class="note">Fav-ikonet er det lille bildet i nettleserfanen, bokmerker og historikk. Her er det bare prikken, fordi hele logoen blir uleselig i 16 px. Tre filer dekker alle enheter. Hver app må lenke til dem i <code>&lt;head&gt;</code>, ellers vises ingen ikon. Denne siden bruker de samme filene, så du ser dem i fanen din nå.</p>
+		<div class="icon-tabs">
+			<div class="icon-tab icon-tab-light"><img src="brand/favicon.svg" alt="" width="16" height="16"><span>Tidya designspråk</span></div>
+			<div class="icon-tab icon-tab-dark"><img src="brand/favicon.svg" alt="" width="16" height="16"><span>Tidya designspråk</span></div>
+		</div>
+		<div class="icon-grid">
+			<div class="icon-card"><img src="brand/favicon.svg" alt="" width="48" height="48"><div><strong><code>favicon.svg</code></strong><span>Fanen i moderne nettlesere. Skarp i alle størrelser.</span></div></div>
+			<div class="icon-card"><img src="brand/favicon.ico" alt="" width="48" height="48"><div><strong><code>favicon.ico</code></strong><span>Fallback for eldre nettlesere og verktøy (16, 32 og 48 px).</span></div></div>
+			<div class="icon-card"><img class="icon-apple" src="brand/apple-touch-icon.png" alt="" width="48" height="48"><div><strong><code>apple-touch-icon.png</code></strong><span>Når noen legger siden på hjemmeskjermen på iPhone (180 × 180 px, mørk bakgrunn, iOS runder hjørnene).</span></div></div>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;link rel="icon" href="brand/favicon.ico" sizes="32x32"&gt;
+&lt;link rel="icon" href="brand/favicon.svg" type="image/svg+xml"&gt;
+&lt;link rel="apple-touch-icon" href="brand/apple-touch-icon.png"&gt;</code></pre>
 	</section>
 
 	<section class="section" id="knapper">
@@ -176,13 +181,13 @@
 
 	<section class="section" id="skjema">
 		<div class="section-head"><h2 class="section-title">Skjema</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Hvert felt har synlig <code>label</code>, valgfri <code>hint</code> og feilmelding knyttet med <code>aria-describedby</code>. Feil settes med <code>aria-invalid="true"</code>, ikke en egen klasse.</p>
+		<p class="note">Hvert felt har synlig <code>label</code>, valgfri <code>hint</code> og feilmelding knyttet med <code>aria-describedby</code>. Feil settes med <code>aria-invalid="true"</code>, ikke en egen klasse.</p>
 		<div class="demo-stack">
 			<div class="field"><label class="label" for="f-navn">Navn</label><input class="input" id="f-navn" type="text" placeholder="Skriv her…"><p class="hint">Vises i oversikten.</p></div>
 			<div class="field"><label class="label" for="f-epost">E-post</label><input class="input" id="f-epost" type="email" value="ola@" aria-invalid="true" aria-describedby="f-epost-feil"><p class="field-error" id="f-epost-feil">Ugyldig e-postadresse.</p></div>
 			<div class="field"><label class="label" for="f-status">Status</label><select class="select" id="f-status"><option>Aktiv</option><option>Pauset</option><option>Avsluttet</option></select></div>
 			<div class="field"><label class="label" for="f-notat">Notat</label><textarea class="textarea" id="f-notat" placeholder="Valgfritt"></textarea></div>
-			<fieldset class="field" style="border:none"><legend class="label">Varsler</legend>
+			<fieldset class="field fieldset-plain"><legend class="label">Varsler</legend>
 				<label class="check"><input type="checkbox" checked> E-post</label>
 				<label class="check"><input type="checkbox"> SMS</label>
 				<label class="check"><input type="radio" name="f-rad" checked> Daglig</label>
@@ -208,7 +213,7 @@
 
 	<section class="section" id="tabell">
 		<div class="section-head"><h2 class="section-title">Tabell</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Tall høyrejustert med <code>tabular-nums</code> (klassen <code>num</code>). Sorterbare kolonner er vanlige lenker i <code>th</code> med <code>aria-sort</code>. Tom tilstand bruker <code>table-empty</code>. Rammen <code>table-wrap</code> scroller sidelengs på smal skjerm, så den har <code>tabindex="0"</code>, <code>role="region"</code> og <code>aria-label</code> (tastaturtilgang).</p>
+		<p class="note">Tall høyrejustert med <code>tabular-nums</code> (klassen <code>num</code>). Sorterbare kolonner er vanlige lenker i <code>th</code> med <code>aria-sort</code>. Tom tilstand bruker <code>table-empty</code>. Rammen <code>table-wrap</code> scroller sidelengs på smal skjerm, så den har <code>tabindex="0"</code>, <code>role="region"</code> og <code>aria-label</code> (tastaturtilgang).</p>
 		<div class="table-wrap" tabindex="0" role="region" aria-label="Prosjekter">
 			<table class="table">
 				<caption class="sr-only">Prosjekter</caption>
@@ -241,7 +246,7 @@
 		<div class="section-head"><h2 class="section-title">Kort, meldinger og dialog</h2><div class="section-rule"></div></div>
 		<div class="card"><p class="card-title">Korttittel</p><p class="card-body">Kort grupperer relatert innhold på en flate (<code>--color-surface</code>) med svak kant og 10px radius.</p></div>
 		<blockquote class="quote"><p>Sitatblokk for å løfte frem en viktig setning.</p><cite>— Kilde</cite></blockquote>
-		<p class="motion-note">Status vises med ikon og tekst, ikke farge alene. Tittel er <code>--color-text</code>, brødtekst <code>--color-text-secondary</code>. Fargen ligger på kant og ikon.</p>
+		<p class="note">Status vises med ikon og tekst, ikke farge alene. Tittel er <code>--color-text</code>, brødtekst <code>--color-text-secondary</code>. Fargen ligger på kant og ikon.</p>
 		<div class="alerts">
 			<div class="alert info"><span class="alert-icon" aria-hidden="true">i</span><div><p class="alert-title">Informasjon</p><p class="alert-body">Nøytral beskjed som ikke krever handling.</p></div></div>
 			<div class="alert success"><span class="alert-icon" aria-hidden="true">✓</span><div><p class="alert-title">Lagret</p><p class="alert-body">Endringene er lagret.</p></div></div>
@@ -249,7 +254,7 @@
 			<div class="alert error"><span class="alert-icon" aria-hidden="true">✕</span><div><p class="alert-title">Noe gikk galt</p><p class="alert-body">Handlingen kunne ikke fullføres. Prøv igjen.</p></div></div>
 		</div>
 		<h3 class="sub-title" id="dialog">Dialog</h3>
-		<p class="motion-note">Native <code>&lt;dialog&gt;</code> med <code>showModal()</code>: fokusfelle, Escape og bakgrunn uten JS-bibliotek. <code>autofocus</code> på den trygge knappen. Escape lukker, og fokus går tilbake til knappen som åpnet den.</p>
+		<p class="note">Native <code>&lt;dialog&gt;</code> med <code>showModal()</code>: fokusfelle, Escape og bakgrunn uten JS-bibliotek. <code>autofocus</code> på den trygge knappen. Escape lukker, og fokus går tilbake til knappen som åpnet den.</p>
 		<div><button class="btn-ghost" type="button" onclick="document.getElementById('demo-dialog').showModal()">Åpne dialog</button></div>
 		<dialog class="dialog" id="demo-dialog" aria-labelledby="demo-dialog-tittel" aria-describedby="demo-dialog-tekst">
 			<h2 class="dialog-title" id="demo-dialog-tittel">Slett Prosjekt A?</h2>
@@ -270,7 +275,7 @@
 
 	<section class="section" id="htmx">
 		<div class="section-head"><h2 class="section-title">htmx-mønstre</h2><div class="section-rule"></div></div>
-		<p class="motion-note">Komponentene er ren CSS og fungerer rett i server-rendret HTML. Mønstrene er testet mot htmx 2.0 i Chromium (mørk og lys, axe: 0 brudd) og holder innholdet tilgjengelig når det byttes ut.</p>
+		<p class="note">Komponentene er ren CSS og fungerer rett i server-rendret HTML. Mønstrene holder innholdet tilgjengelig når det byttes ut.</p>
 		<ul class="bullets">
 			<li><strong>Validering:</strong> serveren returnerer hele skjemaet på nytt med <code>aria-invalid</code>, feilmelding og <code>autofocus</code> på første ugyldige felt, så fokus ikke går tapt.</li>
 			<li><strong>Lasting:</strong> <code>.spinner</code> i <code>.htmx-indicator</code>. Skjemaet får <code>htmx-request</code>, og submit-knappen blokkeres (hindrer dobbeltinnsending).</li>
@@ -278,17 +283,24 @@
 			<li><strong>Sortering:</strong> bytt hele tabellen, ellers står <code>aria-sort</code> igjen med gammel verdi. Lenken har <code>id</code> og beholder fokus.</li>
 			<li><strong>Sletting:</strong> server-rendret <code>&lt;dialog&gt;</code>. Fokus havner ellers på <code>body</code> når raden fjernes, så flytt det til en overskrift med <code>tabindex="-1"</code>. <code>hx-on</code> er inline JS og krever at CSP tillater det.</li>
 		</ul>
+		<h3 class="sub-title">Validering og lasting</h3>
 <pre class="code" tabindex="0"><code>&lt;form hx-post="/kunder" hx-target="this" hx-swap="outerHTML"&gt;
 	&lt;!-- Ved feil returnerer serveren hele skjemaet på nytt: aria-invalid, feilmelding
 	     (aria-describedby) og autofocus på første ugyldige felt. --&gt;
 	&lt;button class="btn-primary" type="submit"&gt;Lagre &lt;span class="spinner htmx-indicator" aria-hidden="true"&gt;&lt;/span&gt;&lt;/button&gt;
-&lt;/form&gt;</code></pre><pre class="code" tabindex="0"><code>&lt;!-- Layout: regionen finnes alltid, med role og aria-live --&gt;
+&lt;/form&gt;</code></pre>
+
+		<h3 class="sub-title">Beskjeder</h3>
+<pre class="code" tabindex="0"><code>&lt;!-- Layout: regionen finnes alltid, med role og aria-live --&gt;
 &lt;div id="status" role="status" aria-live="polite"&gt;&lt;/div&gt;
 
 &lt;!-- Serversvar: bytt INNHOLDET, ikke elementet (ellers mistes role/aria-live) --&gt;
 &lt;div hx-swap-oob="innerHTML:#status"&gt;
 	&lt;div class="alert success"&gt;&lt;span class="alert-icon" aria-hidden="true"&gt;✓&lt;/span&gt;&lt;div&gt;&lt;p class="alert-title"&gt;Lagret&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre><pre class="code" tabindex="0"><code>&lt;!-- I layouten: overskrift som kan få fokus, og plass til dialogen --&gt;
+&lt;/div&gt;</code></pre>
+
+		<h3 class="sub-title">Sletting</h3>
+<pre class="code" tabindex="0"><code>&lt;!-- I layouten: overskrift som kan få fokus, og plass til dialogen --&gt;
 &lt;h1 class="h2" id="tittel" tabindex="-1"&gt;Kunder&lt;/h1&gt;
 &lt;div id="dialog-plass"&gt;&lt;/div&gt;
 
@@ -308,7 +320,7 @@
 
 	<section class="section" id="sprak">
 		<div class="section-head"><h2 class="section-title">Språk og formater</h2><div class="section-rule"></div></div>
-		<p class="motion-note">UI-tekst er bokmål, kort og konkret, og tiltaler brukeren med «du». Bruk alltid <code>Intl</code> med <code>nb-NO</code>, aldri håndformatering. Mellomrom i tall og før enheter er hardt mellomrom (U+00A0).</p>
+		<p class="note">UI-tekst er bokmål, kort og konkret, og tiltaler brukeren med «du». Bruk alltid <code>Intl</code> med <code>nb-NO</code>, aldri håndformatering. Mellomrom i tall og før enheter er hardt mellomrom (U+00A0).</p>
 		<div class="table-wrap" tabindex="0" role="region" aria-label="Formater">
 			<table class="format-table">
 				<thead><tr><th scope="col">Hva</th><th scope="col">Riktig</th><th scope="col">Unngå</th></tr></thead>
