@@ -29,7 +29,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 | Avstand | `--space-1…7` = 4, 8, 12, 16, 24, 32, 48 px |
 | Radius | `--r-sm` 4 · `--r-md` 6 (knapper) · `--r-lg` 8 (inputs) · `--r-xl` 10 (kort, dialog) |
 
-Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), men beholder amber (`#ffbe0b`) på flater.
+Aksent har to roller fordi lys modus trenger mørk brun som tekst (`#8a5d00`), men beholder amber (`#ffbe0b`) på flater. Bruk amber som flate for å gi lys modus farge: `card` har 3px linje øverst og `table th` 2px linje under, begge `--color-accent-fill`.
 
 ## Komponenter (ren CSS)
 
