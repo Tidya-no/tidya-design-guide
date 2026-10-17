@@ -70,6 +70,8 @@ for f in sorted(glob.glob('brand/*.svg')):
 	ok(f in want and fills=={D['--color-accent-fill'].lower()}|{c.lower() for c in want[f]},f'{f}: farger følger tokens {sorted(fills)}')
 pl=re.search(r'\.logo-panel-light \{ background: (#[0-9a-fA-F]{6})',sty); pd=re.search(r'\.logo-panel-dark \{ background: (#[0-9a-fA-F]{6})',sty)
 ok(bool(pl and pd) and pl.group(1).lower()==LT['--color-bg'].lower() and pd.group(1).lower()==D['--color-bg'].lower(),'logo-panelene i styles.css har --color-bg for lys og mørk modus')
+tl=re.search(r'\.icon-tab-light \{ background: (#[0-9a-fA-F]{6}); color: (#[0-9a-fA-F]{6})',sty); td=re.search(r'\.icon-tab-dark \{ background: (#[0-9a-fA-F]{6}); color: (#[0-9a-fA-F]{6})',sty)
+ok(bool(tl and td) and [x.lower() for x in tl.groups()]==[LT['--color-bg'].lower(),LT['--color-text'].lower()] and [x.lower() for x in td.groups()]==[D['--color-bg'].lower(),D['--color-text'].lower()],'fane-eksemplene i styles.css har --color-bg og --color-text for lys og mørk modus')
 print('E. Fargetabellen i guiden mot tokens.css')
 def parse(v):
 	v=v.strip(); m=re.match(r'#([0-9a-f]{6})$',v)
