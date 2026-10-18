@@ -21,8 +21,9 @@ a:hover { color: var(--color-accent-hover); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Typografi */
-.h1 { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 700; line-height: 1.1; }
-.h2 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 600; line-height: var(--leading-tight); }
+.h1 { font-size: var(--text-3xl); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.h2 { font-size: var(--text-xl); font-weight: 600; line-height: var(--leading-tight); letter-spacing: -0.01em; }
+.display { font-family: var(--font-display); font-size: var(--text-display); font-weight: 700; line-height: 1.05; text-wrap: balance; }
 .h3 { font-size: var(--text-lg); font-weight: 600; line-height: 1.4; }
 .h4 { font-size: var(--text-base); font-weight: 600; line-height: 1.4; }
 
@@ -159,7 +160,7 @@ a.btn-danger:hover { color: var(--color-bg); }
 .card-body { font-size: var(--text-base); color: var(--color-text-secondary); }
 
 .quote { border-left: 3px solid var(--color-accent-fill); padding-left: 1rem; }
-.quote p { font-size: 1rem; font-style: italic; line-height: 1.55; }
+.quote p { font-size: 1rem; line-height: 1.55; }
 .quote cite { font-size: var(--text-xs); color: var(--color-text-secondary); letter-spacing: 0.02em; margin-top: 4px; display: block; }
 
 /* Meldinger */
