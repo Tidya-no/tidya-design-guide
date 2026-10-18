@@ -7,7 +7,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 Kopier `tokens.css`, `components.css`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
 
 - Hent filene fra repoet (https://github.com/Tidya-no/tidya-design-guide) eller fra den publiserte guiden (https://tidya-no.github.io/tidya-design-guide/). Ikke gjett innholdet.
-- Hele mapper skal med: `fonts/` (`inter-latin-wght-normal.woff2`, `inter-latin-wght-italic.woff2`, `fraunces-latin-wght-normal.woff2`, `LICENSE-Inter.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
+- Hele mapper skal med: `fonts/` (`manrope-latin-wght-normal.woff2`, `fraunces-latin-wght-normal.woff2`, `LICENSE-Manrope.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
 - Hold `fonts/` ved siden av `tokens.css`, for fontene lastes med relativ sti. Flytter du dem, endre `url(...)` i `@font-face`.
 - I `<head>` (ikon-taggene står under «Logo og ikoner»):
 
@@ -48,9 +48,9 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 | Kanter | `--color-border` (kort), `--color-border-subtle` (skiller, ikke på inputs), `--color-border-control` (inputs, 3:1), `--color-accent-border` (ghost, drop-sone, 3:1) |
 | Status | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `--color-error-bg` osv. Tittel i `--color-text`, farge på kant og ikon |
 | Skygge og bakgrunn | `--shadow-md` (dropdown, popover), `--shadow-lg` (dialog), `--color-overlay`. Ikke skygge på vanlige flater. Native `<dialog>`/popover trenger ikke z-index |
-| Fonter | Fraunces `--font-display` (overskrifter), Inter `--font-body`, `--font-mono` (kode). Selvhostet i `fonts/`, ingen Google Fonts |
-| Størrelser | `--text-xs/sm/base/lg/xl/2xl/3xl` = 0.75, 0.8125, 0.875, 1.0625, 1.35, 1.5, clamp(2, 5vw, 3) rem. Linjehøyde `--leading-tight` 1.2, `--leading-normal` 1.6 |
-| Hierarki | h1 Fraunces 3xl/700 · h2 Fraunces xl/600 · h3 Inter lg/600 · h4 Inter base/600 · brødtekst `base` · støtte `sm` · etikett og bildetekst `xs` · nøkkeltall Fraunces `2xl` med `tabular-nums` |
+| Fonter | Manrope `--font-body` til all tekst, også overskrifter. Fraunces `--font-display` (klassen `display`) bare der skriften selv er en del av uttrykket, som en hero eller en forsidetittel. Aldri i tabeller, skjema, dialoger eller kortoverskrifter. `--font-mono` (kode). Selvhostet i `fonts/`, ingen Google Fonts |
+| Størrelser | `--text-xs/sm/base/lg/xl/2xl/3xl` = 0.75, 0.8125, 0.875, 1.0625, 1.35, 1.5, clamp(2, 5vw, 3) rem, `--text-display` clamp(2.5, 7vw, 4.5) rem (bare for `display`). Linjehøyde `--leading-tight` 1.2, `--leading-normal` 1.6 |
+| Hierarki | h1 3xl/700 · h2 xl/600 · h3 lg/600 · h4 base/600 · `display` Fraunces `--text-display`/700 (bare i hero) · brødtekst `base` · støtte `sm` · etikett og bildetekst `xs` · nøkkeltall `2xl` med `tabular-nums` |
 | Avstand | `--space-1…7` = 4, 8, 12, 16, 24, 32, 48 px |
 | Radius | `--r-sm` 4 · `--r-md` 6 (knapper) · `--r-lg` 8 (inputs) · `--r-xl` 10 (kort, dialog) |
 
@@ -108,7 +108,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Dialog | `<dialog class="dialog">` med `dialog-title`, `-body`, `-actions`, åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `-title`, `-body` |
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
-| Hjelp | `tnum`, `sr-only`, `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
+| Hjelp | `tnum`, `sr-only`, `display` (Fraunces, bare i hero, se under), `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
 | Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
 | Header | `site-header` > `site-header-inner` (logo til venstre, valgfritt innhold til høyre) |
 | Temabryter | `theme-toggle` med `theme-toggle-icon`. Krever `theme.js` |
@@ -118,6 +118,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 - Temabryter: kopier `theme.js` (endre `storageKey` til appen) og la ikon og tekst ha `data-theme-icon` og `data-theme-label`. Sett valgt tema før første tegning med et lite skript i `<head>` (se `index.html` i guiden). Ikon og tekst viser modusen man bytter til.
 - Én `btn-primary` per visning (hovedhandlingen), resten `btn-ghost`. Åpne-knapper og andre sekundære handlinger er `btn-ghost`, men den som åpner den viktigste dialogen på siden kan være `btn-primary`.
 - Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
+- Hero og forsider: `display` er bare tittelen i Fraunces. Selve hero-layouten (bilde, knapper, bakgrunn) er appens eget ansvar, bygget med tokens og `btn-*`. Alt annet, også `h1`–`h4`, er Manrope.
 - Status i en tabellcelle er ren tekst (status bæres ikke av farge alene). Det finnes ingen badge ennå.
 - Feil på felt vises ved feltet (`field-error`). En `alert` er for resultatet av hele handlingen («Kunne ikke lagre. Prøv igjen.») og erstatter ikke feltfeilen. Suksess og andre beskjeder legges i `role="status"`-regionen (`#status`), også i statisk HTML.
 - Feil på felt: `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse. Synlig `label`, placeholder erstatter den ikke.

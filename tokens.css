@@ -2,18 +2,11 @@
 
 /* Selvhostede fonter (SIL OFL 1.1, se fonts/LICENSE-*.txt). Latin-subset dekker æ, ø og å. */
 @font-face {
-	font-family: 'Inter';
+	font-family: 'Manrope';
 	font-style: normal;
-	font-weight: 100 900;
+	font-weight: 200 800;
 	font-display: swap;
-	src: url('fonts/inter-latin-wght-normal.woff2') format('woff2');
-}
-@font-face {
-	font-family: 'Inter';
-	font-style: italic;
-	font-weight: 100 900;
-	font-display: swap;
-	src: url('fonts/inter-latin-wght-italic.woff2') format('woff2');
+	src: url('fonts/manrope-latin-wght-normal.woff2') format('woff2');
 }
 @font-face {
 	font-family: 'Fraunces';
@@ -56,7 +49,7 @@
 	--shadow-lg:                  0 12px 32px rgba(0, 0, 0, 0.55);
 	--color-overlay:              rgba(0, 0, 0, 0.60);
 
-	--font-body:    'Inter', system-ui, sans-serif;
+	--font-body:    'Manrope', system-ui, sans-serif;
 	--font-display: 'Fraunces', Georgia, serif;
 
 	--text-xs:   0.75rem;
@@ -66,6 +59,7 @@
 	--text-xl:   1.35rem;
 	--text-2xl:  1.5rem;
 	--text-3xl:  clamp(2rem, 5vw, 3rem);
+	--text-display: clamp(2.5rem, 7vw, 4.5rem);
 
 	--leading-tight:  1.2;
 	--leading-normal: 1.6;

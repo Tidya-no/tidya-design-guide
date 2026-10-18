@@ -27,7 +27,7 @@
 
 	<header class="header">
 		<p class="header-eyebrow">Designguide</p>
-		<h1 class="header-title">Tidya designspråk</h1>
+		<h1 class="display">Tidya designspråk</h1>
 		<p class="header-sub">Et varmt grensesnitt bygget på amber og brune toner. Mørk og lys modus, tekst kontrastsjekket mot WCAG AA (4,5:1) og kontroller mot 3:1.</p>
 	</header>
 
@@ -70,13 +70,14 @@
 
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Typografi</h2><div class="section-rule"></div></div>
-		<div class="info-bar"><strong>Fonter:</strong> <code>Fraunces</code> til overskrifter, <code>Inter</code> til alt annet. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.75 · <code>sm</code> 0.8125 · <code>base</code> 0.875 · <code>lg</code> 1.0625 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
+		<div class="info-bar"><strong>Fonter:</strong> <code>Manrope</code> til all tekst. <code>Fraunces</code> (<code>.display</code>) bare der skriften er en del av uttrykket, som i en hero. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.75 · <code>sm</code> 0.8125 · <code>base</code> 0.875 · <code>lg</code> 1.0625 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem · <code>--text-display</code> clamp(2.5, 7vw, 4.5) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
 		<div class="heading-stack">
+			<div class="display">Display, kun der skriften er uttrykket</div>
 			<div class="h1">h1 Sidetittel</div>
 			<div class="h2">h2 Seksjonsoverskrift</div>
 			<div class="h3">h3 Underseksjon</div>
 			<div class="h4">h4 Gruppenavn</div>
-			<div class="num-sample tnum">1 234 567,89 kr <span class="num-note">nøkkeltall: Fraunces <code>2xl</code> med <code>tabular-nums</code></span></div>
+			<div class="num-sample tnum">1 234 567,89 kr <span class="num-note">nøkkeltall: Manrope <code>2xl</code> med <code>tabular-nums</code></span></div>
 		</div>
 		<div class="type-scale">
 			<div class="type-row"><span class="type-label">Label</span><span class="type-sample type-sample-label">Seksjonsetikett</span><span class="type-meta">xs / 600 uppercase</span></div>
