@@ -156,7 +156,7 @@ body { padding-inline: 16px; padding-block: 48px; }
 .icon-tab { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--r-lg) var(--r-lg) 0 0; font-size: var(--text-sm); min-width: 220px; }
 .icon-tab img { display: block; }
 .icon-tab-light { background: #fbf6ea; color: #1c1712; }
-.icon-tab-dark { background: #1c1712; color: #f5efe6; border: 1px solid var(--color-border-subtle); }
+.icon-tab-dark { background: #1a1816; color: #f5efe6; border: 1px solid var(--color-border-subtle); }
 .icon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-3); }
 .icon-card { display: flex; gap: var(--space-4); align-items: center; padding: var(--space-4); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--r-xl); }
 .icon-card img { flex-shrink: 0; }
@@ -165,7 +165,7 @@ body { padding-inline: 16px; padding-block: 48px; }
 .icon-card span { font-size: var(--text-sm); color: var(--color-text-secondary); margin-top: var(--space-1); }
 /* Fast bakgrunn uansett tema (samme verdier som --color-bg i lys og mørk modus) */
 .logo-panel-light { background: #fbf6ea; }
-.logo-panel-dark { background: #1c1712; }
+.logo-panel-dark { background: #1a1816; }
 .code { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--r-lg); padding: var(--space-3) var(--space-4); overflow-x: auto; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--color-text-secondary); white-space: pre; tab-size: 2; }
 
 .demo-frame { border: 1px solid var(--color-border-subtle); border-radius: var(--r-xl); overflow: hidden; }
