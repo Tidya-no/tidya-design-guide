@@ -190,7 +190,7 @@
 
 	<section class="section" id="header">
 		<div class="section-head"><h2 class="section-title">Header og temabryter</h2><div class="section-rule"></div></div>
-		<p class="note">Headeren er <code>position: sticky</code> og ren CSS: tåkete bakgrunn (<code>--color-bg</code> 80 %), bunnlinje i <code>--color-border-subtle</code>, logo til venstre og valgfritt innhold til høyre. Innholdet i <code>.site-header-inner</code> følger samme bredde som <code>.page</code>. Temabryteren trenger <code>theme.js</code> (husker valget i <code>localStorage</code>, endre nøkkelen til appen). Ikon og tekst oppdateres via <code>data-theme-icon</code> og <code>data-theme-label</code>.</p>
+		<p class="note">Headeren er <code>position: sticky</code> og ren CSS: tåkete bakgrunn (<code>--color-bg</code> 80 %), bunnlinje i <code>--color-border-subtle</code>, logo til venstre og valgfritt innhold til høyre. Innholdet i <code>.site-header-inner</code> følger samme bredde som <code>.page</code>. Temabryteren trenger <code>theme.js</code> (husker valget i <code>localStorage</code>, endre nøkkelen til appen). Ikon og tekst oppdateres via <code>data-theme-icon</code> og <code>data-theme-label</code>. Navigasjon legges i <code>.site-nav</code>: <code>&lt;a&gt;</code> for sider, og <code>.link-button</code> for handlinger som skal se ut som lenker (for eksempel «Logg ut»). Ikke bruk <code>btn-*</code> i headeren.</p>
 		<div class="demo-frame">
 			<header class="site-header">
 				<div class="site-header-inner">
@@ -198,10 +198,14 @@
 						<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
 						<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
 					</div>
-					<button class="theme-toggle" type="button" onclick="toggleTheme()">
-						<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
-						<span data-theme-label>Lys modus</span>
-					</button>
+					<nav class="site-nav" aria-label="Hovedmeny">
+						<a href="/innstillinger">Innstillinger</a>
+						<button class="link-button" type="button">Logg ut</button>
+						<button class="theme-toggle" type="button" onclick="toggleTheme()">
+							<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
+							<span data-theme-label>Lys modus</span>
+						</button>
+					</nav>
 				</div>
 			</header>
 		</div>
@@ -211,10 +215,14 @@
 			&lt;img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32"&gt;
 			&lt;img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32"&gt;
 		&lt;/div&gt;
-		&lt;button class="theme-toggle" type="button" onclick="toggleTheme()"&gt;
-			&lt;span class="theme-toggle-icon" data-theme-icon aria-hidden="true"&gt;☀️&lt;/span&gt;
-			&lt;span data-theme-label&gt;Lys modus&lt;/span&gt;
-		&lt;/button&gt;
+		&lt;nav class="site-nav" aria-label="Hovedmeny"&gt;
+			&lt;a href="/innstillinger"&gt;Innstillinger&lt;/a&gt;
+			&lt;button class="link-button" type="button"&gt;Logg ut&lt;/button&gt;
+			&lt;button class="theme-toggle" type="button" onclick="toggleTheme()"&gt;
+				&lt;span class="theme-toggle-icon" data-theme-icon aria-hidden="true"&gt;☀️&lt;/span&gt;
+				&lt;span data-theme-label&gt;Lys modus&lt;/span&gt;
+			&lt;/button&gt;
+		&lt;/nav&gt;
 	&lt;/div&gt;
 &lt;/header&gt;
 &lt;script src="theme.js"&gt;&lt;/script&gt;</code></pre>
