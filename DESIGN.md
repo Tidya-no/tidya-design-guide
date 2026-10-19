@@ -25,7 +25,7 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-6); }
 ```
 
-- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus: `#1c1712` (mørk) og `#fbf6ea` (lys).
+- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus: `#1a1816` (mørk) og `#fbf6ea` (lys).
 
 ## Regler
 

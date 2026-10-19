@@ -19,8 +19,8 @@
 :root {
 	color-scheme: dark;
 	/* Mørk modus */
-	--color-bg:                   #1c1712;
-	--color-surface:              #2b221d;
+	--color-bg:                   #1a1816;
+	--color-surface:              #272422;
 	--color-text:                 #f5efe6;
 	--color-text-secondary:       #d4a88f;
 	--color-text-muted:           rgba(245, 239, 230, 0.55);
