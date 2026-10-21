@@ -28,9 +28,12 @@
 		<div class="site-header-actions">
 			<nav class="site-nav" id="site-nav" aria-label="Hovedmeny">
 				<a href="#farger">Farger</a>
+				<a href="#typografi">Typografi</a>
 				<a href="#logo">Logo</a>
 				<a href="#knapper">Knapper</a>
-				<a href="#header">Header</a>
+				<a href="#skjema">Skjema</a>
+				<a href="#kort">Kort</a>
+				<a href="#forside">Forside</a>
 			</nav>
 			<button class="theme-toggle" type="button" data-theme-toggle data-theme-key="tidya-guide-theme" aria-label="Bytt til lys modus">
 				<svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -50,6 +53,23 @@
 		<h1 class="display" data-rise="2">Tidya designspråk</h1>
 		<p class="header-sub" data-rise="3">Et varmt grensesnitt bygget på amber og brune toner. Mørk og lys modus, tekst kontrastsjekket mot WCAG AA (4,5:1) og kontroller mot 3:1.</p>
 	</header>
+
+	<nav class="toc" aria-label="Innhold">
+		<a href="#farger">Farger</a>
+		<a href="#typografi">Typografi</a>
+		<a href="#grunnlag">Grunnlag</a>
+		<a href="#logo">Logo</a>
+		<a href="#fav-ikon">Fav-ikon</a>
+		<a href="#knapper">Knapper</a>
+		<a href="#header">Header</a>
+		<a href="#skjema">Skjema</a>
+		<a href="#tabell">Tabell</a>
+		<a href="#kort">Kort</a>
+		<a href="#dialog">Dialog</a>
+		<a href="#htmx">htmx</a>
+		<a href="#sprak">Språk</a>
+		<a href="#forside">Forside</a>
+	</nav>
 
 	<section class="section" id="farger">
 		<div class="section-head"><h2 class="section-title">Farger</h2><div class="section-rule"></div></div>
@@ -88,7 +108,7 @@
 		</div>
 	</section>
 
-	<section class="section">
+	<section class="section" id="typografi">
 		<div class="section-head"><h2 class="section-title">Typografi</h2><div class="section-rule"></div></div>
 		<div class="info-bar"><strong>Fonter:</strong> <code>Manrope</code> til all tekst. <code>Fraunces</code> (<code>.display</code>) bare der skriften er en del av uttrykket, som i en hero. På forsider og markedsføring gir <code>class="editorial"</code> på <code>body</code> eller <code>main</code> Fraunces også på <code>.h1</code>–<code>.h3</code> og tall i kort (se under); apper utelater den. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.8125 · <code>sm</code> 0.875 · <code>base</code> 1 · <code>lg</code> 1.125 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem · <code>--text-display</code> clamp(2.5, 7vw, 4.5) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
 		<div class="heading-stack">
