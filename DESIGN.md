@@ -4,7 +4,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 
 ## Kom i gang
 
-Kopier `tokens.css`, `components.css`, `header.js`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
+Kopier `tokens.css`, `components.css`, `header.js`, `fonts/` og `brand/` inn i appen (og `effects.js` hvis du vil ha effektene under), og følg reglene. Bruk bare tokens og klasser derfra.
 
 - Hent filene fra repoet (https://github.com/Tidya-no/tidya-design-guide) eller fra den publiserte guiden (https://tidya-no.github.io/tidya-design-guide/). Ikke gjett innholdet.
 - Hele mapper skal med: `fonts/` (`manrope-latin-wght-normal.woff2`, `fraunces-latin-opsz-wght-normal.woff2`, `LICENSE-Manrope.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
@@ -125,6 +125,7 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 - Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
 - Hero og forsider: `display` er bare tittelen i Fraunces. Selve hero-layouten (bilde, knapper, bakgrunn) er appens eget ansvar, bygget med tokens og `btn-*`. Alt annet, også `h1`–`h4`, er Manrope, med mindre `editorial` er slått på.
 - Redaksjonell modus: `<main class="editorial">` gir Fraunces (lettere vekt, 480–540) på `.h1`–`.h3`, `.display` og `card-stat-number`. Bruk den på forsider og markedsføring, ikke i apper. Skjema, tabeller, dialoger og knapper er Manrope uansett. Fonten har `opsz`-aksen, så formen tilpasser seg størrelsen av seg selv.
+- Effekter (valgfritt, for forsider): alt styres av `data-`-attributter, og uten JS eller med `prefers-reduced-motion: reduce` vises innholdet som vanlig. `data-rise="1"`–`"4"` gir innkomst ved lasting i trinn (bare CSS, til hero). `data-reveal` på elementer som skal komme inn når de scrolles til (trenger `effects.js`; det som er synlig ved oppstart animeres ikke, og søsken får forsinkelse 0,12 s per steg). `<em data-sweep>` gir en markeringsstrek som sveiper inn bak ordet (nøytral skrift, ikke kursiv). `data-tilt` med `<div class="card-glow"></div>` først i kortet gir glød som følger pekeren og lett 3D-tilt; bruk det ikke på `card-link`, som har eget løft. `<span data-count="96">96</span>` teller opp fra 0 (teksten er sluttverdien). `data-magnetic` på en knapp lar den følge pekeren litt. Bruk effektene sparsomt, og aldri på noe i apper.
 - Kort: `card` er flatt og brukes også i skjema. Gi ett kort i en gruppe `card-accent` for variasjon, og legg gruppen i en `section-alt` hvis du vil at seksjonene skal alternere (kortene snur til `--color-bg` automatisk). Bare `card-link` (kort som er en `<a>`) løfter seg og får skygge; ikke gi løft til kort som ikke er klikkbare. Titler i kort har klassen `.h3` på det overskriftsnivået som passer i siden.
 - Status i en tabellcelle er ren tekst (status bæres ikke av farge alene). Det finnes ingen badge ennå.
 - Feil på felt vises ved feltet (`field-error`). En `alert` er for resultatet av hele handlingen («Kunne ikke lagre. Prøv igjen.») og erstatter ikke feltfeilen. Suksess og andre beskjeder legges i `role="status"`-regionen (`#status`), også i statisk HTML.

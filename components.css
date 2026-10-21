@@ -243,6 +243,36 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Effekter (valgfritt, effects.js for de som trenger JS). Attributter, ikke klasser:
+   data-rise="1–4": hero-innkomst ved lasting, i trinn (bare CSS). data-reveal: kommer inn når den scrolles til (effects.js).
+   data-sweep på <em>: markeringsstrek som sveiper inn bak ordet. data-tilt + .card-glow: glød og tilt på kort. data-count, data-magnetic: se effects.js. */
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } }
+@keyframes reveal { from { opacity: 0; transform: translateY(34px); } }
+@keyframes sweep { to { transform: scaleX(1); } }
+[data-rise] { animation: rise 0.9s var(--ease-out) backwards; }
+[data-rise="2"] { animation-delay: 0.25s; }
+[data-rise="3"] { animation-delay: 0.4s; }
+[data-rise="4"] { animation-delay: 0.55s; }
+[data-rise="1"] { animation-delay: 0.1s; }
+:root[data-effects] [data-reveal]:not([data-in]) { opacity: 0; }
+[data-reveal][data-in] { animation: reveal 0.9s var(--ease-out) backwards; }
+[data-reveal][data-in]:nth-child(2) { animation-delay: 0.12s; }
+[data-reveal][data-in]:nth-child(3) { animation-delay: 0.24s; }
+[data-sweep] { position: relative; z-index: 1; padding: 0 0.05em; font-style: normal; white-space: nowrap; }
+[data-sweep]::before {
+	content: ""; position: absolute; left: -0.06em; right: -0.06em; top: 16%; bottom: 12%; z-index: -1;
+	background: color-mix(in srgb, var(--color-accent-fill) 26%, transparent); border-radius: 0.2em;
+	transform: scaleX(0); transform-origin: left center; animation: sweep 0.6s var(--ease-out) 1.05s forwards;
+}
+[data-tilt] { transform-style: preserve-3d; transition: box-shadow 0.4s; }
+[data-tilt]:hover { box-shadow: var(--shadow-lg); }
+.card-glow {
+	position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.4s;
+	background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--color-accent-fill) 10%, transparent), transparent 60%);
+}
+[data-tilt]:hover .card-glow { opacity: 1; }
+.card-accent .card-glow { background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--color-accent-fill) 16%, transparent), transparent 60%); }
+
 /* Kort. Grunnkortet er flatt og rolig (også for skjema). Varianter: card-accent (amber tone), card-link (hele kortet er en lenke),
    card-stat (stort tall), card-wave (bølge nederst), card-feature (romslig, med card-icon). Løft og skygge bare på card-link.
    section-alt gir en flate bak kortene og snur dem automatisk til --color-bg, så seksjonene alternerer. */
