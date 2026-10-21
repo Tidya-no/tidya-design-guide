@@ -6,7 +6,7 @@
 	<title>Tidya designspråk</title>
 	<meta name="description" content="Tidya designspråk: tokens, komponenter og regler for utvikling, med mørk og lys modus.">
 	<meta name="theme-color" content="#1a1816" media="(prefers-color-scheme: dark)">
-	<meta name="theme-color" content="#fbf6ea" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)">
 	<script>try{var t=localStorage.getItem('tidya-guide-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 	<link rel="icon" href="brand/favicon.ico" sizes="32x32">
 	<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
 <header class="site-header">
 	<div class="site-header-inner">
 		<a class="site-brand" href="./">
@@ -58,22 +59,22 @@
 			<table class="tokens-table">
 				<thead><tr><th scope="col">Token</th><th scope="col" class="col-dark">Mørk</th><th scope="col">Lys</th><th scope="col">Bruk</th></tr></thead>
 				<tbody>
-					<tr><td><code>--color-bg</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td><span class="chip"><span class="chip-dot" style="background:#fbf6ea"></span>#fbf6ea</span></td><td>Sidebakgrunn</td></tr>
-					<tr><td><code>--color-surface</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#272422"></span>#272422</span></td><td><span class="chip"><span class="chip-dot" style="background:#f3e9d3"></span>#f3e9d3</span></td><td>Kort, dialog</td></tr>
-					<tr><td><code>--color-text</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#f5efe6"></span>#f5efe6</span></td><td><span class="chip"><span class="chip-dot" style="background:#1c1712"></span>#1c1712</span></td><td>Primærtekst · 15,5:1 / 16,5:1</td></tr>
-					<tr><td><code>--color-text-secondary</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#d4a88f"></span>#d4a88f</span></td><td><span class="chip"><span class="chip-dot" style="background:#7a4a2e"></span>#7a4a2e</span></td><td>Støttetekst · 8,3:1 / 6,8:1</td></tr>
+					<tr><td><code>--color-bg</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#1a1816"></span>#1a1816</span></td><td><span class="chip"><span class="chip-dot" style="background:#f7f3ee"></span>#f7f3ee</span></td><td>Sidebakgrunn</td></tr>
+					<tr><td><code>--color-surface</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#272422"></span>#272422</span></td><td><span class="chip"><span class="chip-dot" style="background:#ede8e1"></span>#ede8e1</span></td><td>Kort, dialog</td></tr>
+					<tr><td><code>--color-text</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#f5efe6"></span>#f5efe6</span></td><td><span class="chip"><span class="chip-dot" style="background:#1c1712"></span>#1c1712</span></td><td>Primærtekst · 15,5:1 / 16,1:1</td></tr>
+					<tr><td><code>--color-text-secondary</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#d4a88f"></span>#d4a88f</span></td><td><span class="chip"><span class="chip-dot" style="background:#7a4a2e"></span>#7a4a2e</span></td><td>Støttetekst · 8,3:1 / 6,7:1</td></tr>
 					<tr><td><code>--color-text-muted</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(245, 239, 230, 0.55)"></span>rgba(245, 239, 230, 0.55)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(28, 23, 18, 0.65)"></span>rgba(28, 23, 18, 0.65)</span></td><td>Metadata, placeholder · 5,5:1 / 5,3:1</td></tr>
-					<tr><td><code>--color-label</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#e0956d"></span>#e0956d</span></td><td><span class="chip"><span class="chip-dot" style="background:#9c3d1a"></span>#9c3d1a</span></td><td>Etiketter · 7,3:1 / 6,3:1</td></tr>
-					<tr><td><code>--color-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td><span class="chip"><span class="chip-dot" style="background:#8a5d00"></span>#8a5d00</span></td><td>Aksenttekst, lenke, kant på fokusert felt · 10,7:1 / 5,3:1</td></tr>
-					<tr><td><code>--color-accent-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td><span class="chip"><span class="chip-dot" style="background:#6b4900"></span>#6b4900</span></td><td>Hover på aksenttekst · 11,5:1 / 7,6:1</td></tr>
+					<tr><td><code>--color-label</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#e0956d"></span>#e0956d</span></td><td><span class="chip"><span class="chip-dot" style="background:#9c3d1a"></span>#9c3d1a</span></td><td>Etiketter · 7,3:1 / 6,1:1</td></tr>
+					<tr><td><code>--color-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td><span class="chip"><span class="chip-dot" style="background:#8a5d00"></span>#8a5d00</span></td><td>Aksenttekst, lenke, kant på fokusert felt · 10,7:1 / 5,2:1</td></tr>
+					<tr><td><code>--color-accent-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td><span class="chip"><span class="chip-dot" style="background:#6b4900"></span>#6b4900</span></td><td>Hover på aksenttekst · 11,5:1 / 7,4:1</td></tr>
 					<tr><td><code>--color-accent-fill</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td><span class="chip"><span class="chip-dot" style="background:#ffbe0b"></span>#ffbe0b</span></td><td>Flater: primærknapp, markeringer</td></tr>
 					<tr><td><code>--color-accent-fill-hover</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ffc933"></span>#ffc933</span></td><td><span class="chip"><span class="chip-dot" style="background:#f0a800"></span>#f0a800</span></td><td>Hover på flater</td></tr>
 					<tr><td><code>--color-on-accent</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#1c1712"></span>#1c1712</span></td><td><span class="chip"><span class="chip-dot" style="background:#1c1712"></span>#1c1712</span></td><td>Tekst på aksentflate · 10,7:1 / 10,7:1</td></tr>
 					<tr><td><code>--color-link</code></td><td class="col-dark">= --color-accent</td><td>= --color-accent</td><td>Lenker (alias, alltid understreket)</td></tr>
-					<tr><td><code>--color-error</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff5c5c"></span>#ff5c5c</span></td><td><span class="chip"><span class="chip-dot" style="background:#c82020"></span>#c82020</span></td><td>Feil, slett · 5,9:1 / 5,3:1</td></tr>
-					<tr><td><code>--color-success</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#4cc38a"></span>#4cc38a</span></td><td><span class="chip"><span class="chip-dot" style="background:#17703f"></span>#17703f</span></td><td>Suksess · 8,0:1 / 5,7:1</td></tr>
-					<tr><td><code>--color-warning</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff9f43"></span>#ff9f43</span></td><td><span class="chip"><span class="chip-dot" style="background:#9a4d00"></span>#9a4d00</span></td><td>Advarsel · 8,7:1 / 5,7:1</td></tr>
-					<tr><td><code>--color-info</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#6cb6ff"></span>#6cb6ff</span></td><td><span class="chip"><span class="chip-dot" style="background:#1a5a9e"></span>#1a5a9e</span></td><td>Informasjon · 8,2:1 / 6,5:1</td></tr>
+					<tr><td><code>--color-error</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff5c5c"></span>#ff5c5c</span></td><td><span class="chip"><span class="chip-dot" style="background:#c41c1c"></span>#c41c1c</span></td><td>Feil, slett · 5,9:1 / 5,4:1</td></tr>
+					<tr><td><code>--color-success</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#4cc38a"></span>#4cc38a</span></td><td><span class="chip"><span class="chip-dot" style="background:#17703f"></span>#17703f</span></td><td>Suksess · 8,0:1 / 5,6:1</td></tr>
+					<tr><td><code>--color-warning</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#ff9f43"></span>#ff9f43</span></td><td><span class="chip"><span class="chip-dot" style="background:#9a4d00"></span>#9a4d00</span></td><td>Advarsel · 8,7:1 / 5,5:1</td></tr>
+					<tr><td><code>--color-info</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:#6cb6ff"></span>#6cb6ff</span></td><td><span class="chip"><span class="chip-dot" style="background:#1a5a9e"></span>#1a5a9e</span></td><td>Informasjon · 8,2:1 / 6,3:1</td></tr>
 					<tr><td><code>--color-*-bg</code></td><td class="col-dark">rgba(farge,.12)</td><td>rgba(farge,.08–.10)</td><td>Bakgrunn i meldinger (error, success, warning, info)</td></tr>
 					<tr><td><code>--color-border</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 255, 255, 0.06)"></span>rgba(255, 255, 255, 0.06)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(28, 23, 18, 0.10)"></span>rgba(28, 23, 18, 0.10)</span></td><td>Kortkanter (dekorativ)</td></tr>
 					<tr><td><code>--color-border-subtle</code></td><td class="col-dark"><span class="chip"><span class="chip-dot" style="background:rgba(255, 255, 255, 0.10)"></span>rgba(255, 255, 255, 0.10)</span></td><td><span class="chip"><span class="chip-dot" style="background:rgba(28, 23, 18, 0.16)"></span>rgba(28, 23, 18, 0.16)</span></td><td>Skiller (dekorativ). Ikke på inputs</td></tr>
@@ -89,7 +90,7 @@
 
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Typografi</h2><div class="section-rule"></div></div>
-		<div class="info-bar"><strong>Fonter:</strong> <code>Manrope</code> til all tekst. <code>Fraunces</code> (<code>.display</code>) bare der skriften er en del av uttrykket, som i en hero. På forsider og markedsføring gir <code>class="editorial"</code> på <code>body</code> eller <code>main</code> Fraunces også på <code>.h1</code>–<code>.h3</code> og tall i kort (se under); apper utelater den. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.75 · <code>sm</code> 0.8125 · <code>base</code> 0.875 · <code>lg</code> 1.0625 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem · <code>--text-display</code> clamp(2.5, 7vw, 4.5) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
+		<div class="info-bar"><strong>Fonter:</strong> <code>Manrope</code> til all tekst. <code>Fraunces</code> (<code>.display</code>) bare der skriften er en del av uttrykket, som i en hero. På forsider og markedsføring gir <code>class="editorial"</code> på <code>body</code> eller <code>main</code> Fraunces også på <code>.h1</code>–<code>.h3</code> og tall i kort (se under); apper utelater den. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.8125 · <code>sm</code> 0.875 · <code>base</code> 1 · <code>lg</code> 1.125 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem · <code>--text-display</code> clamp(2.5, 7vw, 4.5) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
 		<div class="heading-stack">
 			<div class="display">Display, kun der skriften er uttrykket</div>
 			<div class="h1">h1 Sidetittel</div>
@@ -189,6 +190,7 @@
 			<div class="comp-row"><span class="comp-label">Primary</span><button class="btn-primary" type="button">Lagre</button><button class="btn-primary" type="button" disabled>Lagrer…</button></div>
 			<div class="comp-row"><span class="comp-label">Ghost</span><button class="btn-ghost" type="button">+ Legg til</button><button class="btn-ghost" type="button">Avbryt</button></div>
 			<div class="comp-row"><span class="comp-label">Lenke</span><a class="btn-primary" href="#knapper">Åpne side</a><a class="btn-ghost" href="#knapper">Se mer</a></div>
+			<div class="comp-row"><span class="comp-label">Liten og pil</span><button class="btn-ghost btn-sm" type="button">Legg til reise</button><button class="btn-primary btn-sm" type="button">Lagre</button><a class="btn-primary" href="#knapper">Jeg vil bli partner <span class="btn-arrow" aria-hidden="true">→</span></a></div>
 			<div class="comp-row"><span class="comp-label">Danger</span><button class="btn-danger" type="button">Slett kunde</button><button class="btn-danger-link" type="button">Slett</button></div>
 			<div class="comp-row"><span class="comp-label">Lenke</span><a href="#knapper" onclick="return false">Les mer i dokumentasjonen</a></div>
 		</div>
@@ -498,7 +500,28 @@
 		<div class="info-bar">Store bokstaver bare i første ord og egennavn. Verb i imperativ på knapper. Aldri æ/ø/å som ae/oe/aa i UI-tekst. <code>&lt;html lang="nb"&gt;</code>.</div>
 	</section>
 
+	<section class="section" id="forside">
+		<div class="section-head"><h2 class="section-title">Forsider og markedsføring</h2><div class="section-rule"></div></div>
+		<p class="note">For forsider og markedsføring: sett <code>editorial</code> på <code>main</code> (Fraunces på <code>.h1</code>–<code>.h3</code> og tall i kort) og bygg med <code>container</code> (innholdsbredde 1160 px, endres med <code>--site-width</code>), <code>section-pad</code> (luft mellom seksjoner), <code>kicker</code> (etikett over overskriften) og <code>lead</code> (ingress). <code>site-footer</code> er bunnlinjen, og <code>grain</code> er den valgfrie teksturen øverst på denne siden (en ekte <code>div</code>, aldri <code>body::after</code>; se iOS-regelen i <code>DESIGN.md</code>).</p>
+		<div class="editorial forside-demo">
+			<p class="kicker">Hvorfor Tidya</p>
+			<h2 class="h2">Bygget av konsulenter, for&nbsp;konsulenter</h2>
+			<p class="lead">Vi er selv konsulenter. Vi vet hva som betyr noe: frihet, forutsigbarhet og ryddige avtaler.</p>
+		</div>
+		<pre class="code" tabindex="0"><code>&lt;main class="editorial"&gt;
+	&lt;section class="section-pad"&gt;
+		&lt;div class="container"&gt;
+			&lt;p class="kicker"&gt;Hvorfor Tidya&lt;/p&gt;
+			&lt;h2 class="h2"&gt;Bygget av konsulenter, for&amp;nbsp;konsulenter&lt;/h2&gt;
+			&lt;p class="lead"&gt;Vi er selv konsulenter.&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/section&gt;
+&lt;/main&gt;
+&lt;footer class="site-footer"&gt;&lt;div class="container site-footer-inner"&gt;…&lt;/div&gt;&lt;/footer&gt;</code></pre>
+	</section>
+
 </main>
+<footer class="site-footer"><div class="container site-footer-inner"><div><p><strong>Tidya AS</strong></p><p><a href="https://github.com/Tidya-no/tidya-design-guide">tidya-design-guide på GitHub</a></p></div><p>Tidya designspråk</p></div></footer>
 <script src="header.js"></script>
 </body>
 </html>

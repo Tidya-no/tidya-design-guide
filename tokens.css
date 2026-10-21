@@ -52,10 +52,10 @@
 	--font-body:    'Manrope', system-ui, sans-serif;
 	--font-display: 'Fraunces', Georgia, serif;
 
-	--text-xs:   0.75rem;
-	--text-sm:   0.8125rem;
-	--text-base: 0.875rem;
-	--text-lg:   1.0625rem;
+	--text-xs:   0.8125rem;
+	--text-sm:   0.875rem;
+	--text-base: 1rem;
+	--text-lg:   1.125rem;
 	--text-xl:   1.35rem;
 	--text-2xl:  1.5rem;
 	--text-3xl:  clamp(2rem, 5vw, 3rem);
@@ -81,13 +81,14 @@
 
 	--t-fast: 0.15s ease;
 	--t-lift: 0.1s ease;
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-color-scheme: light) {
 	:root:not([data-theme="dark"]) {
 		color-scheme: light;
-		--color-bg:                   #fbf6ea;
-		--color-surface:              #f3e9d3;
+		--color-bg:                   #f7f3ee;
+		--color-surface:              #ede8e1;
 		--color-text:                 #1c1712;
 		--color-text-secondary:       #7a4a2e;
 		--color-text-muted:           rgba(28, 23, 18, 0.65);
@@ -97,7 +98,7 @@
 		--color-accent-fill-hover:    #f0a800;
 		--color-on-accent:            #1c1712;
 		--color-label:                #9c3d1a;
-		--color-error:                #c82020;
+		--color-error:                #c41c1c;
 		--color-success:              #17703f;
 		--color-warning:              #9a4d00;
 		--color-info:                 #1a5a9e;
@@ -119,8 +120,8 @@
 
 :root[data-theme="light"] {
 	color-scheme: light;
-	--color-bg:                   #fbf6ea;
-	--color-surface:              #f3e9d3;
+	--color-bg:                   #f7f3ee;
+	--color-surface:              #ede8e1;
 	--color-text:                 #1c1712;
 	--color-text-secondary:       #7a4a2e;
 	--color-text-muted:           rgba(28, 23, 18, 0.65);
@@ -130,7 +131,7 @@
 	--color-accent-fill-hover:    #f0a800;
 	--color-on-accent:            #1c1712;
 	--color-label:                #9c3d1a;
-	--color-error:                #c82020;
+	--color-error:                #c41c1c;
 	--color-success:              #17703f;
 	--color-warning:              #9a4d00;
 	--color-info:                 #1a5a9e;

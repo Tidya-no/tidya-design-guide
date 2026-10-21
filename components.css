@@ -31,42 +31,31 @@ a:hover { color: var(--color-accent-hover); }
 .editorial :is(.h1, .h2, .h3, .display, .card-stat-number) { font-family: var(--font-display); letter-spacing: -0.02em; }
 .editorial :is(.h1, .h2, .display, .card-stat-number) { font-weight: 480; }
 .editorial .h3 { font-weight: 540; }
+.editorial .h1 { font-size: var(--text-display); line-height: 1.04; }
+.editorial .h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.1; max-width: 22ch; }
 
-/* Knapper */
-.btn-primary {
-	display: inline-flex; align-items: center; gap: 6px;
-	padding: 0.65rem 1.25rem; font-size: var(--text-base); font-weight: 600;
-	cursor: pointer; background: var(--color-accent-fill); color: var(--color-on-accent);
-	border: none; border-radius: var(--r-md); letter-spacing: 0.01em;
-	transition: background var(--t-fast), transform var(--t-lift);
-	font-family: inherit;
+/* Knapper: som på tidya.no. Store som standard, btn-sm for tette flater (skjema, tabeller), btn-arrow for pil som glir ved hover */
+.btn-primary, .btn-danger, .btn-ghost {
+	display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+	padding: 0.95rem 1.5rem; font-family: inherit; font-size: var(--text-base); font-weight: 600; letter-spacing: 0.01em;
+	border-radius: var(--r-md); cursor: pointer;
+	transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast), transform var(--t-lift);
 }
-.btn-primary:hover { background: var(--color-accent-fill-hover); transform: translateY(-1px); }
-.btn-primary:active { transform: translateY(0); }
-.btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-
-.btn-danger {
-	display: inline-flex; align-items: center; gap: 6px;
-	padding: 0.65rem 1.25rem; font-size: var(--text-base); font-weight: 600;
-	cursor: pointer; background: var(--color-error); color: var(--color-bg);
-	border: none; border-radius: var(--r-md); letter-spacing: 0.01em;
-	transition: background var(--t-fast);
-	font-family: inherit;
-}
+.btn-primary { background: var(--color-accent-fill); color: var(--color-on-accent); border: none; }
+.btn-primary:hover { background: var(--color-accent-fill-hover); }
+.btn-primary:active, .btn-ghost:active { transform: translateY(0); }
+.btn-danger { background: var(--color-error); color: var(--color-bg); border: none; }
 .btn-danger:hover { background: color-mix(in srgb, var(--color-error) 85%, var(--color-text)); }
-.btn-danger:disabled { opacity: 0.4; cursor: not-allowed; }
-
 .btn-ghost {
-	display: inline-flex; align-items: center; gap: 6px;
-	padding: 0.5rem 0.9rem; font-size: var(--text-base); font-weight: 500;
-	cursor: pointer; background: transparent; color: var(--color-accent);
-	border: 1px solid var(--color-accent-border); border-radius: var(--r-md);
-	transition: background var(--t-fast), border-color var(--t-fast), box-shadow var(--t-fast);
-	font-family: inherit;
+	background: color-mix(in srgb, var(--color-bg) 55%, transparent); color: var(--color-accent);
+	border: 1px solid var(--color-accent-border); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
-.btn-ghost:hover { background: var(--color-accent-bg-subtle); border-color: var(--color-accent-border); }
+.btn-ghost:hover { background: var(--color-accent-bg-subtle); border-color: var(--color-accent-border); transform: translateY(-1px); }
 .btn-ghost:focus-visible { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-focus-halo); }
-.btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-primary:disabled, .btn-danger:disabled, .btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-sm { padding: 0.5rem 0.9rem; gap: 6px; font-size: var(--text-sm); }
+.btn-arrow { display: inline-block; transition: transform 0.3s var(--ease-out); }
+.btn-primary:hover .btn-arrow, .btn-ghost:hover .btn-arrow { transform: translateX(4px); }
 
 /* Lenke som knapp: <a class="btn-…"> skal ikke arve lenkestilen (understrek, hover-farge) */
 a.btn-primary, a.btn-ghost, a.btn-danger { text-decoration: none; }
@@ -98,7 +87,6 @@ a.btn-danger:hover { color: var(--color-bg); }
    Headeren tar ingen plass i flyten: gi første innhold .site-header-offset (4,6 rem). */
 html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .site-header {
-	--site-ease: cubic-bezier(0.22, 1, 0.36, 1);
 	position: fixed; top: 0; left: 0; right: 0; z-index: 100;
 	transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
 }
@@ -116,7 +104,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 	display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
 }
 .site-brand { display: inline-flex; align-items: center; text-decoration: none; }
-.site-brand .logo img { height: 2.1rem; width: auto; transition: transform 0.3s var(--site-ease); }
+.site-brand .logo img { height: 2.1rem; width: auto; transition: transform 0.3s var(--ease-out); }
 .site-brand:hover .logo img { transform: translateY(-2px); }
 .site-header-actions { display: flex; align-items: center; gap: 0.6rem; }
 
@@ -130,7 +118,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .site-nav a::after, .site-nav .link-button::after {
 	content: ""; position: absolute; left: 0; bottom: -5px; height: 2px; width: 100%;
 	background: var(--color-accent-fill); border-radius: 2px;
-	transform: scaleX(0); transform-origin: right; transition: transform 0.35s var(--site-ease);
+	transform: scaleX(0); transform-origin: right; transition: transform 0.35s var(--ease-out);
 }
 .site-nav a:hover, .site-nav .link-button:hover, .site-nav a[aria-current="page"] { color: var(--color-text); }
 .site-nav a:hover::after, .site-nav .link-button:hover::after, .site-nav a:focus-visible::after, .site-nav .link-button:focus-visible::after,
@@ -156,7 +144,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .theme-toggle svg {
 	--on: 1; position: absolute; top: 50%; left: 50%; opacity: var(--on);
 	transform: translate(-50%, -50%) rotate(calc((1 - var(--on)) * 70deg)) scale(calc(0.4 + 0.6 * var(--on)));
-	transition: transform 0.45s var(--site-ease, ease), opacity 0.35s var(--site-ease, ease);
+	transition: transform 0.45s var(--ease-out), opacity 0.35s var(--ease-out);
 }
 .theme-toggle .icon-moon { --on: 0; }
 @media (prefers-color-scheme: light) {
@@ -205,7 +193,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 	border: 1px solid var(--color-border-control); border-radius: var(--r-lg);
 	transition: border-color var(--t-fast), box-shadow var(--t-fast);
 }
-.textarea { min-height: 5rem; resize: vertical; }
+.textarea { min-height: 7rem; resize: vertical; }
 .input::placeholder, .textarea::placeholder { color: var(--color-text-muted); }
 .input:focus-visible, .select:focus-visible, .textarea:focus-visible {
 	outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 2px var(--color-focus-halo);
@@ -232,6 +220,28 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .switch:checked { background: var(--color-accent-fill); border-color: var(--color-accent-fill); }
 .switch:checked::before { transform: translateX(16px); background: var(--color-on-accent); }
 .switch:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Byggesteiner for forsider og markedsføring (brukes sammen med editorial). container: innholdsbredde, section-pad: luft mellom seksjoner,
+   kicker: liten etikett over overskriften, lead: ingress, site-footer: bunnlinje. */
+.container { width: min(var(--site-width, 1160px), 100% - 2.5rem); margin-inline: auto; }
+.section-pad { padding: 5.5rem 0; }
+@media (max-width: 720px) { .section-pad { padding: 4rem 0; } }
+.kicker { margin-bottom: var(--space-3); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-label); }
+.lead { margin-top: 1.1rem; max-width: 56ch; font-size: 1.08rem; color: var(--color-text-secondary); }
+.site-footer { border-top: 1px solid var(--color-border-subtle); padding: 3rem 0 3.5rem; font-size: 0.92rem; color: var(--color-text-secondary); }
+.site-footer-inner { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-end; }
+.site-footer strong { color: var(--color-text); font-weight: 600; }
+.site-footer a { color: var(--color-link); font-weight: 600; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+::selection { background: color-mix(in srgb, var(--color-accent-fill) 18%, transparent); }
+
+/* Kornet tekstur over siden. Må være en ekte <div class="grain" aria-hidden="true"> rett etter <body>, ikke body::after: iOS Safari
+   farger statuslinjen fra det faste elementet øverst, regner pseudo-elementer som <body>, og hopper bare over ekte elementer med
+   opacity under 0,1 og pointer-events: none. */
+.grain {
+	position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0.05;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
 /* Kort. Grunnkortet er flatt og rolig (også for skjema). Varianter: card-accent (amber tone), card-link (hele kortet er en lenke),
    card-stat (stort tall), card-wave (bølge nederst), card-feature (romslig, med card-icon). Løft og skygge bare på card-link.
@@ -261,11 +271,11 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 /* Kort som lenke: <a class="card card-link">. Løfter seg og får skygge, pilen glir */
 .card-link {
 	display: flex; flex-direction: column; gap: var(--space-3); overflow: hidden; text-decoration: none; color: var(--color-text);
-	transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+	transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
 }
 .card-link:hover { color: var(--color-text); transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 .card-more { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 700; color: var(--color-accent); }
-.card-arrow { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.card-arrow { transition: transform 0.3s var(--ease-out); }
 .card-link:hover .card-arrow { transform: translateX(5px); }
 
 /* Bølge nederst: en maske i --color-accent, så den følger modus */
@@ -282,7 +292,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .card-stat::before {
 	content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
 	background: linear-gradient(var(--color-accent), var(--color-label));
-	transform: scaleY(0); transform-origin: bottom; transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+	transform: scaleY(0); transform-origin: bottom; transition: transform 0.5s var(--ease-out);
 }
 .card-stat:hover::before { transform: scaleY(1); }
 .card-stat-number { font-size: var(--text-display); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
