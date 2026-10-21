@@ -289,7 +289,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .card-feature .h3 { font-size: var(--text-xl); }
 .card-feature .card-body { margin-top: 0.6rem; font-size: var(--text-base); }
 .card-icon {
-	width: 52px; height: 52px; border-radius: var(--r-lg); display: grid; place-items: center; margin-bottom: var(--space-4);
+	width: 52px; height: 52px; border-radius: var(--r-lg); display: grid; place-items: center; margin-bottom: 1.4rem;
 	background: var(--color-accent-bg-subtle); border: 1px solid var(--color-accent-border); color: var(--color-accent);
 }
 .card-tag {
