@@ -14,6 +14,7 @@ Designspråket for Tidya: tokens, komponenter og regler, med mørk og lys modus.
 | `AGENTS.md` | For deg som endrer repoet: hva som må holdes i takt og QA før PR |
 | `index.html`, `styles.css`, `theme.js` | Den visuelle guiden |
 | `brand/` | Logo (to SVG-varianter) og ikoner (SVG, ICO, Apple): ordmerket og den gule prikken |
+| `.claude/skills/tidya-rust-app/` | Skill for å bygge Rust/htmx-apper etter mønsteret i `tidya-website-rust` og `tidya-faktura`. Ikke del av den publiserte guiden |
 | `fonts/` | Selvhostede Manrope og Fraunces (woff2, SIL OFL 1.1) |
 
 ## Bruk
