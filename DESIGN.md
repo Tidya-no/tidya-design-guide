@@ -7,7 +7,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 Kopier `tokens.css`, `components.css`, `header.js`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
 
 - Hent filene fra repoet (https://github.com/Tidya-no/tidya-design-guide) eller fra den publiserte guiden (https://tidya-no.github.io/tidya-design-guide/). Ikke gjett innholdet.
-- Hele mapper skal med: `fonts/` (`manrope-latin-wght-normal.woff2`, `fraunces-latin-wght-normal.woff2`, `LICENSE-Manrope.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
+- Hele mapper skal med: `fonts/` (`manrope-latin-wght-normal.woff2`, `fraunces-latin-opsz-wght-normal.woff2`, `LICENSE-Manrope.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
 - Hold `fonts/` ved siden av `tokens.css`, for fontene lastes med relativ sti. Flytter du dem, endre `url(...)` i `@font-face`.
 - I `<head>` (ikon-taggene står under «Logo og ikoner»):
 
@@ -48,13 +48,13 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 | Kanter | `--color-border` (kort), `--color-border-subtle` (skiller, ikke på inputs), `--color-border-control` (inputs, 3:1), `--color-accent-border` (ghost, drop-sone, 3:1) |
 | Status | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `--color-error-bg` osv. Tittel i `--color-text`, farge på kant og ikon |
 | Skygge og bakgrunn | `--shadow-md` (dropdown, popover), `--shadow-lg` (dialog), `--color-overlay`. Ikke skygge på vanlige flater. Native `<dialog>`/popover trenger ikke z-index |
-| Fonter | Manrope `--font-body` til all tekst, også overskrifter. Fraunces `--font-display` (klassen `display`) bare der skriften selv er en del av uttrykket, som en hero eller en forsidetittel. Aldri i tabeller, skjema, dialoger eller kortoverskrifter. `--font-mono` (kode). Selvhostet i `fonts/`, ingen Google Fonts |
+| Fonter | Manrope `--font-body` til all tekst, også overskrifter. Fraunces `--font-display` (klassen `display`) bare der skriften selv er en del av uttrykket, som en hero eller en forsidetittel. I redaksjonell modus (`class="editorial"` på `body`/`main`, for forsider og markedsføring) også `.h1`–`.h3` og tall i kort. Aldri i tabeller, skjema, dialoger, knapper eller i apper uten `editorial`. `--font-mono` (kode). Selvhostet i `fonts/`, ingen Google Fonts |
 | Størrelser | `--text-xs/sm/base/lg/xl/2xl/3xl` = 0.75, 0.8125, 0.875, 1.0625, 1.35, 1.5, clamp(2, 5vw, 3) rem, `--text-display` clamp(2.5, 7vw, 4.5) rem (bare for `display`). Linjehøyde `--leading-tight` 1.2, `--leading-normal` 1.6 |
 | Hierarki | h1 3xl/700 · h2 xl/600 · h3 lg/600 · h4 base/600 · `display` Fraunces `--text-display`/700 (bare i hero) · brødtekst `base` · støtte `sm` · etikett og bildetekst `xs` · nøkkeltall `2xl` med `tabular-nums` |
 | Avstand | `--space-1…7` = 4, 8, 12, 16, 24, 32, 48 px |
 | Radius | `--r-sm` 4 · `--r-md` 6 (knapper) · `--r-lg` 8 (inputs) · `--r-xl` 10 (kort, dialog) |
 
-Aksent har to roller fordi amber ikke kan være tekst på lys bakgrunn (derfor `#8a5d00` som tekst i lys modus). `card` har 2px linje øverst og `table th` 1px linje under i dempet amber (`--color-accent-border`). Hold slike aksenter subtile.
+Aksent har to roller fordi amber ikke kan være tekst på lys bakgrunn (derfor `#8a5d00` som tekst i lys modus). `table th` har 1px linje under i dempet amber (`--color-accent-border`), og `card-accent` har amber kant og tone. Hold slike aksenter subtile.
 
 ## Logo og ikoner (`brand/`)
 
@@ -105,10 +105,11 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Valg | `check` (checkbox, radio), `switch` på `input[type=checkbox][role=switch]` |
 | Tabell | `table-wrap` (`tabindex="0" role="region" aria-label="…"`, fordi den scroller sidelengs; navnet må være unikt på siden, ikke det samme som seksjonens overskrift) > `<table class="table">`, `num` (tall), `table-empty`, `aria-sort` på `th` bare der sortering finnes |
 | Kort / sitat | `card` (`card-title`, `card-body`), `quote` |
+| Kortvarianter | `card-accent`, `card-link` (+ `card-more`, `card-arrow`), `card-stat` (+ `card-stat-number`, `card-stat-unit`), `card-wave`, `card-feature` (+ `card-icon`), `card-tag`, `card-grid`. `section-alt` (flate bak kortene) |
 | Dialog | `<dialog class="dialog">` med `dialog-title`, `-body`, `-actions`, åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `-title`, `-body` |
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
-| Hjelp | `tnum`, `sr-only`, `display` (Fraunces, bare i hero, se under), `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
+| Hjelp | `tnum`, `sr-only`, `display` (Fraunces, bare i hero, se under), `editorial` (modus, Fraunces på `.h1`–`.h3` og kortnøkkeltall), `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
 | Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
 | Header | `site-header` > `site-header-inner` > `site-brand` (med `logo`) + `site-header-actions` (`site-nav`, `theme-toggle`, `site-nav-toggle`). Første innhold får `site-header-offset`. Krever `header.js` |
 | Navigasjon i header | `site-nav` med `<a>` (`aria-current="page"` på aktiv side) og `link-button` (handling som ser ut som lenke) |
@@ -121,7 +122,9 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 - Safari på iOS 26 farger statuslinjen fra det faste elementet øverst på siden. Derfor: (1) headeren er dekkende (`--color-bg`) på iOS når siden er scrollet, (2) `html` har bakgrunnsfarge, (3) ingen skjermfyllende `position: fixed`-lag (grain, overlegg) over headeren, og ingen `body::before/::after` som dekker skjermen: Safari regner dem som `<body>` og finner ikke headeren. Må et slikt lag være der, lag det som en ekte `<div>` med `opacity` under 0,1 og `pointer-events: none`. Test på en ekte iPhone i mørk modus, med bevegelig innhold under headeren.
 - Én `btn-primary` per visning (hovedhandlingen), resten `btn-ghost`. Åpne-knapper og andre sekundære handlinger er `btn-ghost`, men den som åpner den viktigste dialogen på siden kan være `btn-primary`.
 - Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
-- Hero og forsider: `display` er bare tittelen i Fraunces. Selve hero-layouten (bilde, knapper, bakgrunn) er appens eget ansvar, bygget med tokens og `btn-*`. Alt annet, også `h1`–`h4`, er Manrope.
+- Hero og forsider: `display` er bare tittelen i Fraunces. Selve hero-layouten (bilde, knapper, bakgrunn) er appens eget ansvar, bygget med tokens og `btn-*`. Alt annet, også `h1`–`h4`, er Manrope, med mindre `editorial` er slått på.
+- Redaksjonell modus: `<main class="editorial">` gir Fraunces (lettere vekt, 480–540) på `.h1`–`.h3`, `.display` og `card-stat-number`. Bruk den på forsider og markedsføring, ikke i apper. Skjema, tabeller, dialoger og knapper er Manrope uansett. Fonten har `opsz`-aksen, så formen tilpasser seg størrelsen av seg selv.
+- Kort: `card` er flatt og brukes også i skjema. Gi ett kort i en gruppe `card-accent` for variasjon, og legg gruppen i en `section-alt` hvis du vil at seksjonene skal alternere (kortene snur til `--color-bg` automatisk). Bare `card-link` (kort som er en `<a>`) løfter seg og får skygge; ikke gi løft til kort som ikke er klikkbare. Titler i kort har klassen `.h3` på det overskriftsnivået som passer i siden.
 - Status i en tabellcelle er ren tekst (status bæres ikke av farge alene). Det finnes ingen badge ennå.
 - Feil på felt vises ved feltet (`field-error`). En `alert` er for resultatet av hele handlingen («Kunne ikke lagre. Prøv igjen.») og erstatter ikke feltfeilen. Suksess og andre beskjeder legges i `role="status"`-regionen (`#status`), også i statisk HTML.
 - Feil på felt: `aria-invalid="true"` og `aria-describedby` til en `field-error`, ikke en egen klasse. Synlig `label`, placeholder erstatter den ikke.
@@ -183,6 +186,12 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 
 <!-- Kort og forklarende tekst -->
 <div class="card"><p class="card-title">Tittel</p><p class="card-body">Innhold.</p></div>
+<a class="card card-accent card-link card-wave" href="/partner">
+	<span class="card-tag">For partnere</span>
+	<h2 class="h3">Vil du bli partner?</h2>
+	<p class="card-body">Kort forklaring.</p>
+	<span class="card-more">Les mer <span class="card-arrow" aria-hidden="true">→</span></span>
+</a>
 <p class="note">Vises i oversikten.</p>
 
 <!-- Melding i status-regionen -->
