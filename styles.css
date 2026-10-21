@@ -173,3 +173,8 @@ body { padding-inline: 16px; padding-block: 0 48px; }
 .forside-demo { display: flex; flex-direction: column; align-items: flex-start; }
 .forside-demo .h2 { margin-top: var(--space-2); }
 .site-footer .container { --site-width: 860px; }
+
+/* Innhold: lenker til alle seksjonene */
+.toc { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.toc a { padding: var(--space-1) var(--space-3); font-size: var(--text-sm); font-weight: 600; text-decoration: none; color: var(--color-text-secondary); border: 1px solid var(--color-border-subtle); border-radius: 999px; transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast); }
+.toc a:hover { color: var(--color-text); border-color: var(--color-accent-border); background: var(--color-accent-bg-subtle); }
