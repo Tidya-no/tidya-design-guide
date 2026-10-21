@@ -89,13 +89,14 @@
 
 	<section class="section">
 		<div class="section-head"><h2 class="section-title">Typografi</h2><div class="section-rule"></div></div>
-		<div class="info-bar"><strong>Fonter:</strong> <code>Manrope</code> til all tekst. <code>Fraunces</code> (<code>.display</code>) bare der skriften er en del av uttrykket, som i en hero. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.75 · <code>sm</code> 0.8125 · <code>base</code> 0.875 · <code>lg</code> 1.0625 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem · <code>--text-display</code> clamp(2.5, 7vw, 4.5) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
+		<div class="info-bar"><strong>Fonter:</strong> <code>Manrope</code> til all tekst. <code>Fraunces</code> (<code>.display</code>) bare der skriften er en del av uttrykket, som i en hero. På forsider og markedsføring gir <code>class="editorial"</code> på <code>body</code> eller <code>main</code> Fraunces også på <code>.h1</code>–<code>.h3</code> og tall i kort (se under); apper utelater den. Selvhostet woff2 (ingen Google Fonts). Skala: <code>--text-xs</code> 0.75 · <code>sm</code> 0.8125 · <code>base</code> 0.875 · <code>lg</code> 1.0625 · <code>xl</code> 1.35 · <code>2xl</code> 1.5 · <code>3xl</code> clamp(2, 5vw, 3) rem · <code>--text-display</code> clamp(2.5, 7vw, 4.5) rem. Linjehøyde <code>--leading-tight</code> 1.2, <code>--leading-normal</code> 1.6.</div>
 		<div class="heading-stack">
 			<div class="display">Display, kun der skriften er uttrykket</div>
 			<div class="h1">h1 Sidetittel</div>
 			<div class="h2">h2 Seksjonsoverskrift</div>
 			<div class="h3">h3 Underseksjon</div>
 			<div class="h4">h4 Gruppenavn</div>
+			<div class="editorial heading-stack-editorial"><div class="h2">h2 i redaksjonell modus</div><div class="h3">h3 i redaksjonell modus</div></div>
 			<div class="num-sample tnum">1 234 567,89 kr <span class="num-note">nøkkeltall: Manrope <code>2xl</code> med <code>tabular-nums</code></span></div>
 		</div>
 		<div class="type-scale">
@@ -305,6 +306,77 @@
 	<section class="section" id="kort">
 		<div class="section-head"><h2 class="section-title">Kort, meldinger og dialog</h2><div class="section-rule"></div></div>
 		<div class="card"><p class="card-title">Korttittel</p><p class="card-body">Kort grupperer relatert innhold på en flate (<code>--color-surface</code>) med svak kant og 10px radius.</p></div>
+		<h3 class="sub-title">Kortvarianter</h3>
+		<p class="note">Grunnkortet <code>card</code> er flatt og brukes også i skjema. <code>card-accent</code> gir en amber tone og er det som gir variasjon i en gruppe. <code>card-link</code> (på <code>&lt;a&gt;</code>) løfter seg og får skygge, og bare det kortet beveger seg ved hover. <code>card-stat</code> er et nøkkeltall, <code>card-wave</code> legger en bølge nederst, og <code>card-feature</code> er romsligere med <code>card-icon</code>. Overskrifter i kortene er <code>.h3</code>, så <code>editorial</code> gir dem Fraunces.</p>
+		<div class="editorial kort-demo">
+			<div class="card-grid">
+				<div class="card card-accent card-feature">
+					<div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></div>
+					<h3 class="h3">Fremhevet kort</h3>
+					<p class="card-body">Amber tone gir variasjon. Bruk det på ett kort i en gruppe.</p>
+				</div>
+				<div class="card card-feature">
+					<div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2.5 2.5"/></svg></div>
+					<h3 class="h3">Vanlig kort</h3>
+					<p class="card-body">Flatt og rolig. Samme kort brukes i skjema.</p>
+				</div>
+				<div class="card card-stat">
+					<p class="card-stat-number">96<span class="card-stat-unit">%</span></p>
+					<p class="h3">til partneren</p>
+					<p class="card-body">Du gjør jobben. Du beholder nesten alt.</p>
+				</div>
+			</div>
+			<div class="card-grid">
+				<a class="card card-accent card-link card-wave" href="#kort">
+					<span class="card-tag">For partnere</span>
+					<h3 class="h3">Lenkekort med bølge</h3>
+					<p class="card-body">Hele kortet er en lenke. Det løfter seg ved hover, og pilen glir.</p>
+					<span class="card-more">Les mer <span class="card-arrow" aria-hidden="true">→</span></span>
+				</a>
+				<a class="card card-link card-wave" href="#kort">
+					<span class="card-tag">For kunder</span>
+					<h3 class="h3">Samme uten tone</h3>
+					<p class="card-body">Uten <code>card-accent</code>. Alterneringen mellom to kort ligger i den ene klassen.</p>
+					<span class="card-more">Les mer <span class="card-arrow" aria-hidden="true">→</span></span>
+				</a>
+			</div>
+		</div>
+		<div class="section-alt alt-demo"><div class="card-grid"><div class="card card-accent"><p class="card-title">I en section-alt</p><p class="card-body">Flaten bak er <code>--color-surface</code>, og kortene snur til <code>--color-bg</code>.</p></div><div class="card"><p class="card-title">Alternerer</p><p class="card-body">Ingen ekstra klasser på kortene.</p></div></div></div>
+		<pre class="code" tabindex="0"><code>&lt;div class="card-grid"&gt;
+	&lt;div class="card card-accent card-feature"&gt;
+		&lt;div class="card-icon"&gt;&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M2 12h4l3-9 4 18 3-9h6"/&gt;&lt;/svg&gt;&lt;/div&gt;
+		&lt;h3 class="h3"&gt;Fremhevet kort&lt;/h3&gt;
+		&lt;p class="card-body"&gt;Amber tone gir variasjon. Bruk det på ett kort i en gruppe.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="card card-feature"&gt;
+		&lt;div class="card-icon"&gt;&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;path d="M12 8v4l2.5 2.5"/&gt;&lt;/svg&gt;&lt;/div&gt;
+		&lt;h3 class="h3"&gt;Vanlig kort&lt;/h3&gt;
+		&lt;p class="card-body"&gt;Flatt og rolig. Samme kort brukes i skjema.&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class="card card-stat"&gt;
+		&lt;p class="card-stat-number"&gt;96&lt;span class="card-stat-unit"&gt;%&lt;/span&gt;&lt;/p&gt;
+		&lt;p class="h3"&gt;til partneren&lt;/p&gt;
+		&lt;p class="card-body"&gt;Du gjør jobben. Du beholder nesten alt.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="card-grid"&gt;
+	&lt;a class="card card-accent card-link card-wave" href="#kort"&gt;
+		&lt;span class="card-tag"&gt;For partnere&lt;/span&gt;
+		&lt;h3 class="h3"&gt;Lenkekort med bølge&lt;/h3&gt;
+		&lt;p class="card-body"&gt;Hele kortet er en lenke. Det løfter seg ved hover, og pilen glir.&lt;/p&gt;
+		&lt;span class="card-more"&gt;Les mer &lt;span class="card-arrow" aria-hidden="true"&gt;→&lt;/span&gt;&lt;/span&gt;
+	&lt;/a&gt;
+	&lt;a class="card card-link card-wave" href="#kort"&gt;
+		&lt;span class="card-tag"&gt;For kunder&lt;/span&gt;
+		&lt;h3 class="h3"&gt;Samme uten tone&lt;/h3&gt;
+		&lt;p class="card-body"&gt;Uten &lt;code&gt;card-accent&lt;/code&gt;. Alterneringen mellom to kort ligger i den ene klassen.&lt;/p&gt;
+		&lt;span class="card-more"&gt;Les mer &lt;span class="card-arrow" aria-hidden="true"&gt;→&lt;/span&gt;&lt;/span&gt;
+	&lt;/a&gt;
+&lt;/div&gt;
+&lt;!-- section-alt gir flate bak kortene, som snus til --color-bg automatisk --&gt;
+&lt;section class="section-alt"&gt;&lt;div class="card-grid"&gt;…&lt;/div&gt;&lt;/section&gt;
+&lt;!-- redaksjonell modus: Fraunces på .h1–.h3, .display og tall i kort --&gt;
+&lt;main class="editorial"&gt;…&lt;/main&gt;</code></pre>
 		<blockquote class="quote"><p>Sitatblokk for å løfte frem en viktig setning.</p><cite>— Kilde</cite></blockquote>
 		<p class="note">Status vises med ikon og tekst, ikke farge alene. Tittel er <code>--color-text</code>, brødtekst <code>--color-text-secondary</code>. Fargen ligger på kant og ikon.</p>
 		<div class="alerts">
