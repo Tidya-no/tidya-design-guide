@@ -29,9 +29,9 @@ a:hover { color: var(--color-accent-hover); }
 /* Redaksjonell modus (forsider, markedsføring): class="editorial" på body eller main gir Fraunces på .h1–.h3, .display og tall i kort.
    Skjema, tabeller, dialoger og knapper forblir Manrope. Apper utelater den. */
 .editorial :is(.h1, .h2, .h3, .display, .card-stat-number) { font-family: var(--font-display); letter-spacing: -0.02em; }
-.editorial :is(.h1, .h2, .display, .card-stat-number) { font-weight: 480; }
+.editorial :is(.h2, .card-stat-number) { font-weight: 480; }
 .editorial .h3 { font-weight: 540; }
-.editorial .h1 { font-size: var(--text-display); line-height: 1.04; }
+.editorial :is(.h1, .display) { font-size: clamp(2.5rem, 5.4vw, 4.5rem); font-weight: 460; letter-spacing: -0.025em; line-height: 1.04; }
 .editorial .h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.1; max-width: 22ch; }
 
 /* Knapper: som på tidya.no. Store som standard, btn-sm for tette flater (skjema, tabeller), btn-arrow for pil som glir ved hover */
@@ -226,7 +226,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 .container { width: min(var(--site-width, 1160px), 100% - 2.5rem); margin-inline: auto; }
 .section-pad { padding: 5.5rem 0; }
 @media (max-width: 720px) { .section-pad { padding: 4rem 0; } }
-.kicker { margin-bottom: var(--space-3); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-label); }
+.kicker { margin-bottom: var(--space-4); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-label); }
 .lead { margin-top: 1.1rem; max-width: 56ch; font-size: 1.08rem; color: var(--color-text-secondary); }
 .site-footer { border-top: 1px solid var(--color-border-subtle); padding: 3rem 0 3.5rem; font-size: 0.92rem; color: var(--color-text-secondary); }
 .site-footer-inner { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-end; }
@@ -298,6 +298,10 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 	background: var(--color-accent-bg-subtle); border: 1px solid var(--color-accent-border); color: var(--color-label);
 }
 
+/* Ikke-klikkbare kort som skal løfte seg ved hover (forsider): card-lift. Klikkbare kort bruker card-link */
+.card-lift { transition: transform 0.4s var(--ease-out), box-shadow 0.4s; }
+.card-lift:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
 /* Kort som lenke: <a class="card card-link">. Løfter seg og får skygge, pilen glir */
 .card-link {
 	display: flex; flex-direction: column; gap: var(--space-3); overflow: hidden; text-decoration: none; color: var(--color-text);
@@ -325,7 +329,7 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 	transform: scaleY(0); transform-origin: bottom; transition: transform 0.5s var(--ease-out);
 }
 .card-stat:hover::before { transform: scaleY(1); }
-.card-stat-number { font-size: var(--text-display); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.card-stat-number { font-size: clamp(2.8rem, 5vw, 4rem); font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
 .card-stat-unit { color: var(--color-accent); font-size: 0.6em; }
 
 .quote { border-left: 3px solid var(--color-accent-fill); padding-left: 1rem; }
@@ -388,6 +392,8 @@ html { background: var(--color-bg); scroll-padding-top: 5.5rem; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .htmx-request.btn-primary, .htmx-request.btn-ghost, .htmx-request.btn-danger,
 .htmx-request .btn-primary[type="submit"], .htmx-request .btn-ghost[type="submit"], .htmx-request .btn-danger[type="submit"] { pointer-events: none; opacity: 0.7; }
+.htmx-indicator { display: none; }
+.htmx-request .htmx-indicator, .htmx-request.htmx-indicator { display: inline-flex; }
 .htmx-swapping { opacity: 0.4; transition: opacity var(--t-fast); }
 [aria-busy="true"] { opacity: 0.6; }
 
