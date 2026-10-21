@@ -23,7 +23,7 @@ const html = `<!DOCTYPE html>
 <link rel="stylesheet" href="file://${root}/components.css">
 </head>
 <body>
-<main>
+<main style="padding-top: 5rem">
 <h1 class="h1">Eksempler</h1>
 ${block[1]}
 </main>

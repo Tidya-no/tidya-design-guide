@@ -11,6 +11,7 @@ Instruksjoner for AI-agenter og utviklere som endrer dette repoet. Regler for *b
 | Et token i `tokens.css` | Fargetabellen og kontrasttallene i `index.html`. Tokentabellen og tall i `DESIGN.md`. `README.md` hvis noe nevnes der |
 | Lys modus i `tokens.css` | Lys modus er definert **to steder** (`@media (prefers-color-scheme: light)` og `:root[data-theme="light"]`). De må være identiske |
 | Nytt eller fjernet token | Tabellen i `index.html` og `DESIGN.md`. Ingen ubrukte og ingen udokumenterte tokens |
+| `header.js` eller header-markupen i `components.css` | Markupen i `index.html` (live-header og kodeblokken) og eksempelet i `DESIGN.md`, `data-theme-key` mot `<head>`-scriptet, og regelen om iOS Safari i `DESIGN.md`. Test på en ekte iPhone i mørk modus |
 | En klasse i `components.css` | Demo i `index.html` og omtale i `DESIGN.md`. Klasser som brukes i `index.html` må finnes i CSS, og motsatt |
 | Guide-spesifikk stil i `styles.css` | Bare for selve guiden. Gjenbrukbare komponenter hører hjemme i `components.css` |
 | En fil som skal publiseres | `pages.yml` (kopieringen til `_site`) og cache-busting-steget for CSS/JS |

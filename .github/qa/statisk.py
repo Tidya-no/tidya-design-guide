@@ -3,7 +3,7 @@
 import re,os,sys,glob
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','..'))
 R=lambda f: open(f).read()
-tok,comp,sty,idx,des,rd,th,yml=[R(f) for f in ['tokens.css','components.css','styles.css','index.html','DESIGN.md','README.md','theme.js','.github/workflows/pages.yml']]
+tok,comp,sty,idx,des,rd,th,yml=[R(f) for f in ['tokens.css','components.css','styles.css','index.html','DESIGN.md','README.md','header.js','.github/workflows/pages.yml']]
 fails=[]
 def ok(c,m):
 	print(('  ok  ' if c else '  !!  ')+m)
@@ -19,7 +19,7 @@ ok(set(M)<=set(D),'alle lys-overstyringer finnes i mørk blokk')
 ok(len(D)==len(re.findall(r'(--[a-z0-9-]+):',dark)),'ingen duplikate definisjoner')
 print(f'  {len(set(D)|set(M))} unike tokens')
 print('B. Referanser')
-local={'--alert-color','--alert-bg'}
+local={'--alert-color','--alert-bg','--site-ease','--site-width','--on'}
 und=sorted({(f,u) for f,t in {'components':comp,'styles':sty,'index':idx,'tokens':tok}.items() for u in re.findall(r'var\((--[a-z0-9-]+)',t) if u not in D and u not in M and u not in local})
 ok(not und,f'alle var(--x) er definert {und}')
 used=set(re.findall(r'var\((--[a-z0-9-]+)',comp+sty+idx+tok))
@@ -77,8 +77,8 @@ tl=re.search(r'\.icon-tab-light \{ background: (#[0-9a-fA-F]{6}); color: (#[0-9a
 ok(bool(tl and td) and [x.lower() for x in tl.groups()]==[LT['--color-bg'].lower(),LT['--color-text'].lower()] and [x.lower() for x in td.groups()]==[D['--color-bg'].lower(),D['--color-text'].lower()],'fane-eksemplene i styles.css har --color-bg og --color-text for lys og mørk modus')
 tc=dict((mm,v.lower()) for v,mm in re.findall(r'<meta name="theme-color" content="(#[0-9a-fA-F]{6})" media="\(prefers-color-scheme: (dark|light)\)">',idx))
 ok(tc=={'dark':D['--color-bg'].lower(),'light':LT['--color-bg'].lower()},f'theme-color i index.html følger --color-bg ({tc})')
-key=re.search(r"localStorage\.getItem\('([^']+)'\)",idx); tkey=re.search(r"storageKey = '([^']+)'",th)
-ok(bool(key and tkey) and key.group(1)==tkey.group(1),'tema-nøkkelen i <head>-scriptet er den samme som i theme.js')
+key=re.search(r"localStorage\.getItem\('([^']+)'\)",idx); tkey=re.search(r'data-theme-toggle data-theme-key="([^"]+)"',idx)
+ok(bool(key and tkey) and key.group(1)==tkey.group(1),'tema-nøkkelen i <head>-scriptet er den samme som data-theme-key på temabryteren')
 ok(D['--color-bg'].lower() in des.lower() and LT['--color-bg'].lower() in des.lower(),'DESIGN.md nevner hex for theme-color (mørk og lys --color-bg)')
 print('E. Fargetabellen i guiden mot tokens.css')
 def parse(v):
