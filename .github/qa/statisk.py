@@ -19,7 +19,7 @@ ok(set(M)<=set(D),'alle lys-overstyringer finnes i mørk blokk')
 ok(len(D)==len(re.findall(r'(--[a-z0-9-]+):',dark)),'ingen duplikate definisjoner')
 print(f'  {len(set(D)|set(M))} unike tokens')
 print('B. Referanser')
-local={'--alert-color','--alert-bg','--site-ease','--site-width','--on'}
+local={'--alert-color','--alert-bg','--site-width','--on'}
 und=sorted({(f,u) for f,t in {'components':comp,'styles':sty,'index':idx,'tokens':tok}.items() for u in re.findall(r'var\((--[a-z0-9-]+)',t) if u not in D and u not in M and u not in local})
 ok(not und,f'alle var(--x) er definert {und}')
 used=set(re.findall(r'var\((--[a-z0-9-]+)',comp+sty+idx+tok))

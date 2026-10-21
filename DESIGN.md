@@ -25,7 +25,7 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--space-6); }
 ```
 
-- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus: `#1a1816` (mørk) og `#fbf6ea` (lys).
+- `<meta name="theme-color">` er valgfri og kan ikke bruke `var()`. Det er det eneste stedet hex er lov (unntak fra regel 1): `--color-bg` for mørk og lys modus: `#1a1816` (mørk) og `#f7f3ee` (lys).
 
 ## Regler
 
@@ -34,7 +34,7 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 3. Tekst minst 4,5:1 kontrast, UI-kanter og ikoner minst 3:1 (WCAG AA). Status (feil, suksess, advarsel) bæres av tekst eller ikon, ikke farge alene.
 4. Hver interaktiv komponent har hvile, hover, fokus og deaktivert (opacity 0.4–0.5, `cursor: not-allowed`). Felt har i tillegg feil.
 5. Fokus bruker `:focus-visible`. Knapper og lenker: `outline: 2px solid var(--color-accent-border)`, offset 2px. Felt og ghost-knapp: kant `--color-accent` pluss `box-shadow: 0 0 0 2px var(--color-focus-halo)`, ingen outline. Feilfelt: samme i `--color-error`.
-6. Respekter `prefers-reduced-motion`. Overganger: `--t-fast` 0.15s (farge, kant), `--t-lift` 0.1s (1px løft på primærknapp). Ingen andre animasjoner uten behov.
+6. Respekter `prefers-reduced-motion`. Overganger: `--t-fast` 0.15s (farge, kant), `--t-lift` 0.1s (1px løft på ghost-knapp), `--ease-out` for lengre bevegelser (understrek, pil, løft på kort). Ingen andre animasjoner uten behov.
 
 ## Tokens: hva brukes til hva
 
@@ -49,7 +49,7 @@ body { padding-inline: var(--space-4); padding-block: var(--space-6); }
 | Status | `--color-error` / `-success` / `-warning` / `-info`, bakgrunn `--color-error-bg` osv. Tittel i `--color-text`, farge på kant og ikon |
 | Skygge og bakgrunn | `--shadow-md` (dropdown, popover), `--shadow-lg` (dialog), `--color-overlay`. Ikke skygge på vanlige flater. Native `<dialog>`/popover trenger ikke z-index |
 | Fonter | Manrope `--font-body` til all tekst, også overskrifter. Fraunces `--font-display` (klassen `display`) bare der skriften selv er en del av uttrykket, som en hero eller en forsidetittel. I redaksjonell modus (`class="editorial"` på `body`/`main`, for forsider og markedsføring) også `.h1`–`.h3` og tall i kort. Aldri i tabeller, skjema, dialoger, knapper eller i apper uten `editorial`. `--font-mono` (kode). Selvhostet i `fonts/`, ingen Google Fonts |
-| Størrelser | `--text-xs/sm/base/lg/xl/2xl/3xl` = 0.75, 0.8125, 0.875, 1.0625, 1.35, 1.5, clamp(2, 5vw, 3) rem, `--text-display` clamp(2.5, 7vw, 4.5) rem (bare for `display`). Linjehøyde `--leading-tight` 1.2, `--leading-normal` 1.6 |
+| Størrelser | `--text-xs/sm/base/lg/xl/2xl/3xl` = 0.8125, 0.875, 1, 1.125, 1.35, 1.5, clamp(2, 5vw, 3) rem, `--text-display` clamp(2.5, 7vw, 4.5) rem (bare for `display`). Linjehøyde `--leading-tight` 1.2, `--leading-normal` 1.6 |
 | Hierarki | h1 3xl/700 · h2 xl/600 · h3 lg/600 · h4 base/600 · `display` Fraunces `--text-display`/700 (bare i hero) · brødtekst `base` · støtte `sm` · etikett og bildetekst `xs` · nøkkeltall `2xl` med `tabular-nums` |
 | Avstand | `--space-1…7` = 4, 8, 12, 16, 24, 32, 48 px |
 | Radius | `--r-sm` 4 · `--r-md` 6 (knapper) · `--r-lg` 8 (inputs) · `--r-xl` 10 (kort, dialog) |
@@ -99,12 +99,13 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 
 | Komponent | Klasser |
 |---|---|
-| Knapp | `btn-primary`, `btn-ghost`, `btn-danger` (fylt, bekreftelser), `btn-danger-link` |
+| Knapp | `btn-primary`, `btn-ghost`, `btn-danger` (fylt, bekreftelser), `btn-danger-link`. Store som standard, `btn-sm` for tette flater, `btn-arrow` på en `<span>` gir pil som glir ved hover |
 | Felt | `field` > `<label class="label">` + `<input class="input">` / `<select class="select">` / `<textarea class="textarea">` + `hint` / `field-error` |
 | Skjema | `stack` (vertikal avstand mellom felt, også i dialog) |
 | Valg | `check` (checkbox, radio), `switch` på `input[type=checkbox][role=switch]` |
 | Tabell | `table-wrap` (`tabindex="0" role="region" aria-label="…"`, fordi den scroller sidelengs; navnet må være unikt på siden, ikke det samme som seksjonens overskrift) > `<table class="table">`, `num` (tall), `table-empty`, `aria-sort` på `th` bare der sortering finnes |
 | Kort / sitat | `card` (`card-title`, `card-body`), `quote` |
+| Forside | `editorial` (modus), `container`, `section-pad`, `kicker`, `lead`, `site-footer` (+ `site-footer-inner`), `grain` |
 | Kortvarianter | `card-accent`, `card-link` (+ `card-more`, `card-arrow`), `card-stat` (+ `card-stat-number`, `card-stat-unit`), `card-wave`, `card-feature` (+ `card-icon`), `card-tag`, `card-grid`. `section-alt` (flate bak kortene) |
 | Dialog | `<dialog class="dialog">` med `dialog-title`, `-body`, `-actions`, åpnes med `showModal()` |
 | Melding | `alert` + `success` / `warning` / `error`, `alert-icon`, `-title`, `-body` |
