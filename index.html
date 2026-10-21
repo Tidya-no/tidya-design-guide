@@ -46,9 +46,9 @@
 <main class="page site-header-offset">
 
 	<header class="header">
-		<p class="header-eyebrow">Designguide</p>
-		<h1 class="display">Tidya designspråk</h1>
-		<p class="header-sub">Et varmt grensesnitt bygget på amber og brune toner. Mørk og lys modus, tekst kontrastsjekket mot WCAG AA (4,5:1) og kontroller mot 3:1.</p>
+		<p class="header-eyebrow" data-rise="1">Designguide</p>
+		<h1 class="display" data-rise="2">Tidya designspråk</h1>
+		<p class="header-sub" data-rise="3">Et varmt grensesnitt bygget på amber og brune toner. Mørk og lys modus, tekst kontrastsjekket mot WCAG AA (4,5:1) og kontroller mot 3:1.</p>
 	</header>
 
 	<section class="section" id="farger">
@@ -190,7 +190,7 @@
 			<div class="comp-row"><span class="comp-label">Primary</span><button class="btn-primary" type="button">Lagre</button><button class="btn-primary" type="button" disabled>Lagrer…</button></div>
 			<div class="comp-row"><span class="comp-label">Ghost</span><button class="btn-ghost" type="button">+ Legg til</button><button class="btn-ghost" type="button">Avbryt</button></div>
 			<div class="comp-row"><span class="comp-label">Lenke</span><a class="btn-primary" href="#knapper">Åpne side</a><a class="btn-ghost" href="#knapper">Se mer</a></div>
-			<div class="comp-row"><span class="comp-label">Liten og pil</span><button class="btn-ghost btn-sm" type="button">Legg til reise</button><button class="btn-primary btn-sm" type="button">Lagre</button><a class="btn-primary" href="#knapper">Jeg vil bli partner <span class="btn-arrow" aria-hidden="true">→</span></a></div>
+			<div class="comp-row"><span class="comp-label">Liten og pil</span><button class="btn-ghost btn-sm" type="button">Legg til reise</button><button class="btn-primary btn-sm" type="button">Lagre</button><a class="btn-primary" href="#knapper" data-magnetic>Jeg vil bli partner <span class="btn-arrow" aria-hidden="true">→</span></a></div>
 			<div class="comp-row"><span class="comp-label">Danger</span><button class="btn-danger" type="button">Slett kunde</button><button class="btn-danger-link" type="button">Slett</button></div>
 			<div class="comp-row"><span class="comp-label">Lenke</span><a href="#knapper" onclick="return false">Les mer i dokumentasjonen</a></div>
 		</div>
@@ -312,18 +312,20 @@
 		<p class="note">Grunnkortet <code>card</code> er flatt og brukes også i skjema. <code>card-accent</code> gir en amber tone og er det som gir variasjon i en gruppe. <code>card-link</code> (på <code>&lt;a&gt;</code>) løfter seg og får skygge, og bare det kortet beveger seg ved hover. <code>card-stat</code> er et nøkkeltall, <code>card-wave</code> legger en bølge nederst, og <code>card-feature</code> er romsligere med <code>card-icon</code>. Overskrifter i kortene er <code>.h3</code>, så <code>editorial</code> gir dem Fraunces.</p>
 		<div class="editorial kort-demo">
 			<div class="card-grid">
-				<div class="card card-accent card-feature">
+				<div class="card card-accent card-feature" data-reveal data-tilt>
+					<div class="card-glow"></div>
 					<div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg></div>
 					<h3 class="h3">Fremhevet kort</h3>
 					<p class="card-body">Amber tone gir variasjon. Bruk det på ett kort i en gruppe.</p>
 				</div>
-				<div class="card card-feature">
+				<div class="card card-feature" data-reveal data-tilt>
+					<div class="card-glow"></div>
 					<div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2.5 2.5"/></svg></div>
 					<h3 class="h3">Vanlig kort</h3>
 					<p class="card-body">Flatt og rolig. Samme kort brukes i skjema.</p>
 				</div>
-				<div class="card card-stat">
-					<p class="card-stat-number">96<span class="card-stat-unit">%</span></p>
+				<div class="card card-stat" data-reveal>
+					<p class="card-stat-number"><span data-count="96">96</span><span class="card-stat-unit">%</span></p>
 					<p class="h3">til partneren</p>
 					<p class="card-body">Du gjør jobben. Du beholder nesten alt.</p>
 				</div>
@@ -345,18 +347,20 @@
 		</div>
 		<div class="section-alt alt-demo"><div class="card-grid"><div class="card card-accent"><p class="card-title">I en section-alt</p><p class="card-body">Flaten bak er <code>--color-surface</code>, og kortene snur til <code>--color-bg</code>.</p></div><div class="card"><p class="card-title">Alternerer</p><p class="card-body">Ingen ekstra klasser på kortene.</p></div></div></div>
 		<pre class="code" tabindex="0"><code>&lt;div class="card-grid"&gt;
-	&lt;div class="card card-accent card-feature"&gt;
+	&lt;div class="card card-accent card-feature" data-reveal data-tilt&gt;
+		&lt;div class="card-glow"&gt;&lt;/div&gt;
 		&lt;div class="card-icon"&gt;&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;path d="M2 12h4l3-9 4 18 3-9h6"/&gt;&lt;/svg&gt;&lt;/div&gt;
 		&lt;h3 class="h3"&gt;Fremhevet kort&lt;/h3&gt;
 		&lt;p class="card-body"&gt;Amber tone gir variasjon. Bruk det på ett kort i en gruppe.&lt;/p&gt;
 	&lt;/div&gt;
-	&lt;div class="card card-feature"&gt;
+	&lt;div class="card card-feature" data-reveal data-tilt&gt;
+		&lt;div class="card-glow"&gt;&lt;/div&gt;
 		&lt;div class="card-icon"&gt;&lt;svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;&lt;circle cx="12" cy="12" r="10"/&gt;&lt;path d="M12 8v4l2.5 2.5"/&gt;&lt;/svg&gt;&lt;/div&gt;
 		&lt;h3 class="h3"&gt;Vanlig kort&lt;/h3&gt;
 		&lt;p class="card-body"&gt;Flatt og rolig. Samme kort brukes i skjema.&lt;/p&gt;
 	&lt;/div&gt;
-	&lt;div class="card card-stat"&gt;
-		&lt;p class="card-stat-number"&gt;96&lt;span class="card-stat-unit"&gt;%&lt;/span&gt;&lt;/p&gt;
+	&lt;div class="card card-stat" data-reveal&gt;
+		&lt;p class="card-stat-number"&gt;&lt;span data-count="96"&gt;96&lt;/span&gt;&lt;span class="card-stat-unit"&gt;%&lt;/span&gt;&lt;/p&gt;
 		&lt;p class="h3"&gt;til partneren&lt;/p&gt;
 		&lt;p class="card-body"&gt;Du gjør jobben. Du beholder nesten alt.&lt;/p&gt;
 	&lt;/div&gt;
@@ -505,7 +509,7 @@
 		<p class="note">For forsider og markedsføring: sett <code>editorial</code> på <code>main</code> (Fraunces på <code>.h1</code>–<code>.h3</code> og tall i kort) og bygg med <code>container</code> (innholdsbredde 1160 px, endres med <code>--site-width</code>), <code>section-pad</code> (luft mellom seksjoner), <code>kicker</code> (etikett over overskriften) og <code>lead</code> (ingress). <code>site-footer</code> er bunnlinjen, og <code>grain</code> er den valgfrie teksturen øverst på denne siden (en ekte <code>div</code>, aldri <code>body::after</code>; se iOS-regelen i <code>DESIGN.md</code>).</p>
 		<div class="editorial forside-demo">
 			<p class="kicker">Hvorfor Tidya</p>
-			<h2 class="h2">Bygget av konsulenter, for&nbsp;konsulenter</h2>
+			<h2 class="h2">Bygget av <em data-sweep>konsulenter</em>, for&nbsp;konsulenter</h2>
 			<p class="lead">Vi er selv konsulenter. Vi vet hva som betyr noe: frihet, forutsigbarhet og ryddige avtaler.</p>
 		</div>
 		<pre class="code" tabindex="0"><code>&lt;main class="editorial"&gt;
@@ -523,5 +527,6 @@
 </main>
 <footer class="site-footer"><div class="container site-footer-inner"><div><p><strong>Tidya AS</strong></p><p><a href="https://github.com/Tidya-no/tidya-design-guide">tidya-design-guide på GitHub</a></p></div><p>Tidya designspråk</p></div></footer>
 <script src="header.js"></script>
+<script src="effects.js"></script>
 </body>
 </html>

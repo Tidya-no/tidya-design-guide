@@ -1,5 +1,5 @@
 // Kjører axe-core mot index.html i mørk og lys modus, på smal og bred skjerm,
-// også med dialogen åpen. Feiler (exit 1) ved brudd eller JS-feil.
+// også med dialogen åpen. Med redusert bevegelse, så innkomst-animasjoner ikke gir midlertidig lav kontrast under testen. Feiler (exit 1) ved brudd eller JS-feil.
 const { chromium } = require('playwright')
 const fs = require('fs')
 const path = require('path')
@@ -16,7 +16,7 @@ const tags = ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa', 'best-practice']
 	let failures = 0
 	for (const width of [320, 1100]) {
 		for (const colorScheme of ['dark', 'light']) {
-			const context = await browser.newContext({ colorScheme, viewport: { width, height: 900 } })
+			const context = await browser.newContext({ colorScheme, viewport: { width, height: 900 }, reducedMotion: 'reduce' })
 			const page = await context.newPage()
 			const errors = []
 			page.on('pageerror', (e) => errors.push(e.message))

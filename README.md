@@ -12,6 +12,7 @@ Designspråket for Tidya: tokens, komponenter og regler, med mørk og lys modus.
 | `components.css` | Komponenter som ren CSS: knapper, skjema, tabell, kort, melding, dialog, htmx-tilstander |
 | `DESIGN.md` | Regler for utviklere og AI: token til bruk, komponenter, htmx-mønstre, norsk UI-tekst |
 | `AGENTS.md` | For deg som endrer repoet: hva som må holdes i takt og QA før PR |
+| `effects.js` | Valgfrie effekter for forsider (innkomst ved scroll, tilt og glød, tellere, magnetiske knapper). Styres av `data-`-attributter |
 | `header.js` | Header: scroll, mobilmeny og temabryter. Kopieres inn i appen sammen med CSS-en |
 | `index.html`, `styles.css` | Den visuelle guiden |
 | `brand/` | Logo (to SVG-varianter) og ikoner (SVG, ICO, Apple): ordmerket og den gule prikken |

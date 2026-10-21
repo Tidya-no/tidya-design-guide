@@ -27,7 +27,7 @@ jobs:
       - name: Samle sidefiler
         run: |
           mkdir _site
-          cp index.html tokens.css components.css styles.css header.js _site/
+          cp index.html tokens.css components.css styles.css header.js effects.js _site/
           cp -r fonts _site/fonts
           cp -r brand _site/brand
           touch _site/.nojekyll
@@ -38,7 +38,8 @@ jobs:
           sed -i -e "s|href=\"tokens.css\"|href=\"tokens.css?v=$v\"|" \
                  -e "s|href=\"components.css\"|href=\"components.css?v=$v\"|" \
                  -e "s|href=\"styles.css\"|href=\"styles.css?v=$v\"|" \
-                 -e "s|src=\"header.js\"|src=\"header.js?v=$v\"|" _site/index.html
+                 -e "s|src=\"header.js\"|src=\"header.js?v=$v\"|" \
+                 -e "s|src=\"effects.js\"|src=\"effects.js?v=$v\"|" _site/index.html
           grep -c "?v=$v" _site/index.html
 
       - uses: actions/configure-pages@v5
