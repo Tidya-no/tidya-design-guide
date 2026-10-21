@@ -1,13 +1,10 @@
-body { padding-inline: 16px; padding-block: 48px; }
+body { padding-inline: 16px; padding-block: 0 48px; }
 
 /* Layout */
 .page { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
 
-/* Theme toggle (selve bryteren er en komponent i components.css) */
-.theme-bar { display: flex; justify-content: flex-end; margin-bottom: -32px; }
-
 /* Header */
-.header { border-left: 5px solid var(--color-accent-fill); padding-left: 18px; }
+.header { margin-top: var(--space-6); border-left: 5px solid var(--color-accent-fill); padding-left: 18px; }
 .header-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px; }
 .header-sub { margin-top: 12px; font-size: 15px; color: var(--color-text-muted); max-width: 52ch; line-height: 1.65; }
 
@@ -168,4 +165,3 @@ body { padding-inline: 16px; padding-block: 48px; }
 .logo-panel-dark { background: #1a1816; }
 .code { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--r-lg); padding: var(--space-3) var(--space-4); overflow-x: auto; font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--color-text-secondary); white-space: pre; tab-size: 2; }
 
-.demo-frame { border: 1px solid var(--color-border-subtle); border-radius: var(--r-xl); overflow: hidden; }

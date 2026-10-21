@@ -12,7 +12,8 @@ Designspråket for Tidya: tokens, komponenter og regler, med mørk og lys modus.
 | `components.css` | Komponenter som ren CSS: knapper, skjema, tabell, kort, melding, dialog, htmx-tilstander |
 | `DESIGN.md` | Regler for utviklere og AI: token til bruk, komponenter, htmx-mønstre, norsk UI-tekst |
 | `AGENTS.md` | For deg som endrer repoet: hva som må holdes i takt og QA før PR |
-| `index.html`, `styles.css`, `theme.js` | Den visuelle guiden |
+| `header.js` | Header: scroll, mobilmeny og temabryter. Kopieres inn i appen sammen med CSS-en |
+| `index.html`, `styles.css` | Den visuelle guiden |
 | `brand/` | Logo (to SVG-varianter) og ikoner (SVG, ICO, Apple): ordmerket og den gule prikken |
 | `.claude/skills/tidya-rust-app/` | Skill for å bygge Rust/htmx-apper etter mønsteret i `tidya-website-rust` og `tidya-faktura`. Ikke del av den publiserte guiden |
 | `fonts/` | Selvhostede Manrope og Fraunces (woff2, SIL OFL 1.1) |

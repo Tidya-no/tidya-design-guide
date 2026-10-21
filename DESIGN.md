@@ -4,7 +4,7 @@ Kort referanse for deg som bygger UI (menneske eller AI). Verdier: `tokens.css`.
 
 ## Kom i gang
 
-Kopier `tokens.css`, `components.css`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
+Kopier `tokens.css`, `components.css`, `header.js`, `fonts/` og `brand/` inn i appen, og følg reglene. Bruk bare tokens og klasser derfra.
 
 - Hent filene fra repoet (https://github.com/Tidya-no/tidya-design-guide) eller fra den publiserte guiden (https://tidya-no.github.io/tidya-design-guide/). Ikke gjett innholdet.
 - Hele mapper skal med: `fonts/` (`manrope-latin-wght-normal.woff2`, `fraunces-latin-wght-normal.woff2`, `LICENSE-Manrope.txt`, `LICENSE-Fraunces.txt`) og `brand/` (`logo-lys-bakgrunn.svg`, `logo-mork-bakgrunn.svg`, `favicon.svg`, `favicon.ico`, `apple-touch-icon.png`).
@@ -110,14 +110,15 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 | Lasting | `spinner`, htmx-klassene `htmx-request`, `htmx-indicator`, `htmx-swapping` |
 | Hjelp | `tnum`, `sr-only`, `display` (Fraunces, bare i hero, se under), `note` (liten forklarende tekst), `h1`–`h4` (klasser, `<h1>` uten klasse er ikke stilet) |
 | Logo | `logo` med `logo-for-dark` og `logo-for-light` (se «Logo og ikoner») |
-| Header | `site-header` > `site-header-inner` (logo til venstre, valgfritt innhold til høyre) |
-| Navigasjon i header | `site-nav` med `<a>` og `link-button` (handling som ser ut som lenke) |
-| Temabryter | `theme-toggle` med `theme-toggle-icon`. Krever `theme.js` |
+| Header | `site-header` > `site-header-inner` > `site-brand` (med `logo`) + `site-header-actions` (`site-nav`, `theme-toggle`, `site-nav-toggle`). Første innhold får `site-header-offset`. Krever `header.js` |
+| Navigasjon i header | `site-nav` med `<a>` (`aria-current="page"` på aktiv side) og `link-button` (handling som ser ut som lenke) |
+| Temabryter | `theme-toggle` med `icon-sun` og `icon-moon` (rund ikonbryter). Del av headeren, bruker `header.js` |
 
 - Knappeklassene fungerer også på `<a>`: bruk `<a>` for navigasjon og `<button>` for handlinger.
-- Header: `<header class="site-header">` er `position: sticky` og ren CSS (tåkete bakgrunn, bunnlinje). Legg den først i `<body>`, før `.page`, så trenger ikke innholdet egen topp-avstand. `site-header-inner` har samme bredde som `.page`.
-- Navigasjon i headeren er lenker, ikke knapper: `<a>` for sider og `link-button` på `<button>` for handlinger som «Logg ut». Ikke bruk `btn-*` i headeren. Pakk lenker og temabryter i `<nav class="site-nav" aria-label="…">`.
-- Temabryter: kopier `theme.js` (endre `storageKey` til appen) og la ikon og tekst ha `data-theme-icon` og `data-theme-label`. Sett valgt tema før første tegning med et lite skript i `<head>` (se `index.html` i guiden). Ikon og tekst viser modusen man bytter til.
+- Header: kopier markupen fra «Eksempler» og `header.js` (ingen avhengigheter), og last `header.js` på slutten av `<body>`. Headeren er `position: fixed`: gjennomsiktig i toppen, tåkete med bunnlinje etter scroll (`data-scrolled`). Legg `.site-header-offset` på første innhold (headeren tar ikke plass i flyten) og `scroll-padding-top` er satt for ankerlenker. Innholdet er 860 px bredt som `.page`; sett `--site-width` på `.site-header-inner` for bredere sider. Under 720 px blir menyen en nedtrekksmeny som lukkes med Esc, klikk utenfor og valg av lenke. Uten JS vises lenkene som vanlig.
+- Menyen er lenker, ikke knapper: `<a>` for sider (`aria-current="page"` på den aktive gir fast understrek) og `link-button` på `<button>` for handlinger som «Logg ut». Ikke bruk `btn-*` i headeren. Utenfor menyen er `link-button` en vanlig understreket lenke.
+- Temabryter: rund ikonbryter (sol i mørk modus, måne i lys: ikonet viser modusen man bytter til). `data-theme-key` er `localStorage`-nøkkelen, sett en unik per app. Sett valgt tema før første tegning med et lite skript i `<head>` som bruker samme nøkkel (se `index.html`). `header.js` oppdaterer også `<meta name="theme-color">` til valgt modus og sender `tidya:themechange` på `window`.
+- Safari på iOS 26 farger statuslinjen fra det faste elementet øverst på siden. Derfor: (1) headeren er dekkende (`--color-bg`) på iOS når siden er scrollet, (2) `html` har bakgrunnsfarge, (3) ingen skjermfyllende `position: fixed`-lag (grain, overlegg) over headeren, og ingen `body::before/::after` som dekker skjermen: Safari regner dem som `<body>` og finner ikke headeren. Må et slikt lag være der, lag det som en ekte `<div>` med `opacity` under 0,1 og `pointer-events: none`. Test på en ekte iPhone i mørk modus, med bevegelig innhold under headeren.
 - Én `btn-primary` per visning (hovedhandlingen), resten `btn-ghost`. Åpne-knapper og andre sekundære handlinger er `btn-ghost`, men den som åpner den viktigste dialogen på siden kan være `btn-primary`.
 - Skjema i dialog: `<dialog class="dialog">` med `dialog-title`, `<form class="stack" method="dialog">` med feltene og `dialog-actions` nederst. `autofocus` på første felt, og Avbryt-knappen har `formnovalidate`. Se eksempelet i guiden.
 - Hero og forsider: `display` er bare tittelen i Fraunces. Selve hero-layouten (bilde, knapper, bakgrunn) er appens eget ansvar, bygget med tokens og `btn-*`. Alt annet, også `h1`–`h4`, er Manrope.
@@ -130,23 +131,33 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 ### Eksempler (kopier og tilpass)
 
 ```html
-<!-- Header med logo, navigasjon og temabryter -->
+<!-- Header med logo, meny og temabryter (krever header.js) -->
 <header class="site-header">
 	<div class="site-header-inner">
-		<div class="logo">
-			<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
-			<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
-		</div>
-		<nav class="site-nav" aria-label="Hovedmeny">
-			<a href="/innstillinger">Innstillinger</a>
-			<button class="link-button" type="button">Logg ut</button>
-			<button class="theme-toggle" type="button" onclick="toggleTheme()">
-				<span class="theme-toggle-icon" data-theme-icon aria-hidden="true">☀️</span>
-				<span data-theme-label>Lys modus</span>
+		<a class="site-brand" href="./">
+			<span class="logo">
+				<img class="logo-for-dark" src="brand/logo-mork-bakgrunn.svg" alt="Tidya" height="32">
+				<img class="logo-for-light" src="brand/logo-lys-bakgrunn.svg" alt="Tidya" height="32">
+			</span>
+		</a>
+		<div class="site-header-actions">
+			<nav class="site-nav" id="site-nav" aria-label="Hovedmeny">
+				<a href="/kunder" aria-current="page">Kunder</a>
+				<a href="/innstillinger">Innstillinger</a>
+				<button class="link-button" type="button">Logg ut</button>
+			</nav>
+			<button class="theme-toggle" type="button" data-theme-toggle data-theme-key="tidya-theme" aria-label="Bytt til lys modus">
+				<svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+				<svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
 			</button>
-		</nav>
+			<button class="site-nav-toggle" type="button" data-nav-toggle aria-label="Åpne meny" aria-expanded="false" aria-controls="site-nav">
+				<svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+				<svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+			</button>
+		</div>
 	</div>
 </header>
+<script src="header.js"></script>
 
 <!-- Knapper -->
 <button class="btn-primary" type="button">Lagre</button>
