@@ -210,7 +210,7 @@
 			<div class="comp-row"><span class="comp-label">Primary</span><button class="btn-primary" type="button">Lagre</button><button class="btn-primary" type="button" disabled>Lagrer…</button></div>
 			<div class="comp-row"><span class="comp-label">Ghost</span><button class="btn-ghost" type="button">+ Legg til</button><button class="btn-ghost" type="button">Avbryt</button></div>
 			<div class="comp-row"><span class="comp-label">Lenke</span><a class="btn-primary" href="#knapper">Åpne side</a><a class="btn-ghost" href="#knapper">Se mer</a></div>
-			<div class="comp-row"><span class="comp-label">Liten og pil</span><button class="btn-ghost btn-sm" type="button">Legg til reise</button><button class="btn-primary btn-sm" type="button">Lagre</button><a class="btn-primary" href="#knapper" data-magnetic>Jeg vil bli partner <span class="btn-arrow" aria-hidden="true">→</span></a></div>
+			<div class="comp-row"><span class="comp-label">Liten og pil</span><button class="btn-ghost btn-sm" type="button">Legg til reise</button><button class="btn-primary btn-sm" type="button">Lagre</button><a class="btn-primary" href="#knapper" data-magnetic>Kom i gang <span class="btn-arrow" aria-hidden="true">→</span></a></div>
 			<div class="comp-row"><span class="comp-label">Danger</span><button class="btn-danger" type="button">Slett kunde</button><button class="btn-danger-link" type="button">Slett</button></div>
 			<div class="comp-row"><span class="comp-label">Lenke</span><a href="#knapper" onclick="return false">Les mer i dokumentasjonen</a></div>
 		</div>
@@ -346,13 +346,13 @@
 				</div>
 				<div class="card card-stat card-lift" data-reveal>
 					<p class="card-stat-number"><span data-count="96">96</span><span class="card-stat-unit">%</span></p>
-					<p class="h3">til partneren</p>
-					<p class="card-body">Du gjør jobben. Du beholder nesten alt.</p>
+					<p class="h3">av totalen</p>
+					<p class="card-body">Et tall med enhet og en kort forklaring.</p>
 				</div>
 			</div>
 			<div class="card-grid">
 				<a class="card card-accent card-link card-wave" href="#kort">
-					<span class="card-tag">For partnere</span>
+					<span class="card-tag">Kategori</span>
 					<h3 class="h3">Lenkekort med bølge</h3>
 					<p class="card-body">Hele kortet er en lenke. Det løfter seg ved hover, og pilen glir.</p>
 					<span class="card-more">Les mer <span class="card-arrow" aria-hidden="true">→</span></span>
@@ -381,13 +381,13 @@
 	&lt;/div&gt;
 	&lt;div class="card card-stat card-lift" data-reveal&gt;
 		&lt;p class="card-stat-number"&gt;&lt;span data-count="96"&gt;96&lt;/span&gt;&lt;span class="card-stat-unit"&gt;%&lt;/span&gt;&lt;/p&gt;
-		&lt;p class="h3"&gt;til partneren&lt;/p&gt;
-		&lt;p class="card-body"&gt;Du gjør jobben. Du beholder nesten alt.&lt;/p&gt;
+		&lt;p class="h3"&gt;av totalen&lt;/p&gt;
+		&lt;p class="card-body"&gt;Et tall med enhet og en kort forklaring.&lt;/p&gt;
 	&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="card-grid"&gt;
 	&lt;a class="card card-accent card-link card-wave" href="#kort"&gt;
-		&lt;span class="card-tag"&gt;For partnere&lt;/span&gt;
+		&lt;span class="card-tag"&gt;Kategori&lt;/span&gt;
 		&lt;h3 class="h3"&gt;Lenkekort med bølge&lt;/h3&gt;
 		&lt;p class="card-body"&gt;Hele kortet er en lenke. Det løfter seg ved hover, og pilen glir.&lt;/p&gt;
 		&lt;span class="card-more"&gt;Les mer &lt;span class="card-arrow" aria-hidden="true"&gt;→&lt;/span&gt;&lt;/span&gt;
@@ -528,16 +528,16 @@
 		<div class="section-head"><h2 class="section-title">Forsider og markedsføring</h2><div class="section-rule"></div></div>
 		<p class="note">For forsider og markedsføring: sett <code>editorial</code> på <code>main</code> (Fraunces på <code>.h1</code>–<code>.h3</code> og tall i kort) og bygg med <code>container</code> (innholdsbredde 1160 px, endres med <code>--site-width</code>), <code>section-pad</code> (luft mellom seksjoner), <code>kicker</code> (etikett over overskriften) og <code>lead</code> (ingress). <code>site-footer</code> er bunnlinjen, og <code>grain</code> er den valgfrie teksturen øverst på denne siden (en ekte <code>div</code>, aldri <code>body::after</code>; se iOS-regelen i <code>DESIGN.md</code>).</p>
 		<div class="editorial forside-demo">
-			<p class="kicker">Hvorfor Tidya</p>
-			<h2 class="h2">Bygget av <em data-sweep>konsulenter</em>, for&nbsp;konsulenter</h2>
-			<p class="lead">Vi er selv konsulenter. Vi vet hva som betyr noe: frihet, forutsigbarhet og ryddige avtaler.</p>
+			<p class="kicker">Etikett</p>
+			<h2 class="h2">En kort og tydelig <em data-sweep>overskrift</em> over to&nbsp;linjer</h2>
+			<p class="lead">Ingressen forklarer overskriften i en til to setninger.</p>
 		</div>
 		<pre class="code" tabindex="0"><code>&lt;main class="editorial"&gt;
 	&lt;section class="section-pad"&gt;
 		&lt;div class="container"&gt;
-			&lt;p class="kicker"&gt;Hvorfor Tidya&lt;/p&gt;
-			&lt;h2 class="h2"&gt;Bygget av konsulenter, for&amp;nbsp;konsulenter&lt;/h2&gt;
-			&lt;p class="lead"&gt;Vi er selv konsulenter.&lt;/p&gt;
+			&lt;p class="kicker"&gt;Etikett&lt;/p&gt;
+			&lt;h2 class="h2"&gt;En kort og tydelig overskrift over to&amp;nbsp;linjer&lt;/h2&gt;
+			&lt;p class="lead"&gt;Ingress.&lt;/p&gt;
 		&lt;/div&gt;
 	&lt;/section&gt;
 &lt;/main&gt;

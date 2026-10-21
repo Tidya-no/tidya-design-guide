@@ -188,9 +188,9 @@ Last `tokens.css` og `components.css`, ingen byggesteg.
 
 <!-- Kort og forklarende tekst -->
 <div class="card"><p class="card-title">Tittel</p><p class="card-body">Innhold.</p></div>
-<a class="card card-accent card-link card-wave" href="/partner">
-	<span class="card-tag">For partnere</span>
-	<h2 class="h3">Vil du bli partner?</h2>
+<a class="card card-accent card-link card-wave" href="/side">
+	<span class="card-tag">Kategori</span>
+	<h2 class="h3">Tittel på lenkekort</h2>
 	<p class="card-body">Kort forklaring.</p>
 	<span class="card-more">Les mer <span class="card-arrow" aria-hidden="true">→</span></span>
 </a>
