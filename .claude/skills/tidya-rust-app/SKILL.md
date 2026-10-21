@@ -9,7 +9,8 @@ Reglene her er begrunnelsene. Koden ligger i de to repoene, som er fasit: les de
 
 - `Tidya-no/tidya-website-rust`: enklest. Statiske sider, kontaktskjema med SMTP.
 - `Tidya-no/tidya-faktura`: full app. Magic-link-innlogging, multipart, ekstern binær (Typst), pinnet pdf.js.
-- Designsystemet er dette repoet: `tokens.css`, `components.css`, `fonts/`, `brand/`, regler i `DESIGN.md`.
+- `Tidya-no/tidya-talks`: statisk GitHub Pages-forside (foredrag), samme designfiler uten Rust. Presentasjonen i repoet er en egen Reveal.js-side som ikke bruker guiden.
+- Designsystemet er dette repoet: `tokens.css`, `components.css`, `header.js`, `effects.js`, `fonts/`, `brand/`, regler i `DESIGN.md`. Skillen under «Design» gjelder alle repoene.
 
 Legg begge appene til i sesjonen med `add_repo` før du begynner. Les `AGENTS.md` i den du låner fra. Finn eksempler ved å søke i repoet (`vedlikehold.yml`, `scripts/`, `src/lib.rs`), ikke ved å stole på stier her.
 
@@ -20,8 +21,24 @@ Legg begge appene til i sesjonen med `add_repo` før du begynner. Les `AGENTS.md
 - Ruter og sider i `src/lib.rs`/`sider.rs`, `app(Config) -> Router` slik at tester starter ekte router med `tower::ServiceExt::oneshot`. Ikke mock. En test må kunne feile.
 - htmx-svar: fragment ved `HX-Request`, full side ellers, og alltid `Vary: HX-Request`. Skjemaer virker uten JS. 422 og 429 byttes inn i `htmx-config`, andre 4xx/5xx ikke.
 - Alt utenom statiske filer har `Cache-Control: no-store` når siden er brukerspesifikk. Sikkerhetsheadere (`nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`) settes i `app()`.
-- Design: kopier `tokens.css`, `components.css`, `fonts/`, `brand/` uendret fra dette repoet inn i `static/design` og `static/brand`. Bare `var(--…)` og komponentklasser, ingen hardkodede farger. Appens egen CSS i en egen fil.
+- Språk-regel under. Design: se «Design og guiden» lenger ned. Appens egen CSS i en egen fil, bare det som er spesifikt for appen.
 - Språk: kode, kommentarer og identifikatorer på engelsk. Domeneord, loggmeldinger, testnavn og brukertekst på norsk (`æøå` blir `ae oe aa` i identifikatorer). Hard tabs.
+
+## Design og guiden
+
+Guiden er kilden. Appene har kopier som aldri endres lokalt.
+
+- **Filer:** `tokens.css`, `components.css`, `header.js`, `fonts/` (Manrope og Fraunces med `opsz`-aksen, `fraunces-latin-opsz-wght-normal.woff2`) og `brand/` kopieres uendret. `effects.js` er valgfri og bare for forsider. Plasser dem i `static/design/` (Rust-appene, servert på `/design/...`, fonter med immutable cache) eller i roten (statiske sider). Website-rust og talks har `scripts/oppdater-design.sh <sti til guiden>`; bruk eller kopier det.
+- **Kopier bare fra `main` i guiden, aldri fra en PR-branch.** Etter en merge kan senere commits på branchen mangle på `main`; vi har kopiert filer som ikke var merget. Etter at guide-PR-en er merget: `cmp` filene mot `origin/main` før appen merges.
+- **Endringer** gjøres i guiden (en liten PR), merges, og kopieres så inn. Trenger en app en lokal overstyring, er det oftest guiden som mangler noe. Sidespesifikt (hero-shader, logo-filter, kursiv Fraunces) blir i appens `style.css`.
+- **Header:** guidens komponent (markup i «Eksempler» i `DESIGN.md`): `site-header`, `site-brand`, `site-nav` (`aria-current="page"` på aktiv side, `link-button` for Logg ut), `theme-toggle` med `data-theme-key` (unik per app, lik nøkkelen i `<head>`-skriptet), `site-nav-toggle`. `header.js` krever både `.site-nav` og `[data-nav-toggle]`, så ha dem også når menyen er kort. Første innhold får `site-header-offset`. Bredde med `--site-width` (860 i apper, 1160 på forsider).
+- **iOS Safari farger statuslinjen fra det faste elementet øverst.** Derfor: ingen skjermfyllende fixed-lag over headeren, `grain` som ekte `<div class="grain" aria-hidden="true">` (aldri `body::after`), og `html` har bakgrunn. Test på ekte iPhone i mørk modus.
+- **Apper vs forsider:** apper bruker Manrope og vanlig `card` (flatt, også i skjema), store knapper for hovedhandlingen og `btn-sm` for sekundære. Forsider og markedsføring får `class="editorial"` på `body`/`main` (Fraunces på `.h1`–`.h3`, `.display`, tall i kort), `container`, `section-pad`, `kicker`, `lead`, `site-footer` og kortvarianter (`card-accent`, `card-link`, `card-stat`, `card-feature`, `card-wave`, `section-alt`, `card-lift`).
+- **Effekter** (`data-rise`, `data-reveal`, `data-sweep`, `data-tilt` + `.card-glow`, `data-count`, `data-magnetic`) er valgfrie, virker uten JS og med redusert bevegelse, og brukes ikke i apper.
+- **Klasser, ikke elementer:** overskrifter er `.h1`–`.h3`/`.display`, knapper er `btn-primary` (uten `btn`), pil er `btn-arrow`, container er `container` (ikke `wrap`), reveal er `data-reveal` (ikke `.fade`).
+- **Statiske sider (GitHub Pages):** `pages.yml` må kopiere alle filer siden bruker (`header.js`, `effects.js`) og cache-buste dem.
+- **Verifiser visuelt før og etter** når en side migreres: skjermbilder av hver side i mørk og lys modus, mobil og desktop (reduced motion, animasjoner av, `canvas`/marquee skjult), sammenlign piksler og høyde, og se på forskjellene. Test bevegelse (meny, tema, reveal, tellere, dialog) separat med ekte bevegelse. Kjør axe med `reducedMotion: 'reduce'` ellers gir innkomst-animasjoner falske kontrastfeil.
+- **Mål før du kutter luft:** mål innholdshøyde på iPad Pro (11" og 12,9", begge retninger; Safari bruker 80–120 px på verktøylinjer) og ha footer nederst med flex-kolonne og `min-height: 100dvh`.
 
 ## Innlogging (hvis appen trenger det)
 
@@ -58,6 +75,7 @@ Fallgruver vi har betalt for:
 - Ressursgrenser (`setrlimit` på adresserom) må måles med samme libc som imaget: musl og glibc gir veldig forskjellige tall. Mål på det som havner i imaget.
 - Kald bygging av store crates (for eksempel hele `typst`) tok 20 min og flere GB. Bruk ferdig binær.
 - Hemmeligheter (`SMTP_PASS`, `SESSION_SECRET`) skal ikke være «Available at Buildtime» i Coolify.
+- Stop-hooken i en grunn klone kan klage på «upushede commits» selv om alt er pushet, fordi `origin/<gren>` mangler lokalt. Hent grenen: `git fetch --depth=1 origin +refs/heads/<gren>:refs/remotes/origin/<gren>`.
 - Feil i SMTP bare logges i appen. Test innlogging/kontaktskjema etter SMTP-endringer, eller ha en ukentlig ende-til-ende-jobb som sender en ekte testmelding.
 
 ## Engangsoppsett for en ny app
