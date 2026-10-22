@@ -34,11 +34,25 @@ Guiden er kilden. Appene har kopier som aldri endres lokalt.
 - **Header:** guidens komponent (markup i «Eksempler» i `DESIGN.md`): `site-header`, `site-brand`, `site-nav` (`aria-current="page"` på aktiv side, `link-button` for Logg ut), `theme-toggle` med `data-theme-key` (unik per app, lik nøkkelen i `<head>`-skriptet), `site-nav-toggle`. `header.js` krever både `.site-nav` og `[data-nav-toggle]`, så ha dem også når menyen er kort. Første innhold får `site-header-offset`. Bredde med `--site-width` (860 i apper, 1160 på forsider).
 - **iOS Safari farger statuslinjen fra det faste elementet øverst.** Derfor: ingen skjermfyllende fixed-lag over headeren, `grain` som ekte `<div class="grain" aria-hidden="true">` (aldri `body::after`), og `html` har bakgrunn. Test på ekte iPhone i mørk modus.
 - **Apper vs forsider:** apper bruker Manrope og vanlig `card` (flatt, også i skjema), store knapper for hovedhandlingen og `btn-sm` for sekundære. Forsider og markedsføring får `class="editorial"` på `body`/`main` (Fraunces på `.h1`–`.h3`, `.display`, tall i kort), `container`, `section-pad`, `kicker`, `lead`, `site-footer` og kortvarianter (`card-accent`, `card-link`, `card-stat`, `card-feature`, `card-wave`, `section-alt`, `card-lift`).
-- **Effekter** (`data-rise`, `data-reveal`, `data-sweep`, `data-tilt` + `.card-glow`, `data-count`, `data-magnetic`) er valgfrie, virker uten JS og med redusert bevegelse, og brukes ikke i apper.
+- **Effekter** (`data-rise`, `data-reveal`, `data-sweep`, `data-tilt` + `.card-glow`, `data-count`, `data-magnetic`) er valgfrie, virker uten JS og med redusert bevegelse, og brukes ikke i apper. Eneste unntak er spillmodus i `tidya-quiz` (eierens valg): den ligger i appens egen `spill.css`/`spill.js` på guidens tokens, og guidens filer røres ikke.
 - **Klasser, ikke elementer:** overskrifter er `.h1`–`.h3`/`.display`, knapper er `btn-primary` (uten `btn`), pil er `btn-arrow`, container er `container` (ikke `wrap`), reveal er `data-reveal` (ikke `.fade`).
 - **Statiske sider (GitHub Pages):** `pages.yml` må kopiere alle filer siden bruker (`header.js`, `effects.js`) og cache-buste dem.
 - **Verifiser visuelt før og etter** når en side migreres: skjermbilder av hver side i mørk og lys modus, mobil og desktop (reduced motion, animasjoner av, `canvas`/marquee skjult), sammenlign piksler og høyde, og se på forskjellene. Test bevegelse (meny, tema, reveal, tellere, dialog) separat med ekte bevegelse. Kjør axe med `reducedMotion: 'reduce'` ellers gir innkomst-animasjoner falske kontrastfeil.
 - **Mål før du kutter luft:** mål innholdshøyde på iPad Pro (11" og 12,9", begge retninger; Safari bruker 80–120 px på verktøylinjer) og ha footer nederst med flex-kolonne og `min-height: 100dvh`.
+
+## Sikkerhet
+
+Alt klienten ser eller sender tilbake kan endres. Serveren eier fasit, og hver regel under har en test som kan feile.
+
+- **Headere:** i tillegg til `nosniff`, `X-Frame-Options`, `Referrer-Policy` og `Permissions-Policy` skal `Strict-Transport-Security: max-age=31536000` settes i `app()` (`if_not_present`, uten `includeSubDomains`, nettleseren ignorerer den over http). CSP: `default-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'; form-action 'self'`. Inline-skript (tema-skriptet i `<head>`) får `sha256-`-hash, ingen inline `style`, og `includeIndicatorStyles: false` i `htmx-config` (htmx legger ellers inn en `<style>`). Test CSP i ekte nettleser før den slås på.
+- **Signerte tokens uten lagring kan spilles av igjen.** En gammel token gir tilbake gammel tilstand, også en bedre en (færre feil, lenke som ikke er brukt). Bruk dem bare til det en avspilling ikke kan forbedre, og kall selvrapportert tilstand det i dokumentasjonen. Engangsbruk krever minne (`bruk_en_gang`) og forsvinner ved restart.
+- **Hemmelighet:** `SESSION_SECRET` på minst 32 tegn, appen avslutter ved oppstart ellers. Egen verdi per app og per miljø, så en testtoken aldri gjelder i prod. Domeneseparasjon: formålet er med i HMAC-en og i hver ny tokentype.
+- **Økter kan ikke tilbakekalles enkeltvis.** Logg ut sletter bare cookien. Fjern personen fra deltakerlisten (oppslaget skjer på hver forespørsel) eller bytt hemmelighet. Skriv det i `AGENTS.md` under «Known and accepted».
+- **Cookies:** `HttpOnly; SameSite=Lax; Secure`. Foretrekk prefikset `__Host-` når `SITE_URL` er https, så en søskendomene ikke kan overstyre cookien med `Domain=`.
+- **Takgrenser teller før oppslaget** så kjente og ukjente adresser ser like ut. Prisen er at noen kan bruke opp taket (per adresse og for hele siden) og låse andre ute en time. Det er godtatt, men skal stå i `AGENTS.md`. Legg til grense per IP bare hvis proxyen gir pålitelig `X-Forwarded-For`.
+- **Token i URL:** `GET` viser bare en knapp, `POST` bruker lenken. Ikke logg query-strengen (`TraceLayer` på `info` gjør det ikke; sjekk proxyens tilgangslogg). `Referrer-Policy` må bli stående.
+- **Input:** Askama escaper, så ingen `|safe` på data fra brukere. E-postadresser parses som `lettre::Address`, aldri settes sammen til headerstrenger. Skjemaer har lengdegrenser.
+- **Offentlige ruter:** innlogging, `/health` og eventuelt `/versjon` (commit og branch). Alt annet bak `Bruker`. En ny rute som ikke er bak `Bruker` skal ha en test som sier hvorfor.
 
 ## Innlogging (hvis appen trenger det)
 
@@ -53,7 +67,7 @@ Statuløse signerte tokens (`purpose|utløp|e-post` + HMAC), ingen database. Les
 ## Ekstern binær eller kopiert fil (mønsteret mot råte)
 
 Ting som ikke er en cargo-avhengighet (Typst, pdf.js, htmx) pinnes slik:
-1. Versjon og sha256 står ett sted (`scripts/<navn>.env`). Dockerfile og CI bruker samme installer-script, så testene kjører det samme som imaget.
+1. Versjon og sha256 står ett sted (`scripts/<navn>.env`; kopierte npm-filer som htmx og three.js kan i stedet pinnes med npm-registerets sha512 i oppdateringsscriptet og en `VERSJON`-fil). Dockerfile og CI bruker samme installer-script, så testene kjører det samme som imaget.
 2. Et oppdateringsscript (`scripts/oppdater-<navn>.sh <versjon>`) som henter, verifiserer og skriver filen.
 3. En jobb i `vedlikehold.yml` sammenligner mot siste utgave hver mandag og feiler høyt med oppskriften i feilmeldingen.
 4. Hent ikke fra en containerregistry: Coolify-serveren kommer ikke til `ghcr.io` (403). Bruk GitHub Releases med sha256.
